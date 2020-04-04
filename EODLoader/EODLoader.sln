@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
+VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EODLoader", "EODLoader\EODLoader.csproj", "{F71DE8E1-3597-4EAA-B439-1296F6D8C277}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EODLoader", "EODLoader\EODLoader.csproj", "{08324DC8-D872-428F-8EF8-F58C4E529392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{F71DE8E1-3597-4EAA-B439-1296F6D8C277}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F71DE8E1-3597-4EAA-B439-1296F6D8C277}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F71DE8E1-3597-4EAA-B439-1296F6D8C277}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F71DE8E1-3597-4EAA-B439-1296F6D8C277}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08324DC8-D872-428F-8EF8-F58C4E529392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08324DC8-D872-428F-8EF8-F58C4E529392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08324DC8-D872-428F-8EF8-F58C4E529392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08324DC8-D872-428F-8EF8-F58C4E529392}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {EA39A4FE-9E7F-4426-82AD-EAA365BDFA4B}
+		SolutionGuid = {8F61A4E1-8A60-4E59-AEFF-BE2D96140021}
 	EndGlobalSection
 EndGlobal
