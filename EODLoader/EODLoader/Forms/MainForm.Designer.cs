@@ -32,19 +32,50 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.fileDialogButton = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.openFileButton = new System.Windows.Forms.Button();
             this.dToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sybolFilePatchTextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.fileDialogButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileButton = new System.Windows.Forms.Button();
+            this.symbolFilePatchTextBox = new System.Windows.Forms.TextBox();
+            this.downloadDirectoryButton = new System.Windows.Forms.Button();
+            this.openDirectoryButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.timeRangeGroupBox = new System.Windows.Forms.GroupBox();
+            this.toDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.toLabel = new System.Windows.Forms.Label();
+            this.fromDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.fromLabel = new System.Windows.Forms.Label();
+            this.periodLabel = new System.Windows.Forms.Label();
+            this.periodComboBox = new System.Windows.Forms.ComboBox();
+            this.availableCheckBox = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.totalProcessedLabel = new System.Windows.Forms.Label();
+            this.totalSymbolsLabel = new System.Windows.Forms.Label();
+            this.tokenLabel = new System.Windows.Forms.Label();
+            this.RunLogGridView = new System.Windows.Forms.DataGridView();
+            this.ImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.SymbolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.processedOkLabel = new System.Windows.Forms.Label();
+            this.errorsLabel = new System.Windows.Forms.Label();
+            this.durationLabel = new System.Windows.Forms.Label();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.runProgressBar = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
+            this.totalSymbolsValueLabel = new System.Windows.Forms.Label();
+            this.totalProcessedValueLabel = new System.Windows.Forms.Label();
+            this.processedOkValueLabel = new System.Windows.Forms.Label();
+            this.errorsValueLabel = new System.Windows.Forms.Label();
+            this.durationValueLabel = new System.Windows.Forms.Label();
+            this.statusValueLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            this.timeRangeGroupBox.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RunLogGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -62,39 +93,9 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(424, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(477, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 27);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(100, 273);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
-            // 
-            // fileDialogButton
-            // 
-            this.fileDialogButton.Location = new System.Drawing.Point(118, 36);
-            this.fileDialogButton.Name = "fileDialogButton";
-            this.fileDialogButton.Size = new System.Drawing.Size(92, 23);
-            this.fileDialogButton.TabIndex = 2;
-            this.fileDialogButton.Text = "Symbol file";
-            this.fileDialogButton.UseVisualStyleBackColor = true;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // openFileButton
-            // 
-            this.openFileButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
-            this.openFileButton.Location = new System.Drawing.Point(216, 36);
-            this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(24, 23);
-            this.openFileButton.TabIndex = 3;
-            this.openFileButton.UseVisualStyleBackColor = true;
             // 
             // dToolStripMenuItem
             // 
@@ -127,48 +128,369 @@
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
-            // sybolFilePatchTextBox
+            // richTextBox1
             // 
-            this.sybolFilePatchTextBox.Location = new System.Drawing.Point(246, 38);
-            this.sybolFilePatchTextBox.Name = "sybolFilePatchTextBox";
-            this.sybolFilePatchTextBox.Size = new System.Drawing.Size(166, 20);
-            this.sybolFilePatchTextBox.TabIndex = 4;
+            this.richTextBox1.Location = new System.Drawing.Point(12, 36);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(100, 260);
+            this.richTextBox1.TabIndex = 9999;
+            this.richTextBox1.Text = "";
             // 
-            // button1
+            // fileDialogButton
             // 
-            this.button1.Location = new System.Drawing.Point(118, 65);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Symbol file";
-            this.button1.UseVisualStyleBackColor = true;
+            this.fileDialogButton.Location = new System.Drawing.Point(118, 36);
+            this.fileDialogButton.Name = "fileDialogButton";
+            this.fileDialogButton.Size = new System.Drawing.Size(107, 23);
+            this.fileDialogButton.TabIndex = 1;
+            this.fileDialogButton.Text = "Symbol file";
+            this.fileDialogButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // openFileDialog1
             // 
-            this.button2.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
-            this.button2.Location = new System.Drawing.Point(216, 65);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(24, 23);
-            this.button2.TabIndex = 3;
-            this.button2.UseVisualStyleBackColor = true;
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // openFileButton
+            // 
+            this.openFileButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
+            this.openFileButton.Location = new System.Drawing.Point(231, 36);
+            this.openFileButton.Name = "openFileButton";
+            this.openFileButton.Size = new System.Drawing.Size(24, 23);
+            this.openFileButton.TabIndex = 3;
+            this.openFileButton.UseVisualStyleBackColor = true;
+            // 
+            // symbolFilePatchTextBox
+            // 
+            this.symbolFilePatchTextBox.Location = new System.Drawing.Point(261, 38);
+            this.symbolFilePatchTextBox.Name = "symbolFilePatchTextBox";
+            this.symbolFilePatchTextBox.Size = new System.Drawing.Size(204, 20);
+            this.symbolFilePatchTextBox.TabIndex = 4;
+            // 
+            // downloadDirectoryButton
+            // 
+            this.downloadDirectoryButton.Location = new System.Drawing.Point(118, 65);
+            this.downloadDirectoryButton.Name = "downloadDirectoryButton";
+            this.downloadDirectoryButton.Size = new System.Drawing.Size(107, 23);
+            this.downloadDirectoryButton.TabIndex = 2;
+            this.downloadDirectoryButton.Text = "Download directory";
+            this.downloadDirectoryButton.UseVisualStyleBackColor = true;
+            // 
+            // openDirectoryButton
+            // 
+            this.openDirectoryButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
+            this.openDirectoryButton.Location = new System.Drawing.Point(231, 65);
+            this.openDirectoryButton.Name = "openDirectoryButton";
+            this.openDirectoryButton.Size = new System.Drawing.Size(24, 23);
+            this.openDirectoryButton.TabIndex = 3;
+            this.openDirectoryButton.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(246, 67);
+            this.textBox1.Location = new System.Drawing.Point(261, 67);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(166, 20);
+            this.textBox1.Size = new System.Drawing.Size(204, 20);
             this.textBox1.TabIndex = 4;
+            // 
+            // timeRangeGroupBox
+            // 
+            this.timeRangeGroupBox.Controls.Add(this.toDateTimePicker);
+            this.timeRangeGroupBox.Controls.Add(this.toLabel);
+            this.timeRangeGroupBox.Controls.Add(this.fromDateTimePicker);
+            this.timeRangeGroupBox.Controls.Add(this.fromLabel);
+            this.timeRangeGroupBox.Controls.Add(this.periodLabel);
+            this.timeRangeGroupBox.Controls.Add(this.periodComboBox);
+            this.timeRangeGroupBox.Controls.Add(this.availableCheckBox);
+            this.timeRangeGroupBox.Location = new System.Drawing.Point(118, 94);
+            this.timeRangeGroupBox.Name = "timeRangeGroupBox";
+            this.timeRangeGroupBox.Size = new System.Drawing.Size(152, 136);
+            this.timeRangeGroupBox.TabIndex = 5;
+            this.timeRangeGroupBox.TabStop = false;
+            this.timeRangeGroupBox.Text = "Time Range";
+            // 
+            // toDateTimePicker
+            // 
+            this.toDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.toDateTimePicker.Location = new System.Drawing.Point(54, 104);
+            this.toDateTimePicker.Name = "toDateTimePicker";
+            this.toDateTimePicker.Size = new System.Drawing.Size(92, 20);
+            this.toDateTimePicker.TabIndex = 3;
+            this.toDateTimePicker.Value = new System.DateTime(2020, 4, 4, 0, 0, 0, 0);
+            // 
+            // toLabel
+            // 
+            this.toLabel.AutoSize = true;
+            this.toLabel.Location = new System.Drawing.Point(7, 107);
+            this.toLabel.Name = "toLabel";
+            this.toLabel.Size = new System.Drawing.Size(23, 13);
+            this.toLabel.TabIndex = 2;
+            this.toLabel.Text = "To:";
+            // 
+            // fromDateTimePicker
+            // 
+            this.fromDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.fromDateTimePicker.Location = new System.Drawing.Point(54, 78);
+            this.fromDateTimePicker.Name = "fromDateTimePicker";
+            this.fromDateTimePicker.Size = new System.Drawing.Size(92, 20);
+            this.fromDateTimePicker.TabIndex = 3;
+            this.fromDateTimePicker.Value = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
+            // 
+            // fromLabel
+            // 
+            this.fromLabel.AutoSize = true;
+            this.fromLabel.Location = new System.Drawing.Point(7, 81);
+            this.fromLabel.Name = "fromLabel";
+            this.fromLabel.Size = new System.Drawing.Size(33, 13);
+            this.fromLabel.TabIndex = 2;
+            this.fromLabel.Text = "From:";
+            // 
+            // periodLabel
+            // 
+            this.periodLabel.AutoSize = true;
+            this.periodLabel.Location = new System.Drawing.Point(6, 22);
+            this.periodLabel.Name = "periodLabel";
+            this.periodLabel.Size = new System.Drawing.Size(40, 13);
+            this.periodLabel.TabIndex = 2;
+            this.periodLabel.Text = "Period:";
+            // 
+            // periodComboBox
+            // 
+            this.periodComboBox.FormattingEnabled = true;
+            this.periodComboBox.Items.AddRange(new object[] {
+            "Daily",
+            "Weekly",
+            "Monthly"});
+            this.periodComboBox.Location = new System.Drawing.Point(54, 19);
+            this.periodComboBox.Name = "periodComboBox";
+            this.periodComboBox.Size = new System.Drawing.Size(92, 21);
+            this.periodComboBox.TabIndex = 1;
+            // 
+            // availableCheckBox
+            // 
+            this.availableCheckBox.AutoSize = true;
+            this.availableCheckBox.Location = new System.Drawing.Point(39, 52);
+            this.availableCheckBox.Name = "availableCheckBox";
+            this.availableCheckBox.Size = new System.Drawing.Size(82, 17);
+            this.availableCheckBox.TabIndex = 0;
+            this.availableCheckBox.Text = "All available";
+            this.availableCheckBox.UseVisualStyleBackColor = true;
+            this.availableCheckBox.CheckedChanged += new System.EventHandler(this.availableCheckBox_CheckedChanged);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.statusValueLabel);
+            this.groupBox2.Controls.Add(this.durationValueLabel);
+            this.groupBox2.Controls.Add(this.errorsValueLabel);
+            this.groupBox2.Controls.Add(this.processedOkValueLabel);
+            this.groupBox2.Controls.Add(this.totalProcessedValueLabel);
+            this.groupBox2.Controls.Add(this.totalSymbolsValueLabel);
+            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.runProgressBar);
+            this.groupBox2.Controls.Add(this.statusLabel);
+            this.groupBox2.Controls.Add(this.durationLabel);
+            this.groupBox2.Controls.Add(this.errorsLabel);
+            this.groupBox2.Controls.Add(this.processedOkLabel);
+            this.groupBox2.Controls.Add(this.totalProcessedLabel);
+            this.groupBox2.Controls.Add(this.totalSymbolsLabel);
+            this.groupBox2.Controls.Add(this.tokenLabel);
+            this.groupBox2.Location = new System.Drawing.Point(285, 94);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(180, 202);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Latest download stats";
+            // 
+            // totalProcessedLabel
+            // 
+            this.totalProcessedLabel.AutoSize = true;
+            this.totalProcessedLabel.Location = new System.Drawing.Point(6, 57);
+            this.totalProcessedLabel.Name = "totalProcessedLabel";
+            this.totalProcessedLabel.Size = new System.Drawing.Size(86, 13);
+            this.totalProcessedLabel.TabIndex = 0;
+            this.totalProcessedLabel.Text = "Total processed:";
+            // 
+            // totalSymbolsLabel
+            // 
+            this.totalSymbolsLabel.AutoSize = true;
+            this.totalSymbolsLabel.Location = new System.Drawing.Point(6, 37);
+            this.totalSymbolsLabel.Name = "totalSymbolsLabel";
+            this.totalSymbolsLabel.Size = new System.Drawing.Size(74, 13);
+            this.totalSymbolsLabel.TabIndex = 0;
+            this.totalSymbolsLabel.Text = "Total symbols:";
+            // 
+            // tokenLabel
+            // 
+            this.tokenLabel.AutoSize = true;
+            this.tokenLabel.Location = new System.Drawing.Point(6, 18);
+            this.tokenLabel.Name = "tokenLabel";
+            this.tokenLabel.Size = new System.Drawing.Size(41, 13);
+            this.tokenLabel.TabIndex = 0;
+            this.tokenLabel.Text = "Token:";
+            // 
+            // RunLogGridView
+            // 
+            this.RunLogGridView.AllowUserToAddRows = false;
+            this.RunLogGridView.AllowUserToDeleteRows = false;
+            this.RunLogGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.RunLogGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.RunLogGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ImageColumn,
+            this.SymbolColumn,
+            this.StatusColumn});
+            this.RunLogGridView.Location = new System.Drawing.Point(12, 302);
+            this.RunLogGridView.MultiSelect = false;
+            this.RunLogGridView.Name = "RunLogGridView";
+            this.RunLogGridView.ReadOnly = true;
+            this.RunLogGridView.RowHeadersVisible = false;
+            this.RunLogGridView.RowHeadersWidth = 40;
+            this.RunLogGridView.Size = new System.Drawing.Size(453, 231);
+            this.RunLogGridView.TabIndex = 7;
+            // 
+            // ImageColumn
+            // 
+            this.ImageColumn.Frozen = true;
+            this.ImageColumn.HeaderText = "";
+            this.ImageColumn.MinimumWidth = 25;
+            this.ImageColumn.Name = "ImageColumn";
+            this.ImageColumn.ReadOnly = true;
+            this.ImageColumn.Width = 25;
+            // 
+            // SymbolColumn
+            // 
+            this.SymbolColumn.Frozen = true;
+            this.SymbolColumn.HeaderText = "Symbol";
+            this.SymbolColumn.MinimumWidth = 100;
+            this.SymbolColumn.Name = "SymbolColumn";
+            this.SymbolColumn.ReadOnly = true;
+            this.SymbolColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.SymbolColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // StatusColumn
+            // 
+            this.StatusColumn.Frozen = true;
+            this.StatusColumn.HeaderText = "Status";
+            this.StatusColumn.MinimumWidth = 320;
+            this.StatusColumn.Name = "StatusColumn";
+            this.StatusColumn.ReadOnly = true;
+            this.StatusColumn.Width = 320;
+            // 
+            // processedOkLabel
+            // 
+            this.processedOkLabel.AutoSize = true;
+            this.processedOkLabel.Location = new System.Drawing.Point(6, 78);
+            this.processedOkLabel.Name = "processedOkLabel";
+            this.processedOkLabel.Size = new System.Drawing.Size(78, 13);
+            this.processedOkLabel.TabIndex = 0;
+            this.processedOkLabel.Text = "Processed OK:";
+            // 
+            // errorsLabel
+            // 
+            this.errorsLabel.AutoSize = true;
+            this.errorsLabel.Location = new System.Drawing.Point(6, 100);
+            this.errorsLabel.Name = "errorsLabel";
+            this.errorsLabel.Size = new System.Drawing.Size(37, 13);
+            this.errorsLabel.TabIndex = 0;
+            this.errorsLabel.Text = "Errors:";
+            // 
+            // durationLabel
+            // 
+            this.durationLabel.AutoSize = true;
+            this.durationLabel.Location = new System.Drawing.Point(6, 123);
+            this.durationLabel.Name = "durationLabel";
+            this.durationLabel.Size = new System.Drawing.Size(50, 13);
+            this.durationLabel.TabIndex = 0;
+            this.durationLabel.Text = "Duration:";
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(6, 147);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(40, 13);
+            this.statusLabel.TabIndex = 0;
+            this.statusLabel.Text = "Status:";
+            // 
+            // runProgressBar
+            // 
+            this.runProgressBar.Location = new System.Drawing.Point(9, 172);
+            this.runProgressBar.Name = "runProgressBar";
+            this.runProgressBar.Size = new System.Drawing.Size(162, 22);
+            this.runProgressBar.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(109, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label1";
+            // 
+            // totalSymbolsValueLabel
+            // 
+            this.totalSymbolsValueLabel.AutoSize = true;
+            this.totalSymbolsValueLabel.Location = new System.Drawing.Point(109, 37);
+            this.totalSymbolsValueLabel.Name = "totalSymbolsValueLabel";
+            this.totalSymbolsValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.totalSymbolsValueLabel.TabIndex = 2;
+            this.totalSymbolsValueLabel.Text = "0";
+            // 
+            // totalProcessedValueLabel
+            // 
+            this.totalProcessedValueLabel.AutoSize = true;
+            this.totalProcessedValueLabel.Location = new System.Drawing.Point(109, 57);
+            this.totalProcessedValueLabel.Name = "totalProcessedValueLabel";
+            this.totalProcessedValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.totalProcessedValueLabel.TabIndex = 2;
+            this.totalProcessedValueLabel.Text = "0";
+            // 
+            // processedOkValueLabel
+            // 
+            this.processedOkValueLabel.AutoSize = true;
+            this.processedOkValueLabel.Location = new System.Drawing.Point(109, 78);
+            this.processedOkValueLabel.Name = "processedOkValueLabel";
+            this.processedOkValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.processedOkValueLabel.TabIndex = 2;
+            this.processedOkValueLabel.Text = "0";
+            // 
+            // errorsValueLabel
+            // 
+            this.errorsValueLabel.AutoSize = true;
+            this.errorsValueLabel.Location = new System.Drawing.Point(109, 100);
+            this.errorsValueLabel.Name = "errorsValueLabel";
+            this.errorsValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.errorsValueLabel.TabIndex = 2;
+            this.errorsValueLabel.Text = "0";
+            // 
+            // durationValueLabel
+            // 
+            this.durationValueLabel.AutoSize = true;
+            this.durationValueLabel.Location = new System.Drawing.Point(109, 123);
+            this.durationValueLabel.Name = "durationValueLabel";
+            this.durationValueLabel.Size = new System.Drawing.Size(43, 13);
+            this.durationValueLabel.TabIndex = 2;
+            this.durationValueLabel.Text = "0:00:00";
+            // 
+            // statusValueLabel
+            // 
+            this.statusValueLabel.AutoSize = true;
+            this.statusValueLabel.Location = new System.Drawing.Point(109, 147);
+            this.statusValueLabel.Name = "statusValueLabel";
+            this.statusValueLabel.Size = new System.Drawing.Size(0, 13);
+            this.statusValueLabel.TabIndex = 2;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 545);
+            this.ClientSize = new System.Drawing.Size(477, 545);
+            this.Controls.Add(this.RunLogGridView);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.timeRangeGroupBox);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.sybolFilePatchTextBox);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.symbolFilePatchTextBox);
+            this.Controls.Add(this.openDirectoryButton);
             this.Controls.Add(this.openFileButton);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.downloadDirectoryButton);
             this.Controls.Add(this.fileDialogButton);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.menuStrip1);
@@ -177,8 +499,14 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EODLoader";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.timeRangeGroupBox.ResumeLayout(false);
+            this.timeRangeGroupBox.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.RunLogGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,10 +524,38 @@
         private System.Windows.Forms.Button fileDialogButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button openFileButton;
-        private System.Windows.Forms.TextBox sybolFilePatchTextBox;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox symbolFilePatchTextBox;
+        private System.Windows.Forms.Button openDirectoryButton;
         private System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Button downloadDirectoryButton;
+        private System.Windows.Forms.GroupBox timeRangeGroupBox;
+        private System.Windows.Forms.Label periodLabel;
+        private System.Windows.Forms.ComboBox periodComboBox;
+        private System.Windows.Forms.CheckBox availableCheckBox;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DateTimePicker fromDateTimePicker;
+        private System.Windows.Forms.DateTimePicker toDateTimePicker;
+        private System.Windows.Forms.Label toLabel;
+        private System.Windows.Forms.Label fromLabel;
+        private System.Windows.Forms.DataGridView RunLogGridView;
+        private System.Windows.Forms.DataGridViewImageColumn ImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SymbolColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusColumn;
+        private System.Windows.Forms.Label totalSymbolsLabel;
+        private System.Windows.Forms.Label tokenLabel;
+        private System.Windows.Forms.Label totalProcessedLabel;
+        private System.Windows.Forms.Label processedOkLabel;
+        private System.Windows.Forms.Label errorsLabel;
+        private System.Windows.Forms.Label durationLabel;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.ProgressBar runProgressBar;
+        private System.Windows.Forms.Label statusValueLabel;
+        private System.Windows.Forms.Label durationValueLabel;
+        private System.Windows.Forms.Label errorsValueLabel;
+        private System.Windows.Forms.Label processedOkValueLabel;
+        private System.Windows.Forms.Label totalProcessedValueLabel;
+        private System.Windows.Forms.Label totalSymbolsValueLabel;
+        private System.Windows.Forms.Label label1;
     }
 }
 

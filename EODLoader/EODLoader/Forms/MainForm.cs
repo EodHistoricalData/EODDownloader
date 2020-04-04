@@ -32,5 +32,24 @@ namespace EODLoader.Forms
         {
             System.Diagnostics.Process.Start("https://google.com/");
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            toDateTimePicker.Value = DateTime.Now;
+        }
+
+        private void availableCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (availableCheckBox.Checked)
+            {
+                fromDateTimePicker.Enabled = false;
+                toDateTimePicker.Enabled = false;
+            }
+            else
+            {
+                fromDateTimePicker.Enabled = true;
+                toDateTimePicker.Enabled = true;
+            }
+        }
     }
 }
