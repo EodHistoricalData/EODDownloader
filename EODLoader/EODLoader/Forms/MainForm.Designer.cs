@@ -36,13 +36,10 @@
             this.stopToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.fileDialogButton = new System.Windows.Forms.Button();
+            this.openFileDialogButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.openFileButton = new System.Windows.Forms.Button();
             this.symbolFilePatchTextBox = new System.Windows.Forms.TextBox();
             this.downloadDirectoryButton = new System.Windows.Forms.Button();
-            this.openDirectoryButton = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.timeRangeGroupBox = new System.Windows.Forms.GroupBox();
             this.toDateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -53,6 +50,18 @@
             this.periodComboBox = new System.Windows.Forms.ComboBox();
             this.availableCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.statusValueLabel = new System.Windows.Forms.Label();
+            this.durationValueLabel = new System.Windows.Forms.Label();
+            this.errorsValueLabel = new System.Windows.Forms.Label();
+            this.processedOkValueLabel = new System.Windows.Forms.Label();
+            this.totalProcessedValueLabel = new System.Windows.Forms.Label();
+            this.totalSymbolsValueLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.runProgressBar = new System.Windows.Forms.ProgressBar();
+            this.statusLabel = new System.Windows.Forms.Label();
+            this.durationLabel = new System.Windows.Forms.Label();
+            this.errorsLabel = new System.Windows.Forms.Label();
+            this.processedOkLabel = new System.Windows.Forms.Label();
             this.totalProcessedLabel = new System.Windows.Forms.Label();
             this.totalSymbolsLabel = new System.Windows.Forms.Label();
             this.tokenLabel = new System.Windows.Forms.Label();
@@ -60,18 +69,9 @@
             this.ImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.SymbolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.processedOkLabel = new System.Windows.Forms.Label();
-            this.errorsLabel = new System.Windows.Forms.Label();
-            this.durationLabel = new System.Windows.Forms.Label();
-            this.statusLabel = new System.Windows.Forms.Label();
-            this.runProgressBar = new System.Windows.Forms.ProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.totalSymbolsValueLabel = new System.Windows.Forms.Label();
-            this.totalProcessedValueLabel = new System.Windows.Forms.Label();
-            this.processedOkValueLabel = new System.Windows.Forms.Label();
-            this.errorsValueLabel = new System.Windows.Forms.Label();
-            this.durationValueLabel = new System.Windows.Forms.Label();
-            this.statusValueLabel = new System.Windows.Forms.Label();
+            this.openDirectoryButton = new System.Windows.Forms.Button();
+            this.openFileButton = new System.Windows.Forms.Button();
+            this.symbolsListBox = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.timeRangeGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -128,36 +128,19 @@
             this.helpToolStripMenuItem.Text = "Help";
             this.helpToolStripMenuItem.Click += new System.EventHandler(this.helpToolStripMenuItem_Click);
             // 
-            // richTextBox1
+            // openFileDialogButton
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 36);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(100, 260);
-            this.richTextBox1.TabIndex = 9999;
-            this.richTextBox1.Text = "";
-            // 
-            // fileDialogButton
-            // 
-            this.fileDialogButton.Location = new System.Drawing.Point(118, 36);
-            this.fileDialogButton.Name = "fileDialogButton";
-            this.fileDialogButton.Size = new System.Drawing.Size(107, 23);
-            this.fileDialogButton.TabIndex = 1;
-            this.fileDialogButton.Text = "Symbol file";
-            this.fileDialogButton.UseVisualStyleBackColor = true;
+            this.openFileDialogButton.Location = new System.Drawing.Point(118, 36);
+            this.openFileDialogButton.Name = "openFileDialogButton";
+            this.openFileDialogButton.Size = new System.Drawing.Size(107, 23);
+            this.openFileDialogButton.TabIndex = 1;
+            this.openFileDialogButton.Text = "Symbol file";
+            this.openFileDialogButton.UseVisualStyleBackColor = true;
+            this.openFileDialogButton.Click += new System.EventHandler(this.fileDialogButton_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // openFileButton
-            // 
-            this.openFileButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
-            this.openFileButton.Location = new System.Drawing.Point(231, 36);
-            this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(24, 23);
-            this.openFileButton.TabIndex = 3;
-            this.openFileButton.UseVisualStyleBackColor = true;
             // 
             // symbolFilePatchTextBox
             // 
@@ -174,15 +157,6 @@
             this.downloadDirectoryButton.TabIndex = 2;
             this.downloadDirectoryButton.Text = "Download directory";
             this.downloadDirectoryButton.UseVisualStyleBackColor = true;
-            // 
-            // openDirectoryButton
-            // 
-            this.openDirectoryButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
-            this.openDirectoryButton.Location = new System.Drawing.Point(231, 65);
-            this.openDirectoryButton.Name = "openDirectoryButton";
-            this.openDirectoryButton.Size = new System.Drawing.Size(24, 23);
-            this.openDirectoryButton.TabIndex = 3;
-            this.openDirectoryButton.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -294,10 +268,115 @@
             this.groupBox2.Controls.Add(this.tokenLabel);
             this.groupBox2.Location = new System.Drawing.Point(285, 94);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(180, 202);
+            this.groupBox2.Size = new System.Drawing.Size(180, 206);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Latest download stats";
+            // 
+            // statusValueLabel
+            // 
+            this.statusValueLabel.AutoSize = true;
+            this.statusValueLabel.Location = new System.Drawing.Point(109, 147);
+            this.statusValueLabel.Name = "statusValueLabel";
+            this.statusValueLabel.Size = new System.Drawing.Size(0, 13);
+            this.statusValueLabel.TabIndex = 2;
+            // 
+            // durationValueLabel
+            // 
+            this.durationValueLabel.AutoSize = true;
+            this.durationValueLabel.Location = new System.Drawing.Point(109, 123);
+            this.durationValueLabel.Name = "durationValueLabel";
+            this.durationValueLabel.Size = new System.Drawing.Size(43, 13);
+            this.durationValueLabel.TabIndex = 2;
+            this.durationValueLabel.Text = "0:00:00";
+            // 
+            // errorsValueLabel
+            // 
+            this.errorsValueLabel.AutoSize = true;
+            this.errorsValueLabel.Location = new System.Drawing.Point(109, 100);
+            this.errorsValueLabel.Name = "errorsValueLabel";
+            this.errorsValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.errorsValueLabel.TabIndex = 2;
+            this.errorsValueLabel.Text = "0";
+            // 
+            // processedOkValueLabel
+            // 
+            this.processedOkValueLabel.AutoSize = true;
+            this.processedOkValueLabel.Location = new System.Drawing.Point(109, 78);
+            this.processedOkValueLabel.Name = "processedOkValueLabel";
+            this.processedOkValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.processedOkValueLabel.TabIndex = 2;
+            this.processedOkValueLabel.Text = "0";
+            // 
+            // totalProcessedValueLabel
+            // 
+            this.totalProcessedValueLabel.AutoSize = true;
+            this.totalProcessedValueLabel.Location = new System.Drawing.Point(109, 57);
+            this.totalProcessedValueLabel.Name = "totalProcessedValueLabel";
+            this.totalProcessedValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.totalProcessedValueLabel.TabIndex = 2;
+            this.totalProcessedValueLabel.Text = "0";
+            // 
+            // totalSymbolsValueLabel
+            // 
+            this.totalSymbolsValueLabel.AutoSize = true;
+            this.totalSymbolsValueLabel.Location = new System.Drawing.Point(109, 37);
+            this.totalSymbolsValueLabel.Name = "totalSymbolsValueLabel";
+            this.totalSymbolsValueLabel.Size = new System.Drawing.Size(13, 13);
+            this.totalSymbolsValueLabel.TabIndex = 2;
+            this.totalSymbolsValueLabel.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(109, 21);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "label1";
+            // 
+            // runProgressBar
+            // 
+            this.runProgressBar.Location = new System.Drawing.Point(9, 173);
+            this.runProgressBar.Name = "runProgressBar";
+            this.runProgressBar.Size = new System.Drawing.Size(162, 22);
+            this.runProgressBar.TabIndex = 1;
+            // 
+            // statusLabel
+            // 
+            this.statusLabel.AutoSize = true;
+            this.statusLabel.Location = new System.Drawing.Point(6, 147);
+            this.statusLabel.Name = "statusLabel";
+            this.statusLabel.Size = new System.Drawing.Size(40, 13);
+            this.statusLabel.TabIndex = 0;
+            this.statusLabel.Text = "Status:";
+            // 
+            // durationLabel
+            // 
+            this.durationLabel.AutoSize = true;
+            this.durationLabel.Location = new System.Drawing.Point(6, 123);
+            this.durationLabel.Name = "durationLabel";
+            this.durationLabel.Size = new System.Drawing.Size(50, 13);
+            this.durationLabel.TabIndex = 0;
+            this.durationLabel.Text = "Duration:";
+            // 
+            // errorsLabel
+            // 
+            this.errorsLabel.AutoSize = true;
+            this.errorsLabel.Location = new System.Drawing.Point(6, 100);
+            this.errorsLabel.Name = "errorsLabel";
+            this.errorsLabel.Size = new System.Drawing.Size(37, 13);
+            this.errorsLabel.TabIndex = 0;
+            this.errorsLabel.Text = "Errors:";
+            // 
+            // processedOkLabel
+            // 
+            this.processedOkLabel.AutoSize = true;
+            this.processedOkLabel.Location = new System.Drawing.Point(6, 78);
+            this.processedOkLabel.Name = "processedOkLabel";
+            this.processedOkLabel.Size = new System.Drawing.Size(78, 13);
+            this.processedOkLabel.TabIndex = 0;
+            this.processedOkLabel.Text = "Processed OK:";
             // 
             // totalProcessedLabel
             // 
@@ -336,13 +415,13 @@
             this.ImageColumn,
             this.SymbolColumn,
             this.StatusColumn});
-            this.RunLogGridView.Location = new System.Drawing.Point(12, 302);
+            this.RunLogGridView.Location = new System.Drawing.Point(12, 306);
             this.RunLogGridView.MultiSelect = false;
             this.RunLogGridView.Name = "RunLogGridView";
             this.RunLogGridView.ReadOnly = true;
             this.RunLogGridView.RowHeadersVisible = false;
             this.RunLogGridView.RowHeadersWidth = 40;
-            this.RunLogGridView.Size = new System.Drawing.Size(453, 231);
+            this.RunLogGridView.Size = new System.Drawing.Size(453, 227);
             this.RunLogGridView.TabIndex = 7;
             // 
             // ImageColumn
@@ -373,116 +452,38 @@
             this.StatusColumn.ReadOnly = true;
             this.StatusColumn.Width = 320;
             // 
-            // processedOkLabel
+            // openDirectoryButton
             // 
-            this.processedOkLabel.AutoSize = true;
-            this.processedOkLabel.Location = new System.Drawing.Point(6, 78);
-            this.processedOkLabel.Name = "processedOkLabel";
-            this.processedOkLabel.Size = new System.Drawing.Size(78, 13);
-            this.processedOkLabel.TabIndex = 0;
-            this.processedOkLabel.Text = "Processed OK:";
+            this.openDirectoryButton.Image = global::EODLoader.Properties.Resources.OpenFolder;
+            this.openDirectoryButton.Location = new System.Drawing.Point(231, 65);
+            this.openDirectoryButton.Name = "openDirectoryButton";
+            this.openDirectoryButton.Size = new System.Drawing.Size(24, 23);
+            this.openDirectoryButton.TabIndex = 3;
+            this.openDirectoryButton.UseVisualStyleBackColor = true;
             // 
-            // errorsLabel
+            // openFileButton
             // 
-            this.errorsLabel.AutoSize = true;
-            this.errorsLabel.Location = new System.Drawing.Point(6, 100);
-            this.errorsLabel.Name = "errorsLabel";
-            this.errorsLabel.Size = new System.Drawing.Size(37, 13);
-            this.errorsLabel.TabIndex = 0;
-            this.errorsLabel.Text = "Errors:";
+            this.openFileButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
+            this.openFileButton.Location = new System.Drawing.Point(231, 36);
+            this.openFileButton.Name = "openFileButton";
+            this.openFileButton.Size = new System.Drawing.Size(24, 23);
+            this.openFileButton.TabIndex = 3;
+            this.openFileButton.UseVisualStyleBackColor = true;
             // 
-            // durationLabel
+            // symbolsListBox
             // 
-            this.durationLabel.AutoSize = true;
-            this.durationLabel.Location = new System.Drawing.Point(6, 123);
-            this.durationLabel.Name = "durationLabel";
-            this.durationLabel.Size = new System.Drawing.Size(50, 13);
-            this.durationLabel.TabIndex = 0;
-            this.durationLabel.Text = "Duration:";
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(6, 147);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(40, 13);
-            this.statusLabel.TabIndex = 0;
-            this.statusLabel.Text = "Status:";
-            // 
-            // runProgressBar
-            // 
-            this.runProgressBar.Location = new System.Drawing.Point(9, 172);
-            this.runProgressBar.Name = "runProgressBar";
-            this.runProgressBar.Size = new System.Drawing.Size(162, 22);
-            this.runProgressBar.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(109, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
-            // 
-            // totalSymbolsValueLabel
-            // 
-            this.totalSymbolsValueLabel.AutoSize = true;
-            this.totalSymbolsValueLabel.Location = new System.Drawing.Point(109, 37);
-            this.totalSymbolsValueLabel.Name = "totalSymbolsValueLabel";
-            this.totalSymbolsValueLabel.Size = new System.Drawing.Size(13, 13);
-            this.totalSymbolsValueLabel.TabIndex = 2;
-            this.totalSymbolsValueLabel.Text = "0";
-            // 
-            // totalProcessedValueLabel
-            // 
-            this.totalProcessedValueLabel.AutoSize = true;
-            this.totalProcessedValueLabel.Location = new System.Drawing.Point(109, 57);
-            this.totalProcessedValueLabel.Name = "totalProcessedValueLabel";
-            this.totalProcessedValueLabel.Size = new System.Drawing.Size(13, 13);
-            this.totalProcessedValueLabel.TabIndex = 2;
-            this.totalProcessedValueLabel.Text = "0";
-            // 
-            // processedOkValueLabel
-            // 
-            this.processedOkValueLabel.AutoSize = true;
-            this.processedOkValueLabel.Location = new System.Drawing.Point(109, 78);
-            this.processedOkValueLabel.Name = "processedOkValueLabel";
-            this.processedOkValueLabel.Size = new System.Drawing.Size(13, 13);
-            this.processedOkValueLabel.TabIndex = 2;
-            this.processedOkValueLabel.Text = "0";
-            // 
-            // errorsValueLabel
-            // 
-            this.errorsValueLabel.AutoSize = true;
-            this.errorsValueLabel.Location = new System.Drawing.Point(109, 100);
-            this.errorsValueLabel.Name = "errorsValueLabel";
-            this.errorsValueLabel.Size = new System.Drawing.Size(13, 13);
-            this.errorsValueLabel.TabIndex = 2;
-            this.errorsValueLabel.Text = "0";
-            // 
-            // durationValueLabel
-            // 
-            this.durationValueLabel.AutoSize = true;
-            this.durationValueLabel.Location = new System.Drawing.Point(109, 123);
-            this.durationValueLabel.Name = "durationValueLabel";
-            this.durationValueLabel.Size = new System.Drawing.Size(43, 13);
-            this.durationValueLabel.TabIndex = 2;
-            this.durationValueLabel.Text = "0:00:00";
-            // 
-            // statusValueLabel
-            // 
-            this.statusValueLabel.AutoSize = true;
-            this.statusValueLabel.Location = new System.Drawing.Point(109, 147);
-            this.statusValueLabel.Name = "statusValueLabel";
-            this.statusValueLabel.Size = new System.Drawing.Size(0, 13);
-            this.statusValueLabel.TabIndex = 2;
+            this.symbolsListBox.FormattingEnabled = true;
+            this.symbolsListBox.Location = new System.Drawing.Point(12, 36);
+            this.symbolsListBox.Name = "symbolsListBox";
+            this.symbolsListBox.Size = new System.Drawing.Size(100, 264);
+            this.symbolsListBox.TabIndex = 10000;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 545);
+            this.Controls.Add(this.symbolsListBox);
             this.Controls.Add(this.RunLogGridView);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.timeRangeGroupBox);
@@ -491,8 +492,7 @@
             this.Controls.Add(this.openDirectoryButton);
             this.Controls.Add(this.openFileButton);
             this.Controls.Add(this.downloadDirectoryButton);
-            this.Controls.Add(this.fileDialogButton);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.openFileDialogButton);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
@@ -520,8 +520,7 @@
         private System.Windows.Forms.ToolStripMenuItem stopToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settingsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.Button fileDialogButton;
+        private System.Windows.Forms.Button openFileDialogButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button openFileButton;
         private System.Windows.Forms.TextBox symbolFilePatchTextBox;
@@ -556,6 +555,7 @@
         private System.Windows.Forms.Label totalProcessedValueLabel;
         private System.Windows.Forms.Label totalSymbolsValueLabel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox symbolsListBox;
     }
 }
 
