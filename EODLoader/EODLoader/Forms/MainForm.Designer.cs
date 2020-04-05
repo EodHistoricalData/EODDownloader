@@ -40,7 +40,7 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.symbolFilePatchTextBox = new System.Windows.Forms.TextBox();
             this.downloadDirectoryButton = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.downloadDirectoryTextBox = new System.Windows.Forms.TextBox();
             this.timeRangeGroupBox = new System.Windows.Forms.GroupBox();
             this.toDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.toLabel = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@
             this.processedOkValueLabel = new System.Windows.Forms.Label();
             this.totalProcessedValueLabel = new System.Windows.Forms.Label();
             this.totalSymbolsValueLabel = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tokenValueLabel = new System.Windows.Forms.Label();
             this.runProgressBar = new System.Windows.Forms.ProgressBar();
             this.statusLabel = new System.Windows.Forms.Label();
             this.durationLabel = new System.Windows.Forms.Label();
@@ -66,13 +66,13 @@
             this.totalSymbolsLabel = new System.Windows.Forms.Label();
             this.tokenLabel = new System.Windows.Forms.Label();
             this.RunLogGridView = new System.Windows.Forms.DataGridView();
-            this.ImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.SymbolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openDirectoryButton = new System.Windows.Forms.Button();
             this.openFileButton = new System.Windows.Forms.Button();
             this.symbolsListBox = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.ImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.SymbolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.timeRangeGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -94,7 +94,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(477, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(486, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -145,9 +145,11 @@
             // 
             // symbolFilePatchTextBox
             // 
+            this.symbolFilePatchTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.symbolFilePatchTextBox.Location = new System.Drawing.Point(261, 38);
             this.symbolFilePatchTextBox.Name = "symbolFilePatchTextBox";
-            this.symbolFilePatchTextBox.Size = new System.Drawing.Size(204, 20);
+            this.symbolFilePatchTextBox.ReadOnly = true;
+            this.symbolFilePatchTextBox.Size = new System.Drawing.Size(213, 20);
             this.symbolFilePatchTextBox.TabIndex = 4;
             // 
             // downloadDirectoryButton
@@ -158,13 +160,16 @@
             this.downloadDirectoryButton.TabIndex = 2;
             this.downloadDirectoryButton.Text = "Download directory";
             this.downloadDirectoryButton.UseVisualStyleBackColor = true;
+            this.downloadDirectoryButton.Click += new System.EventHandler(this.downloadDirectoryButton_Click);
             // 
-            // textBox1
+            // downloadDirectoryTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(261, 67);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(204, 20);
-            this.textBox1.TabIndex = 4;
+            this.downloadDirectoryTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.downloadDirectoryTextBox.Location = new System.Drawing.Point(261, 67);
+            this.downloadDirectoryTextBox.Name = "downloadDirectoryTextBox";
+            this.downloadDirectoryTextBox.ReadOnly = true;
+            this.downloadDirectoryTextBox.Size = new System.Drawing.Size(213, 20);
+            this.downloadDirectoryTextBox.TabIndex = 4;
             // 
             // timeRangeGroupBox
             // 
@@ -258,7 +263,7 @@
             this.groupBox2.Controls.Add(this.processedOkValueLabel);
             this.groupBox2.Controls.Add(this.totalProcessedValueLabel);
             this.groupBox2.Controls.Add(this.totalSymbolsValueLabel);
-            this.groupBox2.Controls.Add(this.label1);
+            this.groupBox2.Controls.Add(this.tokenValueLabel);
             this.groupBox2.Controls.Add(this.runProgressBar);
             this.groupBox2.Controls.Add(this.statusLabel);
             this.groupBox2.Controls.Add(this.durationLabel);
@@ -269,7 +274,7 @@
             this.groupBox2.Controls.Add(this.tokenLabel);
             this.groupBox2.Location = new System.Drawing.Point(285, 94);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(180, 206);
+            this.groupBox2.Size = new System.Drawing.Size(189, 206);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Latest download stats";
@@ -327,14 +332,13 @@
             this.totalSymbolsValueLabel.TabIndex = 2;
             this.totalSymbolsValueLabel.Text = "0";
             // 
-            // label1
+            // tokenValueLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(109, 21);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "label1";
+            this.tokenValueLabel.AutoSize = true;
+            this.tokenValueLabel.Location = new System.Drawing.Point(109, 18);
+            this.tokenValueLabel.Name = "tokenValueLabel";
+            this.tokenValueLabel.Size = new System.Drawing.Size(0, 13);
+            this.tokenValueLabel.TabIndex = 2;
             // 
             // runProgressBar
             // 
@@ -411,6 +415,7 @@
             this.RunLogGridView.AllowUserToAddRows = false;
             this.RunLogGridView.AllowUserToDeleteRows = false;
             this.RunLogGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.RunLogGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RunLogGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.RunLogGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ImageColumn,
@@ -422,8 +427,36 @@
             this.RunLogGridView.ReadOnly = true;
             this.RunLogGridView.RowHeadersVisible = false;
             this.RunLogGridView.RowHeadersWidth = 40;
-            this.RunLogGridView.Size = new System.Drawing.Size(453, 227);
+            this.RunLogGridView.Size = new System.Drawing.Size(462, 227);
             this.RunLogGridView.TabIndex = 7;
+            // 
+            // openDirectoryButton
+            // 
+            this.openDirectoryButton.Image = global::EODLoader.Properties.Resources.OpenFolder;
+            this.openDirectoryButton.Location = new System.Drawing.Point(231, 65);
+            this.openDirectoryButton.Name = "openDirectoryButton";
+            this.openDirectoryButton.Size = new System.Drawing.Size(24, 23);
+            this.openDirectoryButton.TabIndex = 3;
+            this.openDirectoryButton.UseVisualStyleBackColor = true;
+            this.openDirectoryButton.Click += new System.EventHandler(this.openDirectoryButton_Click);
+            // 
+            // openFileButton
+            // 
+            this.openFileButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
+            this.openFileButton.Location = new System.Drawing.Point(231, 36);
+            this.openFileButton.Name = "openFileButton";
+            this.openFileButton.Size = new System.Drawing.Size(24, 23);
+            this.openFileButton.TabIndex = 3;
+            this.openFileButton.UseVisualStyleBackColor = true;
+            this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
+            // 
+            // symbolsListBox
+            // 
+            this.symbolsListBox.FormattingEnabled = true;
+            this.symbolsListBox.Location = new System.Drawing.Point(12, 36);
+            this.symbolsListBox.Name = "symbolsListBox";
+            this.symbolsListBox.Size = new System.Drawing.Size(100, 264);
+            this.symbolsListBox.TabIndex = 10000;
             // 
             // ImageColumn
             // 
@@ -448,59 +481,35 @@
             // 
             this.StatusColumn.Frozen = true;
             this.StatusColumn.HeaderText = "Status";
-            this.StatusColumn.MinimumWidth = 320;
+            this.StatusColumn.MinimumWidth = 337;
             this.StatusColumn.Name = "StatusColumn";
             this.StatusColumn.ReadOnly = true;
-            this.StatusColumn.Width = 320;
-            // 
-            // openDirectoryButton
-            // 
-            this.openDirectoryButton.Image = global::EODLoader.Properties.Resources.OpenFolder;
-            this.openDirectoryButton.Location = new System.Drawing.Point(231, 65);
-            this.openDirectoryButton.Name = "openDirectoryButton";
-            this.openDirectoryButton.Size = new System.Drawing.Size(24, 23);
-            this.openDirectoryButton.TabIndex = 3;
-            this.openDirectoryButton.UseVisualStyleBackColor = true;
-            // 
-            // openFileButton
-            // 
-            this.openFileButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
-            this.openFileButton.Location = new System.Drawing.Point(231, 36);
-            this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(24, 23);
-            this.openFileButton.TabIndex = 3;
-            this.openFileButton.UseVisualStyleBackColor = true;
-            this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
-            // 
-            // symbolsListBox
-            // 
-            this.symbolsListBox.FormattingEnabled = true;
-            this.symbolsListBox.Location = new System.Drawing.Point(12, 36);
-            this.symbolsListBox.Name = "symbolsListBox";
-            this.symbolsListBox.Size = new System.Drawing.Size(100, 264);
-            this.symbolsListBox.TabIndex = 10000;
+            this.StatusColumn.Width = 337;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(477, 545);
+            this.ClientSize = new System.Drawing.Size(486, 545);
             this.Controls.Add(this.symbolsListBox);
             this.Controls.Add(this.RunLogGridView);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.timeRangeGroupBox);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.downloadDirectoryTextBox);
             this.Controls.Add(this.symbolFilePatchTextBox);
             this.Controls.Add(this.openDirectoryButton);
             this.Controls.Add(this.openFileButton);
             this.Controls.Add(this.downloadDirectoryButton);
             this.Controls.Add(this.openFileDialogButton);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EODLoader";
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -527,7 +536,7 @@
         private System.Windows.Forms.Button openFileButton;
         private System.Windows.Forms.TextBox symbolFilePatchTextBox;
         private System.Windows.Forms.Button openDirectoryButton;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox downloadDirectoryTextBox;
         public System.Windows.Forms.Button downloadDirectoryButton;
         private System.Windows.Forms.GroupBox timeRangeGroupBox;
         private System.Windows.Forms.Label periodLabel;
@@ -539,9 +548,6 @@
         private System.Windows.Forms.Label toLabel;
         private System.Windows.Forms.Label fromLabel;
         private System.Windows.Forms.DataGridView RunLogGridView;
-        private System.Windows.Forms.DataGridViewImageColumn ImageColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SymbolColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StatusColumn;
         private System.Windows.Forms.Label totalSymbolsLabel;
         private System.Windows.Forms.Label tokenLabel;
         private System.Windows.Forms.Label totalProcessedLabel;
@@ -556,9 +562,12 @@
         private System.Windows.Forms.Label processedOkValueLabel;
         private System.Windows.Forms.Label totalProcessedValueLabel;
         private System.Windows.Forms.Label totalSymbolsValueLabel;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label tokenValueLabel;
         private System.Windows.Forms.ListBox symbolsListBox;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.DataGridViewImageColumn ImageColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SymbolColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StatusColumn;
     }
 }
 

@@ -44,6 +44,8 @@ namespace EODLoader.Forms
         private void MainForm_Load(object sender, EventArgs e)
         {
             toDateTimePicker.Value = DateTime.Now;
+
+            CheckTokenStatus();
         }
 
         private void availableCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -110,6 +112,45 @@ namespace EODLoader.Forms
             {
                 ListBoxAddItems(symbols);
                 symbolFilePatchTextBox.Text = filePatch;
+            }
+        }
+
+        private void downloadDirectoryButton_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            downloadDirectoryTextBox.Text = folderBrowserDialog1.SelectedPath;
+        }
+
+        private void openDirectoryButton_Click(object sender, EventArgs e)
+        {
+            string directoryPath = downloadDirectoryTextBox.Text;
+            if (directoryPath != string.Empty && Directory.Exists(directoryPath))
+            {
+                Process.Start(directoryPath);
+            }
+        }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            if (settingsForm == null || settingsForm.IsDisposed)
+            {
+                CheckTokenStatus();
+            }
+        }
+
+        private void CheckTokenStatus()
+        {
+            if (Properties.Settings.Default.Token != string.Empty)
+            {
+                tokenValueLabel.ForeColor = Color.Blue;
+                tokenValueLabel.Text = "OK";
+            }
+            else
+            {
+                tokenValueLabel.ForeColor = Color.Red;
+                tokenValueLabel.Text = "Empty";
             }
         }
     }

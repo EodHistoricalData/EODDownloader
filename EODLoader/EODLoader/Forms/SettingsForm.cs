@@ -18,24 +18,37 @@ namespace EODLoader.Forms
             InitializeComponent();
         }
 
-        private Panel selectedPanel;
-
         private void settingsTreeView_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             settingsTreeView.SelectedNode = e.Node;
             groupBox.Text = settingsTreeView.SelectedNode.Text;
 
-            SelectPanel(e.Node.Name);
+            SelectTab(e.Node.Name);
         }
 
         private void SettingsForm_Load(object sender, EventArgs e)
         {
+            settingsTabControl.Appearance = TabAppearance.FlatButtons;
+            settingsTabControl.ItemSize = new Size(0, 1);
+            settingsTabControl.SizeMode = TabSizeMode.Fixed;
+
+            settingsTabControl.SelectedIndex = (int)SettingsTabEnum.OAuth;
+
             settingsTreeView.SelectedNode = settingsTreeView.Nodes[0];
-            selectedPanel = oAuthPanel;
+
+            tokenTextBox.Text = Properties.Settings.Default.Token;
         }
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            
+            if (tokenTextBox.Text.Length == 32)
+            {
+                Properties.Settings.Default.Token = tokenTextBox.Text;
+            }
+
+            Properties.Settings.Default.Save();
+            this.Close();
             //TODO save all
         }
 
@@ -46,32 +59,42 @@ namespace EODLoader.Forms
             System.Diagnostics.Process.Start("https://eodhistoricaldata.com/#pricing");
         }
 
-        private void SelectPanel(string nodeName)
+        private void SelectTab(string nodeName)
         {
             switch (nodeName)
             {
                 case NodeNames.OAuth:
-                    {
-                        selectedPanel.Hide();
-                        selectedPanel = oAuthPanel;
-                    }
+                        settingsTabControl.SelectedIndex = (int)SettingsTabEnum.OAuth;
                     break;
 
                 case NodeNames.General:
-                    {
-                        selectedPanel.Hide();
-                        selectedPanel = generalPanel;
-                    }
+                        settingsTabControl.SelectedIndex = (int)SettingsTabEnum.General;
                     break;
 
                 case NodeNames.Logging:
-                    {
-                        selectedPanel.Hide();
-                        selectedPanel = loggingPanel;
-                    }
+                        settingsTabControl.SelectedIndex = (int)SettingsTabEnum.Logging;
                     break;
             }
-            selectedPanel.Show();
+        }
+
+        private void proxyCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (proxyCheckBox.Checked)
+            {
+                proxyGroupBox.Enabled = true;
+            }
+            else
+            {
+                proxyGroupBox.Enabled = false;
+            }
+        }
+
+        private void logFileButton_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+
+            logFileTextBox.Text = openFileDialog1.FileName;
         }
     }
 }

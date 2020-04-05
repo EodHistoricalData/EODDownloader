@@ -14,6 +14,8 @@ namespace EODLoader.Services.SymbolFile
 
             fileText = fileText.Replace(" ", string.Empty);
 
+            fileText = fileText.Trim(',');
+
             if (fileText.Contains("\r\n"))
             {
                 fileText.Replace("\r\n", ",");
