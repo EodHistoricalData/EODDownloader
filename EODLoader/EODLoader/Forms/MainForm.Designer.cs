@@ -38,7 +38,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialogButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.symbolFilePatchTextBox = new System.Windows.Forms.TextBox();
+            this.symbolFilePathTextBox = new System.Windows.Forms.TextBox();
             this.downloadDirectoryButton = new System.Windows.Forms.Button();
             this.downloadDirectoryTextBox = new System.Windows.Forms.TextBox();
             this.timeRangeGroupBox = new System.Windows.Forms.GroupBox();
@@ -66,13 +66,13 @@
             this.totalSymbolsLabel = new System.Windows.Forms.Label();
             this.tokenLabel = new System.Windows.Forms.Label();
             this.RunLogGridView = new System.Windows.Forms.DataGridView();
+            this.ImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.SymbolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.openDirectoryButton = new System.Windows.Forms.Button();
             this.openFileButton = new System.Windows.Forms.Button();
             this.symbolsListBox = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.ImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.SymbolColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.timeRangeGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -104,6 +104,7 @@
             this.dToolStripMenuItem.Name = "dToolStripMenuItem";
             this.dToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.dToolStripMenuItem.Text = "Run";
+            this.dToolStripMenuItem.Click += new System.EventHandler(this.dToolStripMenuItem_Click);
             // 
             // stopToolStripMenuItem
             // 
@@ -143,14 +144,14 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // symbolFilePatchTextBox
+            // symbolFilePathTextBox
             // 
-            this.symbolFilePatchTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.symbolFilePatchTextBox.Location = new System.Drawing.Point(261, 38);
-            this.symbolFilePatchTextBox.Name = "symbolFilePatchTextBox";
-            this.symbolFilePatchTextBox.ReadOnly = true;
-            this.symbolFilePatchTextBox.Size = new System.Drawing.Size(213, 20);
-            this.symbolFilePatchTextBox.TabIndex = 4;
+            this.symbolFilePathTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.symbolFilePathTextBox.Location = new System.Drawing.Point(261, 38);
+            this.symbolFilePathTextBox.Name = "symbolFilePathTextBox";
+            this.symbolFilePathTextBox.ReadOnly = true;
+            this.symbolFilePathTextBox.Size = new System.Drawing.Size(213, 20);
+            this.symbolFilePathTextBox.TabIndex = 4;
             // 
             // downloadDirectoryButton
             // 
@@ -234,6 +235,7 @@
             // 
             // periodComboBox
             // 
+            this.periodComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.periodComboBox.FormattingEnabled = true;
             this.periodComboBox.Items.AddRange(new object[] {
             "Daily",
@@ -430,34 +432,6 @@
             this.RunLogGridView.Size = new System.Drawing.Size(462, 227);
             this.RunLogGridView.TabIndex = 7;
             // 
-            // openDirectoryButton
-            // 
-            this.openDirectoryButton.Image = global::EODLoader.Properties.Resources.OpenFolder;
-            this.openDirectoryButton.Location = new System.Drawing.Point(231, 65);
-            this.openDirectoryButton.Name = "openDirectoryButton";
-            this.openDirectoryButton.Size = new System.Drawing.Size(24, 23);
-            this.openDirectoryButton.TabIndex = 3;
-            this.openDirectoryButton.UseVisualStyleBackColor = true;
-            this.openDirectoryButton.Click += new System.EventHandler(this.openDirectoryButton_Click);
-            // 
-            // openFileButton
-            // 
-            this.openFileButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
-            this.openFileButton.Location = new System.Drawing.Point(231, 36);
-            this.openFileButton.Name = "openFileButton";
-            this.openFileButton.Size = new System.Drawing.Size(24, 23);
-            this.openFileButton.TabIndex = 3;
-            this.openFileButton.UseVisualStyleBackColor = true;
-            this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
-            // 
-            // symbolsListBox
-            // 
-            this.symbolsListBox.FormattingEnabled = true;
-            this.symbolsListBox.Location = new System.Drawing.Point(12, 36);
-            this.symbolsListBox.Name = "symbolsListBox";
-            this.symbolsListBox.Size = new System.Drawing.Size(100, 264);
-            this.symbolsListBox.TabIndex = 10000;
-            // 
             // ImageColumn
             // 
             this.ImageColumn.Frozen = true;
@@ -486,6 +460,34 @@
             this.StatusColumn.ReadOnly = true;
             this.StatusColumn.Width = 337;
             // 
+            // openDirectoryButton
+            // 
+            this.openDirectoryButton.Image = global::EODLoader.Properties.Resources.OpenFolder;
+            this.openDirectoryButton.Location = new System.Drawing.Point(231, 65);
+            this.openDirectoryButton.Name = "openDirectoryButton";
+            this.openDirectoryButton.Size = new System.Drawing.Size(24, 23);
+            this.openDirectoryButton.TabIndex = 3;
+            this.openDirectoryButton.UseVisualStyleBackColor = true;
+            this.openDirectoryButton.Click += new System.EventHandler(this.openDirectoryButton_Click);
+            // 
+            // openFileButton
+            // 
+            this.openFileButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
+            this.openFileButton.Location = new System.Drawing.Point(231, 36);
+            this.openFileButton.Name = "openFileButton";
+            this.openFileButton.Size = new System.Drawing.Size(24, 23);
+            this.openFileButton.TabIndex = 3;
+            this.openFileButton.UseVisualStyleBackColor = true;
+            this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
+            // 
+            // symbolsListBox
+            // 
+            this.symbolsListBox.FormattingEnabled = true;
+            this.symbolsListBox.Location = new System.Drawing.Point(12, 36);
+            this.symbolsListBox.Name = "symbolsListBox";
+            this.symbolsListBox.Size = new System.Drawing.Size(100, 264);
+            this.symbolsListBox.TabIndex = 10000;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,7 +498,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.timeRangeGroupBox);
             this.Controls.Add(this.downloadDirectoryTextBox);
-            this.Controls.Add(this.symbolFilePatchTextBox);
+            this.Controls.Add(this.symbolFilePathTextBox);
             this.Controls.Add(this.openDirectoryButton);
             this.Controls.Add(this.openFileButton);
             this.Controls.Add(this.downloadDirectoryButton);
@@ -534,7 +536,7 @@
         private System.Windows.Forms.Button openFileDialogButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button openFileButton;
-        private System.Windows.Forms.TextBox symbolFilePatchTextBox;
+        private System.Windows.Forms.TextBox symbolFilePathTextBox;
         private System.Windows.Forms.Button openDirectoryButton;
         private System.Windows.Forms.TextBox downloadDirectoryTextBox;
         public System.Windows.Forms.Button downloadDirectoryButton;

@@ -34,5 +34,101 @@ namespace EODLoader.Properties {
                 this["Token"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string proxyWebAddress {
+            get {
+                return ((string)(this["proxyWebAddress"]));
+            }
+            set {
+                this["proxyWebAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string proxyUserName {
+            get {
+                return ((string)(this["proxyUserName"]));
+            }
+            set {
+                this["proxyUserName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string proxyPassword {
+            get {
+                return ((string)(this["proxyPassword"]));
+            }
+            set {
+                this["proxyPassword"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool proxyIsUsed {
+            get {
+                return ((bool)(this["proxyIsUsed"]));
+            }
+            set {
+                this["proxyIsUsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool proxyCredentialsIsUsed {
+            get {
+                return ((bool)(this["proxyCredentialsIsUsed"]));
+            }
+            set {
+                this["proxyCredentialsIsUsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string logFilePath {
+            get {
+                return ((string)(this["logFilePath"]));
+            }
+            set {
+                this["logFilePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lastSymbolFilePath {
+            get {
+                return ((string)(this["lastSymbolFilePath"]));
+            }
+            set {
+                this["lastSymbolFilePath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lastDownloadDirectoryPath {
+            get {
+                return ((string)(this["lastDownloadDirectoryPath"]));
+            }
+            set {
+                this["lastDownloadDirectoryPath"] = value;
+            }
+        }
     }
 }

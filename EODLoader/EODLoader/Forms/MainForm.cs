@@ -45,7 +45,32 @@ namespace EODLoader.Forms
         {
             toDateTimePicker.Value = DateTime.Now;
 
+            periodComboBox.SelectedIndex = 0;
+
             CheckTokenStatus();
+
+            string symbolPath = Properties.Settings.Default.lastSymbolFilePath;
+
+            string downloadDirectory = Properties.Settings.Default.lastDownloadDirectoryPath;
+
+            if (File.Exists(symbolPath))
+            {
+                GetStringArrayAndUpdateListBoxByFile(symbolPath);
+                symbolFilePathTextBox.Text = symbolPath;
+            }
+            else
+            {
+                Properties.Settings.Default.lastSymbolFilePath = string.Empty;
+            }
+
+            if (Directory.Exists(downloadDirectory))
+            {
+                downloadDirectoryTextBox.Text = downloadDirectory;
+            }
+            else
+            {
+                Properties.Settings.Default.lastDownloadDirectoryPath = string.Empty;
+            }
         }
 
         private void availableCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -67,9 +92,9 @@ namespace EODLoader.Forms
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
 
-            string filePatch = openFileDialog1.FileName;
+            string filePath = openFileDialog1.FileName;
 
-            GetStringArrayAndUpdateListBoxByFile(filePatch);
+            GetStringArrayAndUpdateListBoxByFile(filePath);
         }
 
         private void ListBoxAddItems(string[] symbolsString)
@@ -85,33 +110,35 @@ namespace EODLoader.Forms
 
         private void openFileButton_Click(object sender, EventArgs e)
         {
-            string filePatch = symbolFilePatchTextBox.Text;
+            string filePath = symbolFilePathTextBox.Text;
 
-            if (filePatch != string.Empty && File.Exists(filePatch))
+            if (filePath != string.Empty && File.Exists(filePath))
             {
                 var process = new Process();
                 process.StartInfo = new ProcessStartInfo()
                 {
                     UseShellExecute = true,
-                    FileName = filePatch
+                    FileName = filePath
                 };
 
                 process.Start();
                 process.WaitForExit();
 
-                GetStringArrayAndUpdateListBoxByFile(filePatch);
+                GetStringArrayAndUpdateListBoxByFile(filePath);
 
             }
         }
 
-        private void GetStringArrayAndUpdateListBoxByFile(string filePatch)
+        private void GetStringArrayAndUpdateListBoxByFile(string filePath)
         {
-            string[] symbols = symbolFileService.OpenFile(filePatch);
+            string[] symbols = symbolFileService.OpenFile(filePath);
 
             if (symbols != null)
             {
                 ListBoxAddItems(symbols);
-                symbolFilePatchTextBox.Text = filePatch;
+                symbolFilePathTextBox.Text = filePath;
+                Properties.Settings.Default.lastSymbolFilePath = filePath;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -121,6 +148,9 @@ namespace EODLoader.Forms
                 return;
 
             downloadDirectoryTextBox.Text = folderBrowserDialog1.SelectedPath;
+
+            Properties.Settings.Default.lastDownloadDirectoryPath = folderBrowserDialog1.SelectedPath;
+            Properties.Settings.Default.Save();
         }
 
         private void openDirectoryButton_Click(object sender, EventArgs e)
@@ -152,6 +182,11 @@ namespace EODLoader.Forms
                 tokenValueLabel.ForeColor = Color.Red;
                 tokenValueLabel.Text = "Empty";
             }
+        }
+
+        private void dToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

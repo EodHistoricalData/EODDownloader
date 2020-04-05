@@ -1,4 +1,5 @@
 ﻿using EODLoader.Services.EodHistoricalData;
+using EODLoader.Services.Proxy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ namespace EODLoader.Forms
 
             //    throw;
             //}
-            
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
