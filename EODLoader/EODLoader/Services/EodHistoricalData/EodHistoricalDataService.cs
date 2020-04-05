@@ -15,11 +15,8 @@ namespace EODLoader.Services.EodHistoricalData
     public class EodHistoricalDataService : IEodHistoricalDataService
     {
         const string HistoricalDataUrl = "https://eodhistoricaldata.com/api/eod/";
-        const string Token = "OeAFFmMliFG5orCUuwAKQ8l4WWFQ67YX";
 
-        public EodHistoricalDataService()
-        {
-        }
+        public EodHistoricalDataService() { }
 
         public HistoricalResult GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per)
         {
@@ -29,11 +26,17 @@ namespace EODLoader.Services.EodHistoricalData
                 {
                     Symbol = symbol
                 };
+                string period = string.Empty;
+                if (!string.IsNullOrEmpty(per))
+                {
+                    per = per.ToLower();
+                    period = $"&period={per[0]}";
+                }
 
                 string dateParameters = GetDateParametersAsString(startDate, endDate);
-                string period = !string.IsNullOrEmpty(per) ? $"&period={per}" : string.Empty;
+                var token = Properties.Settings.Default.Token;
 
-                var url = $"{HistoricalDataUrl}{symbol}?{dateParameters}&api_token={Token}{period}&fmt=json";
+                var url = $"{HistoricalDataUrl}{symbol}?{dateParameters}&api_token={token}{period}&fmt=json";
 
                 IWebProxyService webProxyService = new WebProxyService();
 
@@ -53,8 +56,7 @@ namespace EODLoader.Services.EodHistoricalData
                     var historicalPricesExt = CalcHistoricalPrices(historicalPrices);
 
                     IUtilsService utils = new UtilsService();
-                    //string path = $@"{Properties.Settings.Default.lastDownloadDirectoryPath}{symbol}.csv";
-                    string path = @"c:\Project\EODLoader\Test\" + symbol + ".csv";
+                    string path = $@"{Properties.Settings.Default.lastDownloadDirectoryPath}\{symbol}.csv";
 
                     utils.CreateCVSFile(historicalPricesExt, path);
 

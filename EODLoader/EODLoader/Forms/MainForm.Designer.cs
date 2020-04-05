@@ -50,7 +50,6 @@
             this.periodComboBox = new System.Windows.Forms.ComboBox();
             this.availableCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.statusValueLabel = new System.Windows.Forms.Label();
             this.durationValueLabel = new System.Windows.Forms.Label();
             this.errorsValueLabel = new System.Windows.Forms.Label();
             this.processedOkValueLabel = new System.Windows.Forms.Label();
@@ -58,7 +57,6 @@
             this.totalSymbolsValueLabel = new System.Windows.Forms.Label();
             this.tokenValueLabel = new System.Windows.Forms.Label();
             this.runProgressBar = new System.Windows.Forms.ProgressBar();
-            this.statusLabel = new System.Windows.Forms.Label();
             this.durationLabel = new System.Windows.Forms.Label();
             this.errorsLabel = new System.Windows.Forms.Label();
             this.processedOkLabel = new System.Windows.Forms.Label();
@@ -106,7 +104,7 @@
             this.dToolStripMenuItem.Name = "dToolStripMenuItem";
             this.dToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.dToolStripMenuItem.Text = "Run";
-            this.dToolStripMenuItem.Click += new System.EventHandler(this.dToolStripMenuItem_Click);
+            this.dToolStripMenuItem.Click += new System.EventHandler(this.dToolStripMenuItem_ClickAsync);
             // 
             // stopToolStripMenuItem
             // 
@@ -262,7 +260,6 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.statusValueLabel);
             this.groupBox2.Controls.Add(this.durationValueLabel);
             this.groupBox2.Controls.Add(this.errorsValueLabel);
             this.groupBox2.Controls.Add(this.processedOkValueLabel);
@@ -270,7 +267,6 @@
             this.groupBox2.Controls.Add(this.totalSymbolsValueLabel);
             this.groupBox2.Controls.Add(this.tokenValueLabel);
             this.groupBox2.Controls.Add(this.runProgressBar);
-            this.groupBox2.Controls.Add(this.statusLabel);
             this.groupBox2.Controls.Add(this.durationLabel);
             this.groupBox2.Controls.Add(this.errorsLabel);
             this.groupBox2.Controls.Add(this.processedOkLabel);
@@ -279,18 +275,10 @@
             this.groupBox2.Controls.Add(this.tokenLabel);
             this.groupBox2.Location = new System.Drawing.Point(285, 94);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(189, 206);
+            this.groupBox2.Size = new System.Drawing.Size(189, 180);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Latest download stats";
-            // 
-            // statusValueLabel
-            // 
-            this.statusValueLabel.AutoSize = true;
-            this.statusValueLabel.Location = new System.Drawing.Point(109, 147);
-            this.statusValueLabel.Name = "statusValueLabel";
-            this.statusValueLabel.Size = new System.Drawing.Size(0, 13);
-            this.statusValueLabel.TabIndex = 2;
             // 
             // durationValueLabel
             // 
@@ -348,19 +336,10 @@
             // runProgressBar
             // 
             this.runProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.runProgressBar.Location = new System.Drawing.Point(9, 173);
+            this.runProgressBar.Location = new System.Drawing.Point(6, 148);
             this.runProgressBar.Name = "runProgressBar";
             this.runProgressBar.Size = new System.Drawing.Size(174, 22);
             this.runProgressBar.TabIndex = 1;
-            // 
-            // statusLabel
-            // 
-            this.statusLabel.AutoSize = true;
-            this.statusLabel.Location = new System.Drawing.Point(6, 147);
-            this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(40, 13);
-            this.statusLabel.TabIndex = 0;
-            this.statusLabel.Text = "Status:";
             // 
             // durationLabel
             // 
@@ -427,13 +406,13 @@
             this.ImageColumn,
             this.SymbolColumn,
             this.StatusColumn});
-            this.RunLogGridView.Location = new System.Drawing.Point(12, 306);
+            this.RunLogGridView.Location = new System.Drawing.Point(12, 280);
             this.RunLogGridView.MultiSelect = false;
             this.RunLogGridView.Name = "RunLogGridView";
             this.RunLogGridView.ReadOnly = true;
             this.RunLogGridView.RowHeadersVisible = false;
             this.RunLogGridView.RowHeadersWidth = 40;
-            this.RunLogGridView.Size = new System.Drawing.Size(462, 227);
+            this.RunLogGridView.Size = new System.Drawing.Size(462, 253);
             this.RunLogGridView.TabIndex = 7;
             // 
             // ImageColumn
@@ -489,7 +468,7 @@
             this.symbolsListBox.FormattingEnabled = true;
             this.symbolsListBox.Location = new System.Drawing.Point(12, 36);
             this.symbolsListBox.Name = "symbolsListBox";
-            this.symbolsListBox.Size = new System.Drawing.Size(100, 264);
+            this.symbolsListBox.Size = new System.Drawing.Size(100, 238);
             this.symbolsListBox.TabIndex = 10000;
             // 
             // filesPanel
@@ -570,9 +549,7 @@
         private System.Windows.Forms.Label processedOkLabel;
         private System.Windows.Forms.Label errorsLabel;
         private System.Windows.Forms.Label durationLabel;
-        private System.Windows.Forms.Label statusLabel;
         private System.Windows.Forms.ProgressBar runProgressBar;
-        private System.Windows.Forms.Label statusValueLabel;
         private System.Windows.Forms.Label durationValueLabel;
         private System.Windows.Forms.Label errorsValueLabel;
         private System.Windows.Forms.Label processedOkValueLabel;

@@ -1,5 +1,8 @@
-﻿using EODLoader.Forms;
+﻿using EODLoader.Common;
+using EODLoader.Forms;
+using EODLoader.Properties;
 using EODLoader.Services.EodHistoricalData;
+using EODLoader.Services.EodHistoricalData.Models;
 using EODLoader.Services.SymbolFile;
 using System;
 using System.Collections.Generic;
@@ -19,6 +22,8 @@ namespace EODLoader.Forms
     {
         private ISymbolFileService _symbolFileService;
         private IEodHistoricalDataService _eodHistoricalDataService;
+
+        private BackgroundWorker _bw = new BackgroundWorker();
 
         private Timer _tm = null;
         private Timer _settingsTokenTimer = null;
@@ -208,7 +213,7 @@ namespace EODLoader.Forms
             _settingsTokenTimer.Stop();
         }
 
-        private void dToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
             if (ValidateStartInfo())
             {
@@ -216,7 +221,7 @@ namespace EODLoader.Forms
                 _tm.Start();
                 ChangeButtonEnabled();
 
-                StartGetInfo();
+                Task.Run(() => StartGetInfo());
             }
             else
             {
@@ -256,19 +261,25 @@ namespace EODLoader.Forms
         {
             if (dToolStripMenuItem.Enabled)
             {
-                dToolStripMenuItem.Enabled = false;
-                stopToolStripMenuItem.Enabled = true;
-                settingsToolStripMenuItem.Enabled = false;
-                filesPanel.Enabled = false;
-                timeRangeGroupBox.Enabled = false;
+                Invoke(menuStrip1, () =>
+                 {
+                     dToolStripMenuItem.Enabled = false;
+                     stopToolStripMenuItem.Enabled = true;
+                     settingsToolStripMenuItem.Enabled = false;
+                     filesPanel.Enabled = false;
+                     timeRangeGroupBox.Enabled = false;
+                 });
             }
             else
             {
-                dToolStripMenuItem.Enabled = true;
-                stopToolStripMenuItem.Enabled = false;
-                settingsToolStripMenuItem.Enabled = true;
-                filesPanel.Enabled = true;
-                timeRangeGroupBox.Enabled = true;
+                Invoke(menuStrip1, () =>
+                {
+                    dToolStripMenuItem.Enabled = true;
+                    stopToolStripMenuItem.Enabled = false;
+                    settingsToolStripMenuItem.Enabled = true;
+                    filesPanel.Enabled = true;
+                    timeRangeGroupBox.Enabled = true;
+                });
             }
         }
 
@@ -280,8 +291,8 @@ namespace EODLoader.Forms
             processedOkValueLabel.Text = "0";
             errorsValueLabel.Text = "0";
             durationValueLabel.Text = "00:00:00";
-            statusValueLabel.Text = string.Empty;
             runProgressBar.Value = 0;
+            RunLogGridView.Rows.Clear();
         }
 
         private bool ValidateStartInfo()
@@ -298,20 +309,89 @@ namespace EODLoader.Forms
 
         private void StartGetInfo()
         {
-            int symbolCount = symbolsListBox.Items.Count;
-            int totalProcessed = 0;
-
-            totalSymbolsValueLabel.Text = symbolCount.ToString();
-
-            for (int i = 0; i < symbolCount; i++)
+            try
             {
-                //_eodHistoricalDataService
-                totalProcessed++;
-                totalProcessedValueLabel.Text = totalProcessed.ToString();
+                int symbolCount = symbolsListBox.Items.Count;
+                List<string> symbolList = symbolsListBox.Items.Cast<String>().ToList();
+                int totalProcessed = 0;
+
+                Invoke(runProgressBar, () => runProgressBar.Maximum = symbolCount);
+
+                Invoke(totalSymbolsValueLabel, () => totalSymbolsValueLabel.Text = symbolCount.ToString());
+
+                string testPeriod = string.Empty;
+
+                Invoke(periodComboBox, () => testPeriod = periodComboBox.Text.ToString());
+
+                int errors = 0;
+                int processOk = 0;
+
+                for (int i = 0; i < symbolCount; i++)
+                {
+                    HistoricalResult result;
+                    if (availableCheckBox.Checked)
+                    {
+                        result = _eodHistoricalDataService.GetHistoricalPrices(symbolList[i], null, null, testPeriod);
+                    }
+                    else
+                    {
+                        result = _eodHistoricalDataService.GetHistoricalPrices(symbolList[i], fromDateTimePicker.Value, toDateTimePicker.Value, testPeriod);
+                    }
+
+                    totalProcessed++;
+
+                    Invoke(totalProcessedValueLabel, () => totalProcessedValueLabel.Text = totalProcessed.ToString());
+
+                    Invoke(runProgressBar, () => runProgressBar.Value = totalProcessed);
+
+                    switch (result.Status)
+                    {
+                        case StatusEnum.Ok:
+                            {
+                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Add(Resources.StatusOK, result.Symbol, "Ok"));
+                                processOk++;
+                                Invoke(processedOkValueLabel, () => processedOkValueLabel.Text = processOk.ToString());
+                            }
+                            break;
+                        case StatusEnum.Error:
+                            {
+                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Add(Resources.StatusError, result.Symbol, result.ErrorDescription));
+                                errors++;
+                                Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
+                            }
+                            break;
+                        case StatusEnum.ErrorProxy:
+                            {
+                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Add(Resources.StatusError, result.Symbol, result.ErrorDescription));
+                                return;
+                            }
+                    }
+                }
+
+                ChangeButtonEnabled();
+                _tm.Stop();
+
+            }
+            catch (Exception ex)
+            {
+                ChangeButtonEnabled();
+                _tm.Stop();
             }
 
-            _tm.Stop();
-            ChangeButtonEnabled();
         }
+
+        public static void Invoke(ISynchronizeInvoke sync, Action action)
+        {
+            if (!sync.InvokeRequired)
+            {
+                action();
+            }
+            else
+            {
+                object[] args = new object[] { };
+                sync.Invoke(action, args);
+            }
+        }
+
     }
 }
