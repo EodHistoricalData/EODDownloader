@@ -46,7 +46,7 @@ namespace EODLoader.Services.Proxy
                     return false;
                 }
 
-                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create("http://www.google.com");
+                HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create("https://ya.ru/");
                 webRequest.Proxy = proxy;
                 WebResponse response = webRequest.GetResponse();
 

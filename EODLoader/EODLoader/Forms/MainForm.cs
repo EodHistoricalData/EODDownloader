@@ -1,4 +1,5 @@
 ﻿using EODLoader.Forms;
+using EODLoader.Services.EodHistoricalData;
 using EODLoader.Services.SymbolFile;
 using System;
 using System.Collections.Generic;
@@ -16,21 +17,30 @@ namespace EODLoader.Forms
 {
     public partial class MainForm : Form
     {
-        private ISymbolFileService symbolFileService;
+        private ISymbolFileService _symbolFileService;
+        private IEodHistoricalDataService _eodHistoricalDataService;
 
-        private Timer tm = null;
-        private int startValue = 1;
+        private Timer _tm = null;
+        private Timer _settingsTokenTimer = null;
+        private int _startValue = 1;
 
         public MainForm()
         {
             InitializeComponent();
+
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|CSV files(*.csv)|*.csv|All files(*.*)|*.*";
             openFileDialog1.FileName = string.Empty;
-            symbolFileService = new SymbolFileService();
 
-            tm = new Timer();
-            tm.Tick += new EventHandler(timeTick);
-            tm.Interval = 1000;
+            _symbolFileService = new SymbolFileService();
+            _eodHistoricalDataService = new EodHistoricalDataService();
+
+            _settingsTokenTimer = new Timer();
+            _settingsTokenTimer.Tick += new EventHandler(settingsTimeTick);
+            _settingsTokenTimer.Interval = 500;
+
+            _tm = new Timer();
+            _tm.Tick += new EventHandler(timeTick);
+            _tm.Interval = 1000;
         }
 
         SettingsForm settingsForm;
@@ -40,6 +50,7 @@ namespace EODLoader.Forms
             {
                 settingsForm = new SettingsForm();
                 settingsForm.Show();
+                _settingsTokenTimer.Start();
             }
         }
 
@@ -110,7 +121,10 @@ namespace EODLoader.Forms
 
             for (int i = 0; i < symbolsString.Length; i++)
             {
-                symbolsListBox.Items.Add(symbolsString[i]);
+                if (!string.IsNullOrEmpty(symbolsString[i]))
+                {
+                    symbolsListBox.Items.Add(symbolsString[i]);
+                }
             }
 
         }
@@ -138,7 +152,7 @@ namespace EODLoader.Forms
 
         private void GetStringArrayAndUpdateListBoxByFile(string filePath)
         {
-            string[] symbols = symbolFileService.OpenFile(filePath);
+            string[] symbols = _symbolFileService.OpenFile(filePath);
 
             if (symbols != null)
             {
@@ -183,24 +197,36 @@ namespace EODLoader.Forms
             {
                 tokenValueLabel.ForeColor = Color.Blue;
                 tokenValueLabel.Text = "OK";
+                dToolStripMenuItem.Enabled = true;
             }
             else
             {
                 tokenValueLabel.ForeColor = Color.Red;
                 tokenValueLabel.Text = "Empty";
+                dToolStripMenuItem.Enabled = false;
             }
+            _settingsTokenTimer.Stop();
         }
 
         private void dToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tm.Start();
-            StartZeroing();
-            ChangeButtonEnabled();
+            if (ValidateStartInfo())
+            {
+                StartZeroing();
+                _tm.Start();
+                ChangeButtonEnabled();
+
+                StartGetInfo();
+            }
+            else
+            {
+                MessageBox.Show("Please check the fields", "Alert");
+            }
         }
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tm.Stop();
+            _tm.Stop();
             ChangeButtonEnabled();
         }
 
@@ -214,8 +240,16 @@ namespace EODLoader.Forms
 
         private void timeTick(object sender, EventArgs e)
         {
-            durationValueLabel.Text = Int2StringTime(startValue);
-            startValue++;
+            durationValueLabel.Text = Int2StringTime(_startValue);
+            _startValue++;
+        }
+
+        private void settingsTimeTick(object sender, EventArgs e)
+        {
+            if (settingsForm == null || settingsForm.IsDisposed)
+            {
+                CheckTokenStatus();
+            }
         }
 
         private void ChangeButtonEnabled()
@@ -240,7 +274,7 @@ namespace EODLoader.Forms
 
         private void StartZeroing()
         {
-            startValue = 1;
+            _startValue = 1;
             totalSymbolsValueLabel.Text = "0";
             totalProcessedValueLabel.Text = "0";
             processedOkValueLabel.Text = "0";
@@ -248,6 +282,36 @@ namespace EODLoader.Forms
             durationValueLabel.Text = "00:00:00";
             statusValueLabel.Text = string.Empty;
             runProgressBar.Value = 0;
+        }
+
+        private bool ValidateStartInfo()
+        {
+            if (symbolsListBox.Items.Count > 0 &&
+                symbolsListBox.Items[0].ToString() != string.Empty &&
+                Directory.Exists(downloadDirectoryTextBox.Text))
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private void StartGetInfo()
+        {
+            int symbolCount = symbolsListBox.Items.Count;
+            int totalProcessed = 0;
+
+            totalSymbolsValueLabel.Text = symbolCount.ToString();
+
+            for (int i = 0; i < symbolCount; i++)
+            {
+                //_eodHistoricalDataService
+                totalProcessed++;
+                totalProcessedValueLabel.Text = totalProcessed.ToString();
+            }
+
+            _tm.Stop();
+            ChangeButtonEnabled();
         }
     }
 }

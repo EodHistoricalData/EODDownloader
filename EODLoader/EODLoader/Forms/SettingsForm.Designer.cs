@@ -41,14 +41,17 @@
             this.tokenTextBox = new System.Windows.Forms.TextBox();
             this.GeneralTab = new System.Windows.Forms.TabPage();
             this.proxyGroupBox = new System.Windows.Forms.GroupBox();
+            this.checkPictureBox = new System.Windows.Forms.PictureBox();
+            this.credentialsGroupBox = new System.Windows.Forms.GroupBox();
+            this.proxyUserNameTextBox = new System.Windows.Forms.TextBox();
+            this.proxyUserPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.credentialsCheckBox = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
             this.proxyCheckButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.proxyUserPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.proxyUserNameTextBox = new System.Windows.Forms.TextBox();
             this.proxyAddresstextBox = new System.Windows.Forms.TextBox();
             this.proxyCheckBox = new System.Windows.Forms.CheckBox();
             this.autoUpdateCheckBox = new System.Windows.Forms.CheckBox();
@@ -57,17 +60,14 @@
             this.logFileButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.credentialsCheckBox = new System.Windows.Forms.CheckBox();
-            this.credentialsGroupBox = new System.Windows.Forms.GroupBox();
-            this.checkPictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox.SuspendLayout();
             this.settingsTabControl.SuspendLayout();
             this.OAuthTab.SuspendLayout();
             this.GeneralTab.SuspendLayout();
             this.proxyGroupBox.SuspendLayout();
-            this.LoggingTab.SuspendLayout();
-            this.credentialsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkPictureBox)).BeginInit();
+            this.credentialsGroupBox.SuspendLayout();
+            this.LoggingTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // settingsTreeView
@@ -181,6 +181,75 @@
             this.proxyGroupBox.TabStop = false;
             this.proxyGroupBox.Text = "Proxy server";
             // 
+            // checkPictureBox
+            // 
+            this.checkPictureBox.ErrorImage = global::EODLoader.Properties.Resources.StatusError;
+            this.checkPictureBox.Image = global::EODLoader.Properties.Resources.StatusOK;
+            this.checkPictureBox.Location = new System.Drawing.Point(234, 176);
+            this.checkPictureBox.Name = "checkPictureBox";
+            this.checkPictureBox.Size = new System.Drawing.Size(16, 16);
+            this.checkPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.checkPictureBox.TabIndex = 7;
+            this.checkPictureBox.TabStop = false;
+            this.checkPictureBox.Visible = false;
+            // 
+            // credentialsGroupBox
+            // 
+            this.credentialsGroupBox.Controls.Add(this.proxyUserNameTextBox);
+            this.credentialsGroupBox.Controls.Add(this.proxyUserPasswordTextBox);
+            this.credentialsGroupBox.Controls.Add(this.label2);
+            this.credentialsGroupBox.Controls.Add(this.label3);
+            this.credentialsGroupBox.Enabled = false;
+            this.credentialsGroupBox.Location = new System.Drawing.Point(6, 94);
+            this.credentialsGroupBox.Name = "credentialsGroupBox";
+            this.credentialsGroupBox.Size = new System.Drawing.Size(308, 73);
+            this.credentialsGroupBox.TabIndex = 6;
+            this.credentialsGroupBox.TabStop = false;
+            this.credentialsGroupBox.Text = "Credentials";
+            // 
+            // proxyUserNameTextBox
+            // 
+            this.proxyUserNameTextBox.Location = new System.Drawing.Point(126, 21);
+            this.proxyUserNameTextBox.Name = "proxyUserNameTextBox";
+            this.proxyUserNameTextBox.Size = new System.Drawing.Size(168, 20);
+            this.proxyUserNameTextBox.TabIndex = 0;
+            // 
+            // proxyUserPasswordTextBox
+            // 
+            this.proxyUserPasswordTextBox.Location = new System.Drawing.Point(126, 47);
+            this.proxyUserPasswordTextBox.Name = "proxyUserPasswordTextBox";
+            this.proxyUserPasswordTextBox.Size = new System.Drawing.Size(168, 20);
+            this.proxyUserPasswordTextBox.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "User name";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 49);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Password";
+            // 
+            // credentialsCheckBox
+            // 
+            this.credentialsCheckBox.AutoSize = true;
+            this.credentialsCheckBox.Location = new System.Drawing.Point(25, 71);
+            this.credentialsCheckBox.Name = "credentialsCheckBox";
+            this.credentialsCheckBox.Size = new System.Drawing.Size(102, 17);
+            this.credentialsCheckBox.TabIndex = 5;
+            this.credentialsCheckBox.Text = "With credentials";
+            this.credentialsCheckBox.UseVisualStyleBackColor = true;
+            this.credentialsCheckBox.CheckedChanged += new System.EventHandler(this.credentialsCheckBox_CheckedChanged);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -209,24 +278,6 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "and port number";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 49);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Password";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 23);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "User name";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -235,20 +286,6 @@
             this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "IP address/name";
-            // 
-            // proxyUserPasswordTextBox
-            // 
-            this.proxyUserPasswordTextBox.Location = new System.Drawing.Point(126, 47);
-            this.proxyUserPasswordTextBox.Name = "proxyUserPasswordTextBox";
-            this.proxyUserPasswordTextBox.Size = new System.Drawing.Size(168, 20);
-            this.proxyUserPasswordTextBox.TabIndex = 0;
-            // 
-            // proxyUserNameTextBox
-            // 
-            this.proxyUserNameTextBox.Location = new System.Drawing.Point(126, 21);
-            this.proxyUserNameTextBox.Name = "proxyUserNameTextBox";
-            this.proxyUserNameTextBox.Size = new System.Drawing.Size(168, 20);
-            this.proxyUserNameTextBox.TabIndex = 0;
             // 
             // proxyAddresstextBox
             // 
@@ -292,20 +329,21 @@
             // logFileTextBox
             // 
             this.logFileTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.logFileTextBox.Location = new System.Drawing.Point(101, 21);
+            this.logFileTextBox.Location = new System.Drawing.Point(3, 21);
             this.logFileTextBox.Name = "logFileTextBox";
             this.logFileTextBox.ReadOnly = true;
-            this.logFileTextBox.Size = new System.Drawing.Size(236, 20);
+            this.logFileTextBox.Size = new System.Drawing.Size(334, 20);
             this.logFileTextBox.TabIndex = 1;
             // 
             // logFileButton
             // 
-            this.logFileButton.Location = new System.Drawing.Point(3, 19);
+            this.logFileButton.Location = new System.Drawing.Point(0, 49);
             this.logFileButton.Name = "logFileButton";
             this.logFileButton.Size = new System.Drawing.Size(92, 23);
             this.logFileButton.TabIndex = 0;
             this.logFileButton.Text = "Log file";
             this.logFileButton.UseVisualStyleBackColor = true;
+            this.logFileButton.Visible = false;
             this.logFileButton.Click += new System.EventHandler(this.logFileButton_Click);
             // 
             // SaveButton
@@ -321,43 +359,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // credentialsCheckBox
-            // 
-            this.credentialsCheckBox.AutoSize = true;
-            this.credentialsCheckBox.Location = new System.Drawing.Point(25, 71);
-            this.credentialsCheckBox.Name = "credentialsCheckBox";
-            this.credentialsCheckBox.Size = new System.Drawing.Size(102, 17);
-            this.credentialsCheckBox.TabIndex = 5;
-            this.credentialsCheckBox.Text = "With credentials";
-            this.credentialsCheckBox.UseVisualStyleBackColor = true;
-            this.credentialsCheckBox.CheckedChanged += new System.EventHandler(this.credentialsCheckBox_CheckedChanged);
-            // 
-            // credentialsGroupBox
-            // 
-            this.credentialsGroupBox.Controls.Add(this.proxyUserNameTextBox);
-            this.credentialsGroupBox.Controls.Add(this.proxyUserPasswordTextBox);
-            this.credentialsGroupBox.Controls.Add(this.label2);
-            this.credentialsGroupBox.Controls.Add(this.label3);
-            this.credentialsGroupBox.Enabled = false;
-            this.credentialsGroupBox.Location = new System.Drawing.Point(6, 94);
-            this.credentialsGroupBox.Name = "credentialsGroupBox";
-            this.credentialsGroupBox.Size = new System.Drawing.Size(308, 73);
-            this.credentialsGroupBox.TabIndex = 6;
-            this.credentialsGroupBox.TabStop = false;
-            this.credentialsGroupBox.Text = "Credentials";
-            // 
-            // checkPictureBox
-            // 
-            this.checkPictureBox.ErrorImage = global::EODLoader.Properties.Resources.StatusError;
-            this.checkPictureBox.Image = global::EODLoader.Properties.Resources.StatusOK;
-            this.checkPictureBox.Location = new System.Drawing.Point(234, 176);
-            this.checkPictureBox.Name = "checkPictureBox";
-            this.checkPictureBox.Size = new System.Drawing.Size(16, 16);
-            this.checkPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.checkPictureBox.TabIndex = 7;
-            this.checkPictureBox.TabStop = false;
-            this.checkPictureBox.Visible = false;
             // 
             // SettingsForm
             // 
@@ -381,11 +382,11 @@
             this.GeneralTab.PerformLayout();
             this.proxyGroupBox.ResumeLayout(false);
             this.proxyGroupBox.PerformLayout();
-            this.LoggingTab.ResumeLayout(false);
-            this.LoggingTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkPictureBox)).EndInit();
             this.credentialsGroupBox.ResumeLayout(false);
             this.credentialsGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkPictureBox)).EndInit();
+            this.LoggingTab.ResumeLayout(false);
+            this.LoggingTab.PerformLayout();
             this.ResumeLayout(false);
 
         }

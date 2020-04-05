@@ -18,10 +18,10 @@ namespace EODLoader.Services.SymbolFile
 
             if (fileText.Contains("\r\n"))
             {
-                fileText.Replace("\r\n", ",");
+                fileText = fileText.Replace("\r\n", ",");
             }
 
-            return fileText.Split(','); 
+            return fileText.Split(',');
         }
     }
 }

@@ -350,7 +350,7 @@
             this.runProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.runProgressBar.Location = new System.Drawing.Point(9, 173);
             this.runProgressBar.Name = "runProgressBar";
-            this.runProgressBar.Size = new System.Drawing.Size(162, 22);
+            this.runProgressBar.Size = new System.Drawing.Size(174, 22);
             this.runProgressBar.TabIndex = 1;
             // 
             // statusLabel
