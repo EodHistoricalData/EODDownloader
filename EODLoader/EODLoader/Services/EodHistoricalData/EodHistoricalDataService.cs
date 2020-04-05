@@ -21,32 +21,69 @@ namespace EODLoader.Services.EodHistoricalData
         {
         }
 
-        public void GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per)
+        public HistoricalResult GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per)
         {
-            string dateParameters = GetDateParametersAsString(startDate, endDate);
-            string period = !string.IsNullOrEmpty(per) ? $"&period={per}" : string.Empty;
-
-            var url = $"{HistoricalDataUrl}{symbol}?{dateParameters}&api_token={Token}{period}&fmt=json";
-
-            IWebProxyService webProxyService = new WebProxyService();
-
-            bool proxyIsUsed = Properties.Settings.Default.proxyIsUsed;
-            var client = new RestClient(url);
-
-            if (proxyIsUsed)
+            try
             {
-                client.Proxy = webProxyService.GetWebProxy();
+                var result = new HistoricalResult
+                {
+                    Symbol = symbol
+                };
+
+                string dateParameters = GetDateParametersAsString(startDate, endDate);
+                string period = !string.IsNullOrEmpty(per) ? $"&period={per}" : string.Empty;
+
+                var url = $"{HistoricalDataUrl}{symbol}?{dateParameters}&api_token={Token}{period}&fmt=json";
+
+                IWebProxyService webProxyService = new WebProxyService();
+
+                bool proxyIsUsed = Properties.Settings.Default.proxyIsUsed;
+                var client = new RestClient(url);
+
+                if (proxyIsUsed)
+                {
+                    client.Proxy = webProxyService.GetWebProxy();
+                }
+
+                var request = new RestRequest(Method.GET);
+                IRestResponse response = client.Execute(request);
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    var historicalPrices = JsonConvert.DeserializeObject<List<HistoricalPrice>>(response.Content);
+                    var historicalPricesExt = CalcHistoricalPrices(historicalPrices);
+
+                    IUtilsService utils = new UtilsService();
+                    //string path = $@"{Properties.Settings.Default.lastDownloadDirectoryPath}{symbol}.csv";
+                    string path = @"c:\Project\EODLoader\Test\" + symbol + ".csv";
+
+                    utils.CreateCVSFile(historicalPricesExt, path);
+
+                    return new HistoricalResult
+                    {
+                        Symbol = symbol,
+                        Status = Common.StatusEnum.Ok
+                    };
+                }
+                else
+                {
+                    return new HistoricalResult
+                    {
+                        Symbol = symbol,
+                        Status = Common.StatusEnum.Error,
+                        ErrorDescription = response.StatusDescription
+                    };
+                }
             }
-
-            var request = new RestRequest(Method.GET);
-            IRestResponse response = client.Execute(request);
-            var historicalPrices = JsonConvert.DeserializeObject<List<HistoricalPrice>>(response.Content);
-            var result = CalcHistoricalPrices(historicalPrices);
-
-            IUtilsService utils = new UtilsService();
-            string path = @"c:\Project\EODLoader\Test\" + symbol + ".csv";
-
-            utils.CreateCVSFile(result, path);
+            catch (Exception e)
+            {
+                //TODO: add log
+                return new HistoricalResult
+                {
+                    Symbol = symbol,
+                    Status = Common.StatusEnum.Error,
+                    ErrorDescription = "Error. View logs!"
+                };
+            }
         }
 
         private List<HistoricalPriceExtended> CalcHistoricalPrices(IEnumerable<HistoricalPrice> historicalPrices)

@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\StatusEnum.cs" />
     <Compile Include="Common\NodeNames.cs" />
     <Compile Include="Common\SettingsTabEnum.cs" />
     <Compile Include="Forms\MainForm.cs">
@@ -87,6 +88,7 @@
     <Compile Include="Services\EodHistoricalData\EodHistoricalDataService.cs" />
     <Compile Include="Services\EodHistoricalData\IEodHistoricalDataService.cs" />
     <Compile Include="Services\EodHistoricalData\Models\HistoricalPriceExtended.cs" />
+    <Compile Include="Services\EodHistoricalData\Models\HistoricalResult.cs" />
     <Compile Include="Services\Utils\IUtilsService.cs" />
     <Compile Include="Services\Utils\UtilsService.cs" />
     <Compile Include="Services\WebProxy\IWebProxyService.cs" />

@@ -20,7 +20,7 @@ namespace EODLoader.Forms
             //{
             //    IEodHistoricalDataService eodServise = new EodHistoricalDataService();
 
-            //    eodServise.GetHistoricalPrices("AAPL.US", new DateTime(2020, 03, 01), new DateTime(2020, 04, 01), "d");
+            //    var result = eodServise.GetHistoricalPrices("AI.PA", new DateTime(2020, 03, 01), new DateTime(2020, 04, 01), "d");
             //}
             //catch (Exception e)
             //{
