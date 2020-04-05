@@ -4,7 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +67,43 @@ namespace EODLoader.Forms
 
             string filePatch = openFileDialog1.FileName;
 
+            GetStringArrayAndUpdateListBoxByFile(filePatch);
+        }
+
+        private void ListBoxAddItems(string[] symbolsString)
+        {
+            symbolsListBox.Items.Clear();
+
+            for (int i = 0; i < symbolsString.Length; i++)
+            {
+                symbolsListBox.Items.Add(symbolsString[i]);
+            }
+
+        }
+
+        private void openFileButton_Click(object sender, EventArgs e)
+        {
+            string filePatch = symbolFilePatchTextBox.Text;
+
+            if (filePatch != string.Empty && File.Exists(filePatch))
+            {
+                var process = new Process();
+                process.StartInfo = new ProcessStartInfo()
+                {
+                    UseShellExecute = true,
+                    FileName = filePatch
+                };
+
+                process.Start();
+                process.WaitForExit();
+
+                GetStringArrayAndUpdateListBoxByFile(filePatch);
+
+            }
+        }
+
+        private void GetStringArrayAndUpdateListBoxByFile(string filePatch)
+        {
             string[] symbols = symbolFileService.OpenFile(filePatch);
 
             if (symbols != null)
@@ -72,15 +111,6 @@ namespace EODLoader.Forms
                 ListBoxAddItems(symbols);
                 symbolFilePatchTextBox.Text = filePatch;
             }
-        }
-
-        private void ListBoxAddItems(string[] symbolsString)
-        {
-            for (int i = 0; i < symbolsString.Length; i++)
-            {
-                symbolsListBox.Items.Add(symbolsString[i]);
-            }
-
         }
     }
 }

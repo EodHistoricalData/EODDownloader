@@ -72,6 +72,7 @@
             this.openDirectoryButton = new System.Windows.Forms.Button();
             this.openFileButton = new System.Windows.Forms.Button();
             this.symbolsListBox = new System.Windows.Forms.ListBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.menuStrip1.SuspendLayout();
             this.timeRangeGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -469,6 +470,7 @@
             this.openFileButton.Size = new System.Drawing.Size(24, 23);
             this.openFileButton.TabIndex = 3;
             this.openFileButton.UseVisualStyleBackColor = true;
+            this.openFileButton.Click += new System.EventHandler(this.openFileButton_Click);
             // 
             // symbolsListBox
             // 
@@ -556,6 +558,7 @@
         private System.Windows.Forms.Label totalSymbolsValueLabel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox symbolsListBox;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 
