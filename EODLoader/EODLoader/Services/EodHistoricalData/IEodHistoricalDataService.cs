@@ -9,6 +9,6 @@ namespace EODLoader.Services.EodHistoricalData
 {
     public interface IEodHistoricalDataService
     {
-        List<HistoricalPrice> GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string period);
+        void GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string period);
     }
 }

@@ -18,12 +18,19 @@ namespace EODLoader.Forms
     {
         private ISymbolFileService symbolFileService;
 
+        private Timer tm = null;
+        private int startValue = 1;
+
         public MainForm()
         {
             InitializeComponent();
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|CSV files(*.csv)|*.csv|All files(*.*)|*.*";
             openFileDialog1.FileName = string.Empty;
             symbolFileService = new SymbolFileService();
+
+            tm = new Timer();
+            tm.Tick += new EventHandler(timeTick);
+            tm.Interval = 1000;
         }
 
         SettingsForm settingsForm;
@@ -186,7 +193,61 @@ namespace EODLoader.Forms
 
         private void dToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tm.Start();
+            StartZeroing();
+            ChangeButtonEnabled();
+        }
 
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tm.Stop();
+            ChangeButtonEnabled();
+        }
+
+        private string Int2StringTime(int time)
+        {
+            int hours = (time - (time % (60 * 60))) / (60 * 60);
+            int minutes = (time - time % 60) / 60 - hours * 60;
+            int seconds = time - hours * 60 * 60 - minutes * 60;
+            return String.Format("{0:00}:{1:00}:{2:00}", hours, minutes, seconds);
+        }
+
+        private void timeTick(object sender, EventArgs e)
+        {
+            durationValueLabel.Text = Int2StringTime(startValue);
+            startValue++;
+        }
+
+        private void ChangeButtonEnabled()
+        {
+            if (dToolStripMenuItem.Enabled)
+            {
+                dToolStripMenuItem.Enabled = false;
+                stopToolStripMenuItem.Enabled = true;
+                settingsToolStripMenuItem.Enabled = false;
+                filesPanel.Enabled = false;
+                timeRangeGroupBox.Enabled = false;
+            }
+            else
+            {
+                dToolStripMenuItem.Enabled = true;
+                stopToolStripMenuItem.Enabled = false;
+                settingsToolStripMenuItem.Enabled = true;
+                filesPanel.Enabled = true;
+                timeRangeGroupBox.Enabled = true;
+            }
+        }
+
+        private void StartZeroing()
+        {
+            startValue = 1;
+            totalSymbolsValueLabel.Text = "0";
+            totalProcessedValueLabel.Text = "0";
+            processedOkValueLabel.Text = "0";
+            errorsValueLabel.Text = "0";
+            durationValueLabel.Text = "00:00:00";
+            statusValueLabel.Text = string.Empty;
+            runProgressBar.Value = 0;
         }
     }
 }

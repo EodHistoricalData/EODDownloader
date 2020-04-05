@@ -73,10 +73,12 @@
             this.openFileButton = new System.Windows.Forms.Button();
             this.symbolsListBox = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.filesPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.timeRangeGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RunLogGridView)).BeginInit();
+            this.filesPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList1
@@ -113,6 +115,7 @@
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
             this.stopToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.stopToolStripMenuItem.Text = "Stop";
+            this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -132,7 +135,7 @@
             // 
             // openFileDialogButton
             // 
-            this.openFileDialogButton.Location = new System.Drawing.Point(118, 36);
+            this.openFileDialogButton.Location = new System.Drawing.Point(3, 6);
             this.openFileDialogButton.Name = "openFileDialogButton";
             this.openFileDialogButton.Size = new System.Drawing.Size(107, 23);
             this.openFileDialogButton.TabIndex = 1;
@@ -147,7 +150,7 @@
             // symbolFilePathTextBox
             // 
             this.symbolFilePathTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.symbolFilePathTextBox.Location = new System.Drawing.Point(261, 38);
+            this.symbolFilePathTextBox.Location = new System.Drawing.Point(146, 8);
             this.symbolFilePathTextBox.Name = "symbolFilePathTextBox";
             this.symbolFilePathTextBox.ReadOnly = true;
             this.symbolFilePathTextBox.Size = new System.Drawing.Size(213, 20);
@@ -155,7 +158,7 @@
             // 
             // downloadDirectoryButton
             // 
-            this.downloadDirectoryButton.Location = new System.Drawing.Point(118, 65);
+            this.downloadDirectoryButton.Location = new System.Drawing.Point(3, 35);
             this.downloadDirectoryButton.Name = "downloadDirectoryButton";
             this.downloadDirectoryButton.Size = new System.Drawing.Size(107, 23);
             this.downloadDirectoryButton.TabIndex = 2;
@@ -166,7 +169,7 @@
             // downloadDirectoryTextBox
             // 
             this.downloadDirectoryTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.downloadDirectoryTextBox.Location = new System.Drawing.Point(261, 67);
+            this.downloadDirectoryTextBox.Location = new System.Drawing.Point(146, 37);
             this.downloadDirectoryTextBox.Name = "downloadDirectoryTextBox";
             this.downloadDirectoryTextBox.ReadOnly = true;
             this.downloadDirectoryTextBox.Size = new System.Drawing.Size(213, 20);
@@ -294,9 +297,9 @@
             this.durationValueLabel.AutoSize = true;
             this.durationValueLabel.Location = new System.Drawing.Point(109, 123);
             this.durationValueLabel.Name = "durationValueLabel";
-            this.durationValueLabel.Size = new System.Drawing.Size(43, 13);
+            this.durationValueLabel.Size = new System.Drawing.Size(49, 13);
             this.durationValueLabel.TabIndex = 2;
-            this.durationValueLabel.Text = "0:00:00";
+            this.durationValueLabel.Text = "00:00:00";
             // 
             // errorsValueLabel
             // 
@@ -344,6 +347,7 @@
             // 
             // runProgressBar
             // 
+            this.runProgressBar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.runProgressBar.Location = new System.Drawing.Point(9, 173);
             this.runProgressBar.Name = "runProgressBar";
             this.runProgressBar.Size = new System.Drawing.Size(162, 22);
@@ -463,7 +467,7 @@
             // openDirectoryButton
             // 
             this.openDirectoryButton.Image = global::EODLoader.Properties.Resources.OpenFolder;
-            this.openDirectoryButton.Location = new System.Drawing.Point(231, 65);
+            this.openDirectoryButton.Location = new System.Drawing.Point(116, 35);
             this.openDirectoryButton.Name = "openDirectoryButton";
             this.openDirectoryButton.Size = new System.Drawing.Size(24, 23);
             this.openDirectoryButton.TabIndex = 3;
@@ -473,7 +477,7 @@
             // openFileButton
             // 
             this.openFileButton.Image = global::EODLoader.Properties.Resources.OpenFile_16x;
-            this.openFileButton.Location = new System.Drawing.Point(231, 36);
+            this.openFileButton.Location = new System.Drawing.Point(116, 6);
             this.openFileButton.Name = "openFileButton";
             this.openFileButton.Size = new System.Drawing.Size(24, 23);
             this.openFileButton.TabIndex = 3;
@@ -488,21 +492,29 @@
             this.symbolsListBox.Size = new System.Drawing.Size(100, 264);
             this.symbolsListBox.TabIndex = 10000;
             // 
+            // filesPanel
+            // 
+            this.filesPanel.Controls.Add(this.openFileButton);
+            this.filesPanel.Controls.Add(this.openFileDialogButton);
+            this.filesPanel.Controls.Add(this.downloadDirectoryButton);
+            this.filesPanel.Controls.Add(this.openDirectoryButton);
+            this.filesPanel.Controls.Add(this.symbolFilePathTextBox);
+            this.filesPanel.Controls.Add(this.downloadDirectoryTextBox);
+            this.filesPanel.Location = new System.Drawing.Point(115, 28);
+            this.filesPanel.Name = "filesPanel";
+            this.filesPanel.Size = new System.Drawing.Size(368, 60);
+            this.filesPanel.TabIndex = 10001;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 545);
+            this.Controls.Add(this.filesPanel);
             this.Controls.Add(this.symbolsListBox);
             this.Controls.Add(this.RunLogGridView);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.timeRangeGroupBox);
-            this.Controls.Add(this.downloadDirectoryTextBox);
-            this.Controls.Add(this.symbolFilePathTextBox);
-            this.Controls.Add(this.openDirectoryButton);
-            this.Controls.Add(this.openFileButton);
-            this.Controls.Add(this.downloadDirectoryButton);
-            this.Controls.Add(this.openFileDialogButton);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -520,6 +532,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RunLogGridView)).EndInit();
+            this.filesPanel.ResumeLayout(false);
+            this.filesPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -570,6 +584,7 @@
         private System.Windows.Forms.DataGridViewImageColumn ImageColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SymbolColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatusColumn;
+        private System.Windows.Forms.Panel filesPanel;
     }
 }
 

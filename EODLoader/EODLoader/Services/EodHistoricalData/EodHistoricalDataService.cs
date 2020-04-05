@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EODLoader.Services.EodHistoricalData.Models;
 using EODLoader.Services.Proxy;
+using EODLoader.Services.Utils;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -14,13 +15,13 @@ namespace EODLoader.Services.EodHistoricalData
     public class EodHistoricalDataService : IEodHistoricalDataService
     {
         const string HistoricalDataUrl = "https://eodhistoricaldata.com/api/eod/";
-        const string Token = "5e87334a377b54.22292136";
+        const string Token = "OeAFFmMliFG5orCUuwAKQ8l4WWFQ67YX";
 
         public EodHistoricalDataService()
         {
         }
 
-        public List<HistoricalPrice> GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per)
+        public void GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per)
         {
             string dateParameters = GetDateParametersAsString(startDate, endDate);
             string period = !string.IsNullOrEmpty(per) ? $"&period={per}" : string.Empty;
@@ -30,7 +31,6 @@ namespace EODLoader.Services.EodHistoricalData
             IWebProxyService webProxyService = new WebProxyService();
 
             bool proxyIsUsed = Properties.Settings.Default.proxyIsUsed;
-
             var client = new RestClient(url);
 
             if (proxyIsUsed)
@@ -39,10 +39,41 @@ namespace EODLoader.Services.EodHistoricalData
             }
 
             var request = new RestRequest(Method.GET);
-
             IRestResponse response = client.Execute(request);
+            var historicalPrices = JsonConvert.DeserializeObject<List<HistoricalPrice>>(response.Content);
+            var result = CalcHistoricalPrices(historicalPrices);
 
-            var result = JsonConvert.DeserializeObject<List<HistoricalPrice>>(response.Content);
+            IUtilsService utils = new UtilsService();
+            string path = @"c:\Project\EODLoader\Test\" + symbol + ".csv";
+
+            utils.CreateCVSFile(result, path);
+        }
+
+        private List<HistoricalPriceExtended> CalcHistoricalPrices(IEnumerable<HistoricalPrice> historicalPrices)
+        {
+            var result = new List<HistoricalPriceExtended>();
+            foreach (var item in historicalPrices)
+            {
+                double k = 0;
+                if (item.Close != 0)
+                {
+                    k = item.AdjustedClose / item.Close;
+                }
+                var historicalPrice = new HistoricalPriceExtended
+                {
+                    Date = item.Date,
+                    Volume = item.Volume,
+                    AdjustedHigh = item.High * k,
+                    AdjustedLow = item.Low * k,
+                    AdjustedOpen = item.Open * k,
+                    AdjustedClose = item.Close,
+                    High = item.High,
+                    Low = item.Low,
+                    Open = item.Open,
+                    Close = item.Close
+                };
+                result.Add(historicalPrice);
+            }
 
             return result;
         }

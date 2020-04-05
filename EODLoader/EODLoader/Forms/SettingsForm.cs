@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,7 +48,19 @@ namespace EODLoader.Forms
             proxyAddresstextBox.Text = Properties.Settings.Default.proxyWebAddress;
             proxyUserNameTextBox.Text = Properties.Settings.Default.proxyUserName;
             proxyUserPasswordTextBox.Text = Properties.Settings.Default.proxyPassword;
-            logFileTextBox.Text = Properties.Settings.Default.logFilePath;
+
+            if (Properties.Settings.Default.logFilePath != string.Empty)
+            {
+                if (Directory.Exists(Properties.Settings.Default.logFilePath))
+                {
+                    logFileTextBox.Text = Properties.Settings.Default.logFilePath;
+                }
+                else
+                {
+                    MessageBox.Show("The log file directory does not exist, the field is cleared", "Error");
+                    Properties.Settings.Default.logFilePath = string.Empty;
+                }
+            }
 
             if (proxyCheckBox.Checked)
             {
