@@ -13,8 +13,7 @@ namespace EODLoader.Services.Utils
         public void CreateCVSFile<T>(IEnumerable<T> items, string path)
         {
             Type itemType = typeof(T);
-            var props = itemType.GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                                .OrderBy(p => p.Name);
+            var props = itemType.GetProperties(BindingFlags.Public | BindingFlags.Instance);                                
 
             using (var writer = new StreamWriter(path))
             {

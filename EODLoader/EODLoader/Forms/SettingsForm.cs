@@ -42,6 +42,7 @@ namespace EODLoader.Forms
             settingsTreeView.SelectedNode = settingsTreeView.Nodes[0];
 
             //Data load
+            autoUpdateCheckBox.Checked = Properties.Settings.Default.AutoUpdate;
             tokenTextBox.Text = Properties.Settings.Default.Token;
             credentialsCheckBox.Checked = Properties.Settings.Default.proxyCredentialsIsUsed;
             proxyCheckBox.Checked = Properties.Settings.Default.proxyIsUsed;
@@ -75,6 +76,8 @@ namespace EODLoader.Forms
 
         private void SaveButton_Click(object sender, EventArgs e)
         {
+            Properties.Settings.Default.AutoUpdate = autoUpdateCheckBox.Checked;
+
             Properties.Settings.Default.proxyWebAddress = proxyAddresstextBox.Text;
 
             Properties.Settings.Default.proxyUserName = proxyUserNameTextBox.Text;

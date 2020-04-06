@@ -72,6 +72,7 @@
             this.symbolsListBox = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.filesPanel = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.timeRangeGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -484,11 +485,21 @@
             this.filesPanel.Size = new System.Drawing.Size(368, 60);
             this.filesPanel.TabIndex = 10001;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(190, 251);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 10002;
+            this.label1.Text = "label1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 545);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.filesPanel);
             this.Controls.Add(this.symbolsListBox);
             this.Controls.Add(this.RunLogGridView);
@@ -562,6 +573,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SymbolColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatusColumn;
         private System.Windows.Forms.Panel filesPanel;
+        private System.Windows.Forms.Label label1;
     }
 }
 

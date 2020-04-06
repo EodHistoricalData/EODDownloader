@@ -10,24 +10,24 @@ namespace EODLoader.Services.EodHistoricalData.Models
     public class HistoricalPrice
     {
         [JsonProperty("date")]
-        public DateTimeOffset Date { get; set; }
+        public DateTime Date { get; set; }
 
         [JsonProperty("open")]
-        public double Open { get; set; }
+        public double? Open { get; set; }
 
         [JsonProperty("high")]
-        public double High { get; set; }
+        public double? High { get; set; }
 
         [JsonProperty("low")]
-        public double Low { get; set; }
+        public double? Low { get; set; }
 
         [JsonProperty("close")]
-        public double Close { get; set; }
+        public double? Close { get; set; }
 
         [JsonProperty("adjusted_close")]
-        public double AdjustedClose { get; set; }
+        public double? AdjustedClose { get; set; }
 
         [JsonProperty("volume")]
-        public long Volume { get; set; }
+        public long? Volume { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace EODLoader.Services.EodHistoricalData.Models
     {
         public string Symbol { get; set; }
         public StatusEnum Status { get; set; }
-        public string ErrorDescription { get; set; }
+        public string Description { get; set; }
     }
 }

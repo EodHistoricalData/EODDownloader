@@ -50,6 +50,17 @@ namespace EODLoader.Services.EodHistoricalData
 
                 var request = new RestRequest(Method.GET);
                 IRestResponse response = client.Execute(request);
+                if (response.StatusCode == 0)
+                {
+                    var error = new HistoricalResult
+                    {
+                        Symbol = symbol,                        
+                        Description = "Unable to connect to remote server"
+                    };
+                    error.Status = proxyIsUsed ? Common.StatusEnum.ErrorProxy : Common.StatusEnum.Error;
+                    return error;
+                }
+
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     var historicalPrices = JsonConvert.DeserializeObject<List<HistoricalPrice>>(response.Content);
@@ -63,7 +74,8 @@ namespace EODLoader.Services.EodHistoricalData
                     return new HistoricalResult
                     {
                         Symbol = symbol,
-                        Status = Common.StatusEnum.Ok
+                        Status = Common.StatusEnum.Ok,
+                        Description = $"{((int)response.StatusCode).ToString()} {response.StatusDescription}"
                     };
                 }
                 else
@@ -72,7 +84,7 @@ namespace EODLoader.Services.EodHistoricalData
                     {
                         Symbol = symbol,
                         Status = Common.StatusEnum.Error,
-                        ErrorDescription = response.StatusDescription
+                        Description = $"{((int)response.StatusCode).ToString()} {response.StatusDescription}"
                     };
                 }
             }
@@ -83,7 +95,7 @@ namespace EODLoader.Services.EodHistoricalData
                 {
                     Symbol = symbol,
                     Status = Common.StatusEnum.Error,
-                    ErrorDescription = "Error. View logs!"
+                    Description = "Error. View logs!"
                 };
             }
         }
@@ -94,18 +106,18 @@ namespace EODLoader.Services.EodHistoricalData
             foreach (var item in historicalPrices)
             {
                 double k = 0;
-                if (item.Close != 0)
+                if (item.AdjustedClose != null && item.Close != null && item.Close != 0)
                 {
-                    k = item.AdjustedClose / item.Close;
+                    k = item.AdjustedClose.Value / item.Close.Value;
                 }
                 var historicalPrice = new HistoricalPriceExtended
                 {
-                    Date = item.Date,
+                    Date = item.Date.ToString("yyyy.MM.dd"),
                     Volume = item.Volume,
-                    AdjustedHigh = item.High * k,
-                    AdjustedLow = item.Low * k,
-                    AdjustedOpen = item.Open * k,
-                    AdjustedClose = item.Close,
+                    AdjustedHigh = item.High != null ? item.High * k : null,
+                    AdjustedLow = item.Low != null ? item.Low * k : null,
+                    AdjustedOpen = item.Open != null ? item.Open * k : null,
+                    AdjustedClose = item.Close != null ? item.Close * k : null,
                     High = item.High,
                     Low = item.Low,
                     Open = item.Open,

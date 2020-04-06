@@ -15,6 +15,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AutoUpdaterDotNET;
+using System.Net;
+using EODLoader.Services.Proxy;
+using System.Reflection;
 
 namespace EODLoader.Forms
 {
@@ -22,6 +26,7 @@ namespace EODLoader.Forms
     {
         private ISymbolFileService _symbolFileService;
         private IEodHistoricalDataService _eodHistoricalDataService;
+        private IWebProxyService _webProxyService;
 
         private BackgroundWorker _bw = new BackgroundWorker();
 
@@ -38,6 +43,7 @@ namespace EODLoader.Forms
 
             _symbolFileService = new SymbolFileService();
             _eodHistoricalDataService = new EodHistoricalDataService();
+            _webProxyService = new WebProxyService();
 
             _settingsTokenTimer = new Timer();
             _settingsTokenTimer.Tick += new EventHandler(settingsTimeTick);
@@ -46,6 +52,7 @@ namespace EODLoader.Forms
             _tm = new Timer();
             _tm.Tick += new EventHandler(timeTick);
             _tm.Interval = 1000;
+
         }
 
         SettingsForm settingsForm;
@@ -64,8 +71,29 @@ namespace EODLoader.Forms
             System.Diagnostics.Process.Start("https://google.com/");
         }
 
+        //private void AutoUpdater_ApplicationExitEvent()
+        //{
+        //    Text = @"Closing application...";
+        //    System.Threading.Thread.Sleep(5000);
+        //    Application.Exit();
+        //}
+
         private void MainForm_Load(object sender, EventArgs e)
         {
+            label1.Text = Assembly.GetEntryAssembly().GetName().Version.ToString();
+
+            if (Properties.Settings.Default.AutoUpdate)
+            {
+                //if (Properties.Settings.Default.proxyIsUsed)
+                //{
+                //    AutoUpdater.Proxy = _webProxyService.GetWebProxy();
+                //}
+                //AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
+                //AutoUpdater.Mandatory = true;
+                //AutoUpdater.Start("ftp://epiz_25473013@ftpupload.net/htdocs/update/update.xml", new NetworkCredential("epiz_25473013", "HIw8pYp1xv8", "ftpupload.net"));
+
+            }
+
             toDateTimePicker.Value = DateTime.Now;
 
             periodComboBox.SelectedIndex = 0;
@@ -348,21 +376,21 @@ namespace EODLoader.Forms
                     {
                         case StatusEnum.Ok:
                             {
-                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Add(Resources.StatusOK, result.Symbol, "Ok"));
+                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusOK, result.Symbol, "Ok"));
                                 processOk++;
                                 Invoke(processedOkValueLabel, () => processedOkValueLabel.Text = processOk.ToString());
                             }
                             break;
                         case StatusEnum.Error:
                             {
-                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Add(Resources.StatusError, result.Symbol, result.ErrorDescription));
+                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusError, result.Symbol, result.Description));
                                 errors++;
                                 Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
                             }
                             break;
                         case StatusEnum.ErrorProxy:
                             {
-                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Add(Resources.StatusError, result.Symbol, result.ErrorDescription));
+                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusError, result.Symbol, result.Description));
                                 return;
                             }
                     }
