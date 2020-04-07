@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EODLoader.Services.ConfigurationData;
+using EODLoader.Services.ConfigurationData.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -15,13 +17,18 @@ namespace EODLoader.Services.Proxy
         private bool _proxyCredentialsIsUsed { get; }
         private bool _proxyIsUsed { get; }
 
+        private IConfigurationService _configurationService { get; set; }
+        private ConfigurationModel _configuration { get; set; }
+
         public WebProxyService()
         {
-            _webAddress = Properties.Settings.Default.proxyWebAddress;
-            _userName = Properties.Settings.Default.proxyUserName;
-            _userPassword = Properties.Settings.Default.proxyPassword;
-            _proxyCredentialsIsUsed = Properties.Settings.Default.proxyCredentialsIsUsed;
-            _proxyIsUsed = Properties.Settings.Default.proxyIsUsed;
+            _configurationService = new ConfigurationService();
+            _configuration = _configurationService.GetConfiguration();
+            _webAddress = _configuration.ProxyWebAddress;
+            _userName = _configuration.ProxyUserName;
+            _userPassword = _configuration.ProxyPassword;
+            _proxyCredentialsIsUsed = _configuration.ProxyCredentialsIsUsed;
+            _proxyIsUsed = _configuration.ProxyIsUsed;
         }
 
         public WebProxyService(string webAddress, string userName,

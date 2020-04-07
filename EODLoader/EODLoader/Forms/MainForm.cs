@@ -15,10 +15,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using AutoUpdaterDotNET;
 using System.Net;
 using EODLoader.Services.Proxy;
 using System.Reflection;
+using EODLoader.Services.AutoUpdate;
+using EODLoader.Services.ConfigurationData.Model;
+using EODLoader.Services.ConfigurationData;
 
 namespace EODLoader.Forms
 {
@@ -27,8 +29,10 @@ namespace EODLoader.Forms
         private ISymbolFileService _symbolFileService;
         private IEodHistoricalDataService _eodHistoricalDataService;
         private IWebProxyService _webProxyService;
+        private IConfigurationService _configurationService;
+        private IAutoUpdateService _autoUpdateService;
 
-        private BackgroundWorker _bw = new BackgroundWorker();
+        private ConfigurationModel _configuration { get; set; }
 
         private Timer _tm = null;
         private Timer _settingsTokenTimer = null;
@@ -37,6 +41,14 @@ namespace EODLoader.Forms
         public MainForm()
         {
             InitializeComponent();
+
+            this.Text = $"{this.Text} {Assembly.GetExecutingAssembly().GetName().Version}";
+
+            _autoUpdateService = new AutoUpdateService();
+
+            _configurationService = new ConfigurationService();
+
+            _configuration = _configurationService.GetConfiguration();
 
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|CSV files(*.csv)|*.csv|All files(*.*)|*.*";
             openFileDialog1.FileName = string.Empty;
@@ -71,27 +83,21 @@ namespace EODLoader.Forms
             System.Diagnostics.Process.Start("https://google.com/");
         }
 
-        //private void AutoUpdater_ApplicationExitEvent()
-        //{
-        //    Text = @"Closing application...";
-        //    System.Threading.Thread.Sleep(5000);
-        //    Application.Exit();
-        //}
+        private void AutoUpdater_ApplicationExitEvent()
+        {
+            System.Threading.Thread.Sleep(5000);
+            Application.Exit();
+        }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            label1.Text = Assembly.GetEntryAssembly().GetName().Version.ToString();
 
-            if (Properties.Settings.Default.AutoUpdate)
+            if (_configuration.AutoUpdateIsUsed)
             {
-                //if (Properties.Settings.Default.proxyIsUsed)
-                //{
-                //    AutoUpdater.Proxy = _webProxyService.GetWebProxy();
-                //}
-                //AutoUpdater.ApplicationExitEvent += AutoUpdater_ApplicationExitEvent;
-                //AutoUpdater.Mandatory = true;
-                //AutoUpdater.Start("ftp://epiz_25473013@ftpupload.net/htdocs/update/update.xml", new NetworkCredential("epiz_25473013", "HIw8pYp1xv8", "ftpupload.net"));
-
+                if (_autoUpdateService.Start())
+                {
+                    AutoUpdater_ApplicationExitEvent();
+                }
             }
 
             toDateTimePicker.Value = DateTime.Now;
@@ -100,9 +106,9 @@ namespace EODLoader.Forms
 
             CheckTokenStatus();
 
-            string symbolPath = Properties.Settings.Default.lastSymbolFilePath;
+            string symbolPath = _configuration.LastSymbolFilePath;
 
-            string downloadDirectory = Properties.Settings.Default.lastDownloadDirectoryPath;
+            string downloadDirectory = _configuration.LastDownloadDirectoryPath;
 
             if (File.Exists(symbolPath))
             {
@@ -111,7 +117,7 @@ namespace EODLoader.Forms
             }
             else
             {
-                Properties.Settings.Default.lastSymbolFilePath = string.Empty;
+                _configuration.LastSymbolFilePath = string.Empty;
             }
 
             if (Directory.Exists(downloadDirectory))
@@ -120,7 +126,7 @@ namespace EODLoader.Forms
             }
             else
             {
-                Properties.Settings.Default.lastDownloadDirectoryPath = string.Empty;
+                _configuration.LastDownloadDirectoryPath = string.Empty;
             }
         }
 
@@ -191,8 +197,8 @@ namespace EODLoader.Forms
             {
                 ListBoxAddItems(symbols);
                 symbolFilePathTextBox.Text = filePath;
-                Properties.Settings.Default.lastSymbolFilePath = filePath;
-                Properties.Settings.Default.Save();
+                _configuration.LastSymbolFilePath = filePath;
+                _configurationService.Save(_configuration);
             }
         }
 
@@ -203,8 +209,8 @@ namespace EODLoader.Forms
 
             downloadDirectoryTextBox.Text = folderBrowserDialog1.SelectedPath;
 
-            Properties.Settings.Default.lastDownloadDirectoryPath = folderBrowserDialog1.SelectedPath;
-            Properties.Settings.Default.Save();
+            _configuration.LastDownloadDirectoryPath = folderBrowserDialog1.SelectedPath;
+            _configurationService.Save(_configuration);
         }
 
         private void openDirectoryButton_Click(object sender, EventArgs e)
@@ -226,17 +232,17 @@ namespace EODLoader.Forms
 
         private void CheckTokenStatus()
         {
-            if (Properties.Settings.Default.Token != string.Empty)
-            {
-                tokenValueLabel.ForeColor = Color.Blue;
-                tokenValueLabel.Text = "OK";
-                dToolStripMenuItem.Enabled = true;
-            }
-            else
+            if (_configuration.Token == string.Empty)
             {
                 tokenValueLabel.ForeColor = Color.Red;
                 tokenValueLabel.Text = "Empty";
                 dToolStripMenuItem.Enabled = false;
+            }
+            else if (_configuration.Token == _configuration.TestToken)
+            {
+                tokenValueLabel.ForeColor = Color.Blue;
+                tokenValueLabel.Text = "OK";
+                dToolStripMenuItem.Enabled = true;
             }
             _settingsTokenTimer.Stop();
         }
@@ -281,6 +287,7 @@ namespace EODLoader.Forms
         {
             if (settingsForm == null || settingsForm.IsDisposed)
             {
+                _configuration = _configurationService.GetConfiguration();
                 CheckTokenStatus();
             }
         }

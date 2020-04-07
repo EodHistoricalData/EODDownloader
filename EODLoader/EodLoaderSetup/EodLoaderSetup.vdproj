@@ -15,38 +15,14 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_7768F82E17EF180030022C9E5EC87567"
+        "MsmKey" = "8:_1A49C828BE9E1955F8BE4936B77D8503"
         "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_7768F82E17EF180030022C9E5EC87567"
-        "OwnerKey" = "8:_EFB3A8B2D5D245ED973014DE67FED674"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_7768F82E17EF180030022C9E5EC87567"
-        "OwnerKey" = "8:_E5C9A61C22C447A7ABA9B6C90BAD3FA6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8475E80AA74184256784230536CCC485"
+        "MsmKey" = "8:_BA9204ABBB0033535F30C22BB0161352"
         "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8475E80AA74184256784230536CCC485"
-        "OwnerKey" = "8:_EFB3A8B2D5D245ED973014DE67FED674"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_8475E80AA74184256784230536CCC485"
-        "OwnerKey" = "8:_E5C9A61C22C447A7ABA9B6C90BAD3FA6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -57,92 +33,32 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_D64BF9931DE8E50D927F7D4653B60DE0"
-        "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D64BF9931DE8E50D927F7D4653B60DE0"
-        "OwnerKey" = "8:_EFB3A8B2D5D245ED973014DE67FED674"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D64BF9931DE8E50D927F7D4653B60DE0"
-        "OwnerKey" = "8:_E5C9A61C22C447A7ABA9B6C90BAD3FA6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E0794703C204483DA88E7146865B2D0A"
         "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E0794703C204483DA88E7146865B2D0A"
-        "OwnerKey" = "8:_EFB3A8B2D5D245ED973014DE67FED674"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E0794703C204483DA88E7146865B2D0A"
-        "OwnerKey" = "8:_E5C9A61C22C447A7ABA9B6C90BAD3FA6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E5C9A61C22C447A7ABA9B6C90BAD3FA6"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EFB3A8B2D5D245ED973014DE67FED674"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_EFB3A8B2D5D245ED973014DE67FED674"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E5C9A61C22C447A7ABA9B6C90BAD3FA6"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_7768F82E17EF180030022C9E5EC87567"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8475E80AA74184256784230536CCC485"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D64BF9931DE8E50D927F7D4653B60DE0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_E0794703C204483DA88E7146865B2D0A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BA9204ABBB0033535F30C22BB0161352"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1A49C828BE9E1955F8BE4936B77D8503"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -153,7 +69,7 @@
         "DisplayName" = "8:Debug"
         "IsDebugOnly" = "11:TRUE"
         "IsReleaseOnly" = "11:FALSE"
-        "OutputFilename" = "8:Debug\\EodLoaderSetup.msi"
+        "OutputFilename" = "8:Debug\\EodLoader.msi"
         "PackageFilesAs" = "3:2"
         "PackageFileSize" = "3:-2147483648"
         "CabType" = "3:1"
@@ -240,45 +156,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7768F82E17EF180030022C9E5EC87567"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_7768F82E17EF180030022C9E5EC87567"
-                    {
-                    "Name" = "8:RestSharp.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:RestSharp.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8475E80AA74184256784230536CCC485"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1A49C828BE9E1955F8BE4936B77D8503"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_8475E80AA74184256784230536CCC485"
+                    "_1A49C828BE9E1955F8BE4936B77D8503"
                     {
                     "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
@@ -302,20 +187,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D64BF9931DE8E50D927F7D4653B60DE0"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BA9204ABBB0033535F30C22BB0161352"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AutoUpdater.NET, Version=1.5.8.0, Culture=neutral, PublicKeyToken=501435c91b35f4bc, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D64BF9931DE8E50D927F7D4653B60DE0"
+                    "_BA9204ABBB0033535F30C22BB0161352"
                     {
-                    "Name" = "8:AutoUpdater.NET.dll"
+                    "Name" = "8:RestSharp.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:AutoUpdater.NET.dll"
+            "SourcePath" = "8:RestSharp.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
@@ -419,9 +304,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:EodLoaderSetup"
-        "ProductCode" = "8:{CAD3A317-C95A-4281-BF99-3F1C88449BE6}"
-        "PackageCode" = "8:{B8564F77-0BE0-48D0-9BD5-4EA661958B7C}"
+        "ProductName" = "8:EODLoader"
+        "ProductCode" = "8:{522EAC9C-E357-4DEA-A23D-01F3192FCD82}"
+        "PackageCode" = "8:{1972A32D-DEF6-41DE-BDE5-8845FF36458D}"
         "UpgradeCode" = "8:{4D0AE607-CECD-4755-A7E0-2B73339412D5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -432,7 +317,7 @@
         "Manufacturer" = "8:Default Company Name"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:EodLoaderSetup"
+        "Title" = "8:EODLoader"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Default Company Name"
         "Keywords" = "8:"
@@ -442,7 +327,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:1"
+        "TargetPlatform" = "3:0"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
@@ -541,6 +426,34 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_11FB660EB6E444D9BFA8E73A5C020D14"
+            {
+            "Name" = "8:EODLoader"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
+            "Folder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
+            "WorkingFolder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_E866117882DD44A6AA1BF7B34F282441"
+            {
+            "Name" = "8:EODLoader"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
+            "Folder" = "8:_13ACC2EF1008459B8A0CE3A062C2F1F9"
+            "WorkingFolder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
+            "Icon" = "8:"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -560,7 +473,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_32EA5E3E097C4B64AB92F73274CB089C"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Готово"
+                    "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -604,7 +517,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_F970C257D0E54F57B8ADAF3BC954A057"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Ход выполнения"
+                    "DisplayName" = "8:Progress"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -648,7 +561,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_1712D7AFD8F04ACEBE703EE7163272AB"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Подтверждение установки"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -670,7 +583,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_1B9A7BC079AD4DDC85DDE26AF7DA9629"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Папка установки"
+                    "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -692,7 +605,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_9A63439F7F5C466BB417EF4DF24A4B27"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Добро пожаловать!"
+                    "DisplayName" = "8:Welcome"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -755,7 +668,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_9C3B7DDB11034B3C81F67F06CD0D846C"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Готово"
+                    "DisplayName" = "8:Finished"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -786,7 +699,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_18AE9BA3B50046C48B2F2FF39C5901DE"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Ход выполнения"
+                    "DisplayName" = "8:Progress"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -830,7 +743,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_26A4072CF0CD450DA3C400BBDEFEBC02"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Папка установки"
+                    "DisplayName" = "8:Installation Folder"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -865,7 +778,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_4CC46CB676AD447496493669E207739E"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Добро пожаловать!"
+                    "DisplayName" = "8:Welcome"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -913,7 +826,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_6CFA3B3C5C3C4F23828DB310173457E5"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Подтверждение установки"
+                    "DisplayName" = "8:Confirm Installation"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -942,86 +855,31 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_C73D0055EAED4A2FB2EF42FE77B46C7B"
             {
-            "SourcePath" = "8:..\\EODLoader\\obj\\Debug\\EODLoader.exe"
+            "SourcePath" = "8:..\\EODLoader\\obj\\Release\\EODLoader.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
+            "ReadOnly" = "11:TRUE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
+            "Permanent" = "11:TRUE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
+            "ProjectOutputGroupRegister" = "3:3"
             "OutputConfiguration" = "8:Release|Any CPU"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{08324DC8-D872-428F-8EF8-F58C4E529392}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E5C9A61C22C447A7ABA9B6C90BAD3FA6"
-            {
-            "SourcePath" = "8:..\\EODLoader\\obj\\Debug\\EODLoader.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_13ACC2EF1008459B8A0CE3A062C2F1F9"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{08324DC8-D872-428F-8EF8-F58C4E529392}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EFB3A8B2D5D245ED973014DE67FED674"
-            {
-            "SourcePath" = "8:..\\EODLoader\\obj\\Debug\\EODLoader.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_84782E7E4D4B4F8F8712B788FE8C7B6D"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{08324DC8-D872-428F-8EF8-F58C4E529392}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
+                "ExcludeFilter" = "8:ExcludeConfig"
                 }
             }
         }

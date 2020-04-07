@@ -4,6 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using EODLoader.Services.ConfigurationData;
+using EODLoader.Services.ConfigurationData.Model;
 using EODLoader.Services.EodHistoricalData.Models;
 using EODLoader.Services.Proxy;
 using EODLoader.Services.Utils;
@@ -15,8 +17,13 @@ namespace EODLoader.Services.EodHistoricalData
     public class EodHistoricalDataService : IEodHistoricalDataService
     {
         const string HistoricalDataUrl = "https://eodhistoricaldata.com/api/eod/";
-
-        public EodHistoricalDataService() { }
+        private IConfigurationService _configurationService { get; set; }
+        private ConfigurationModel _configuration { get; set; }
+        public EodHistoricalDataService()
+        {
+            _configurationService = new ConfigurationService();
+            _configuration = _configurationService.GetConfiguration();
+        }
 
         public HistoricalResult GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per)
         {
@@ -34,13 +41,13 @@ namespace EODLoader.Services.EodHistoricalData
                 }
 
                 string dateParameters = GetDateParametersAsString(startDate, endDate);
-                var token = Properties.Settings.Default.Token;
+                var token = _configuration.Token;
 
                 var url = $"{HistoricalDataUrl}{symbol}?{dateParameters}&api_token={token}{period}&fmt=json";
 
                 IWebProxyService webProxyService = new WebProxyService();
 
-                bool proxyIsUsed = Properties.Settings.Default.proxyIsUsed;
+                bool proxyIsUsed = _configuration.ProxyIsUsed;
                 var client = new RestClient(url);
 
                 if (proxyIsUsed)
@@ -54,7 +61,7 @@ namespace EODLoader.Services.EodHistoricalData
                 {
                     var error = new HistoricalResult
                     {
-                        Symbol = symbol,                        
+                        Symbol = symbol,
                         Description = "Unable to connect to remote server"
                     };
                     error.Status = proxyIsUsed ? Common.StatusEnum.ErrorProxy : Common.StatusEnum.Error;
@@ -67,7 +74,7 @@ namespace EODLoader.Services.EodHistoricalData
                     var historicalPricesExt = CalcHistoricalPrices(historicalPrices);
 
                     IUtilsService utils = new UtilsService();
-                    string path = $@"{Properties.Settings.Default.lastDownloadDirectoryPath}\{symbol}.csv";
+                    string path = $@"{_configuration.LastDownloadDirectoryPath}\{symbol}.csv";
 
                     utils.CreateCVSFile(historicalPricesExt, path);
 
