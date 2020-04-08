@@ -10,6 +10,6 @@ namespace EODLoader.Services.Proxy
     public interface IWebProxyService
     {
         bool CheckConnection();
-        IWebProxy GetWebProxy();
+        WebProxy GetWebProxy();
     }
 }

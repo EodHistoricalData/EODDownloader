@@ -1,5 +1,7 @@
-﻿using EODLoader.Services.ConfigurationData;
+﻿using EODLoader.Logs;
+using EODLoader.Services.ConfigurationData;
 using EODLoader.Services.ConfigurationData.Model;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,16 +63,17 @@ namespace EODLoader.Services.Proxy
             }
             catch (Exception ex)
             {
+                Logger.LogError(ex, ex.StackTrace);
                 return false;
             }
 
         }
 
-        public IWebProxy GetWebProxy()
+        public WebProxy GetWebProxy()
         {
             if (_proxyIsUsed)
             {
-                IWebProxy proxy = new WebProxy(_webAddress);
+                WebProxy proxy = new WebProxy(_webAddress);
                 if (_proxyCredentialsIsUsed)
                 {
                     proxy.Credentials = new NetworkCredential(_userName, _userPassword);
