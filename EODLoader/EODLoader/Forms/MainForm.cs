@@ -33,6 +33,7 @@ namespace EODLoader.Forms
         private IAutoUpdateService _autoUpdateService;
 
         private ConfigurationModel _configuration { get; set; }
+        System.Threading.CancellationTokenSource source = new System.Threading.CancellationTokenSource();
 
         private Timer _tm = null;
         private Timer _settingsTokenTimer = null;
@@ -85,7 +86,7 @@ namespace EODLoader.Forms
 
         private void AutoUpdater_ApplicationExitEvent()
         {
-            System.Threading.Thread.Sleep(5000);
+            System.Threading.Thread.Sleep(1000);
             Application.Exit();
         }
 
@@ -222,14 +223,8 @@ namespace EODLoader.Forms
             }
         }
 
-        private void MainForm_Activated(object sender, EventArgs e)
-        {
-            if (settingsForm == null || settingsForm.IsDisposed)
-            {
-                CheckTokenStatus();
-            }
-        }
 
+        //TODO Add check token
         private void CheckTokenStatus()
         {
             if (_configuration.Token == string.Empty)
@@ -238,11 +233,34 @@ namespace EODLoader.Forms
                 tokenValueLabel.Text = "Empty";
                 dToolStripMenuItem.Enabled = false;
             }
-            else if (_configuration.Token == _configuration.TestToken)
+            else
             {
-                tokenValueLabel.ForeColor = Color.Blue;
-                tokenValueLabel.Text = "OK";
-                dToolStripMenuItem.Enabled = true;
+                bool tokenIsValid = true; //ValidationFunction
+
+                if (tokenIsValid)
+                {
+                    tokenValueLabel.ForeColor = Color.Green;
+                    dToolStripMenuItem.Enabled = true;
+
+                    if (_configuration.Token == _configuration.TestToken)
+                    {
+                        tokenValueLabel.Text = "Test Token";
+                    }
+                    else
+                    {
+                        int tokenLength = _configuration.Token.Length;
+
+                        string firstSubstring = _configuration.Token.Substring(0, 4);
+                        string secondSubstring = _configuration.Token.Substring(tokenLength - 4, 4);
+                        tokenValueLabel.Text = $"{firstSubstring}...{secondSubstring}";
+
+                    }
+                }
+                else
+                {
+                    tokenValueLabel.ForeColor = Color.Red;
+                    tokenValueLabel.Text = "Token is not valid";
+                }
             }
             _settingsTokenTimer.Stop();
         }
@@ -255,11 +273,29 @@ namespace EODLoader.Forms
                 _tm.Start();
                 ChangeButtonEnabled();
 
-                Task.Run(() => StartGetInfo());
-            }
-            else
-            {
-                MessageBox.Show("Please check the fields", "Alert");
+                List<string> symbolList = symbolsListBox.Items.Cast<String>().ToList();
+
+                while (symbolList.Count != 0)
+                {
+                    List<Task> taskList = new List<Task>();
+
+                    for (int i = 0; i < _configuration.NumberOfThread; i++)
+                    {
+                        string symbol = symbolList.FirstOrDefault();
+
+                        if (symbol == null)
+                        {
+                            break;
+                        }
+
+                        taskList.Add(StartGetInfo(symbol));
+                    }
+
+                    Task.WaitAny(taskList.ToArray(), source.Token);
+                }
+
+                ChangeButtonEnabled();
+                _tm.Stop();
             }
         }
 
@@ -332,22 +368,39 @@ namespace EODLoader.Forms
 
         private bool ValidateStartInfo()
         {
-            if (symbolsListBox.Items.Count > 0 &&
-                symbolsListBox.Items[0].ToString() != string.Empty &&
-                Directory.Exists(downloadDirectoryTextBox.Text))
+            if (symbolFilePathTextBox.Text == string.Empty)
             {
-                return true;
+                MessageBox.Show("Please, check symbol file field", "Alert");
+                return false;
             }
 
-            return false;
+            if (symbolsListBox.Items.Count > 0 && symbolsListBox.Items[0].ToString() == string.Empty)
+            {
+                MessageBox.Show("Please, fill symbol file", "Alert");
+                return false;
+            }
+
+            if (downloadDirectoryTextBox.Text == string.Empty)
+            {
+                MessageBox.Show("Please, fill download directory field", "Alert");
+                return false;
+            }
+
+            if (!Directory.Exists(downloadDirectoryTextBox.Text))
+            {
+                MessageBox.Show("Selected download directory do not exist", "Alert");
+                return false;
+            }
+
+            return true;
         }
 
-        private void StartGetInfo()
+        private async Task StartGetInfo(string symbol)
         {
             try
             {
                 int symbolCount = symbolsListBox.Items.Count;
-                List<string> symbolList = symbolsListBox.Items.Cast<String>().ToList();
+
                 int totalProcessed = 0;
 
                 Invoke(runProgressBar, () => runProgressBar.Maximum = symbolCount);
@@ -361,50 +414,45 @@ namespace EODLoader.Forms
                 int errors = 0;
                 int processOk = 0;
 
-                for (int i = 0; i < symbolCount; i++)
+                HistoricalResult result;
+                if (availableCheckBox.Checked)
                 {
-                    HistoricalResult result;
-                    if (availableCheckBox.Checked)
-                    {
-                        result = _eodHistoricalDataService.GetHistoricalPrices(symbolList[i], null, null, testPeriod);
-                    }
-                    else
-                    {
-                        result = _eodHistoricalDataService.GetHistoricalPrices(symbolList[i], fromDateTimePicker.Value, toDateTimePicker.Value, testPeriod);
-                    }
-
-                    totalProcessed++;
-
-                    Invoke(totalProcessedValueLabel, () => totalProcessedValueLabel.Text = totalProcessed.ToString());
-
-                    Invoke(runProgressBar, () => runProgressBar.Value = totalProcessed);
-
-                    switch (result.Status)
-                    {
-                        case StatusEnum.Ok:
-                            {
-                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusOK, result.Symbol, "Ok"));
-                                processOk++;
-                                Invoke(processedOkValueLabel, () => processedOkValueLabel.Text = processOk.ToString());
-                            }
-                            break;
-                        case StatusEnum.Error:
-                            {
-                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusError, result.Symbol, result.Description));
-                                errors++;
-                                Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
-                            }
-                            break;
-                        case StatusEnum.ErrorProxy:
-                            {
-                                Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusError, result.Symbol, result.Description));
-                                return;
-                            }
-                    }
+                    result = await _eodHistoricalDataService.GetHistoricalPrices(symbol, null, null, testPeriod);
+                }
+                else
+                {
+                    result = await _eodHistoricalDataService.GetHistoricalPrices(symbol, fromDateTimePicker.Value, toDateTimePicker.Value, testPeriod);
                 }
 
-                ChangeButtonEnabled();
-                _tm.Stop();
+                totalProcessed++;
+
+                Invoke(totalProcessedValueLabel, () => totalProcessedValueLabel.Text = totalProcessed.ToString());
+
+                Invoke(runProgressBar, () => runProgressBar.Value = totalProcessed);
+
+                switch (result.Status)
+                {
+                    case StatusEnum.Ok:
+                        {
+                            Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusOK, result.Symbol, "Ok"));
+                            processOk++;
+                            Invoke(processedOkValueLabel, () => processedOkValueLabel.Text = processOk.ToString());
+                        }
+                        break;
+                    case StatusEnum.Error:
+                        {
+                            Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusError, result.Symbol, result.Description));
+                            errors++;
+                            Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
+                        }
+                        break;
+                    case StatusEnum.ErrorProxy:
+                        {
+                            Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusError, result.Symbol, result.Description));
+                            source.Cancel();
+                        }
+                        break;
+                }
 
             }
             catch (Exception ex)
@@ -428,5 +476,14 @@ namespace EODLoader.Forms
             }
         }
 
+        private void tokenValueLabel_Click(object sender, EventArgs e)
+        {
+            if (settingsForm == null || settingsForm.IsDisposed)
+            {
+                settingsForm = new SettingsForm();
+                settingsForm.Show();
+                _settingsTokenTimer.Start();
+            }
+        }
     }
 }

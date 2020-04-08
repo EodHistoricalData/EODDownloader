@@ -83,7 +83,6 @@ namespace EODLoader.Services.AutoUpdate
             client.DownloadFile(downloadUrl, "updateSetup.msi");
 
             Process.Start("updateSetup.msi");
-
         }
 
     }

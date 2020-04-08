@@ -11,8 +11,8 @@ namespace EODLoader.Services.ConfigurationData
 {
     public class ConfigurationService : IConfigurationService
     {
-        private string _filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//EODLoader//Config.xml";
-        private string _fileDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "//EODLoader";
+        private string _filePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\EODLoader\Config.xml";
+        private string _fileDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + @"\EODLoader";
 
         public ConfigurationService()
         {
@@ -57,12 +57,19 @@ namespace EODLoader.Services.ConfigurationData
         {
             ConfigurationModel configurationModel = new ConfigurationModel();
 
+            configurationModel.LogFilePath = _fileDirectory + @"\Logs";
+
             XmlSerializer writer =
             new XmlSerializer(typeof(ConfigurationModel));
 
             if (!Directory.Exists(_fileDirectory))
             {
                 Directory.CreateDirectory(_fileDirectory);
+            }
+
+            if (!Directory.Exists(configurationModel.LogFilePath))
+            {
+                Directory.CreateDirectory(configurationModel.LogFilePath);
             }
 
             FileStream file = File.Create(_filePath);

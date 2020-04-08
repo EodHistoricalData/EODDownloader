@@ -55,6 +55,7 @@ namespace EODLoader.Forms
             proxyAddresstextBox.Text = _configuration.ProxyWebAddress;
             proxyUserNameTextBox.Text = _configuration.ProxyUserName;
             proxyUserPasswordTextBox.Text = _configuration.ProxyPassword;
+            threadNumericUpDown.Value = _configuration.NumberOfThread;
 
             if (_configuration.LogFilePath != string.Empty)
             {
@@ -97,6 +98,8 @@ namespace EODLoader.Forms
             _configuration.ProxyCredentialsIsUsed = credentialsCheckBox.Checked;
 
             _configuration.Token = tokenTextBox.Text;
+
+            _configuration.NumberOfThread = (int)threadNumericUpDown.Value;
 
             _configurationService.Save(_configuration);
             this.Close();

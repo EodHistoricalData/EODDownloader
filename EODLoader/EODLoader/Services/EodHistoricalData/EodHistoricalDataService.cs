@@ -25,7 +25,7 @@ namespace EODLoader.Services.EodHistoricalData
             _configuration = _configurationService.GetConfiguration();
         }
 
-        public HistoricalResult GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per)
+        public async Task<HistoricalResult> GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace EODLoader.Services.EodHistoricalData
                     period = $"&period={per[0]}";
                 }
 
-                string dateParameters = GetDateParametersAsString(startDate, endDate);
+                string dateParameters = await GetDateParametersAsString(startDate, endDate);
                 var token = _configuration.Token;
 
                 var url = $"{HistoricalDataUrl}{symbol}?{dateParameters}&api_token={token}{period}&fmt=json";
@@ -71,7 +71,7 @@ namespace EODLoader.Services.EodHistoricalData
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     var historicalPrices = JsonConvert.DeserializeObject<List<HistoricalPrice>>(response.Content);
-                    var historicalPricesExt = CalcHistoricalPrices(historicalPrices);
+                    var historicalPricesExt = await CalcHistoricalPrices(historicalPrices);
 
                     IUtilsService utils = new UtilsService();
                     string path = $@"{_configuration.LastDownloadDirectoryPath}\{symbol}.csv";
@@ -107,7 +107,7 @@ namespace EODLoader.Services.EodHistoricalData
             }
         }
 
-        private List<HistoricalPriceExtended> CalcHistoricalPrices(IEnumerable<HistoricalPrice> historicalPrices)
+        private async Task<List<HistoricalPriceExtended>> CalcHistoricalPrices(IEnumerable<HistoricalPrice> historicalPrices)
         {
             var result = new List<HistoricalPriceExtended>();
             foreach (var item in historicalPrices)
@@ -136,7 +136,7 @@ namespace EODLoader.Services.EodHistoricalData
             return result;
         }
 
-        private string GetDateParametersAsString(DateTime? startDate, DateTime? endDate)
+        private async Task<string> GetDateParametersAsString(DateTime? startDate, DateTime? endDate)
         {
             StringBuilder sb = new StringBuilder();
             if (startDate.HasValue)

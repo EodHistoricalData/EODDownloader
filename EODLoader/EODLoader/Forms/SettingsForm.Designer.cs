@@ -40,6 +40,8 @@
             this.tokenLabel = new System.Windows.Forms.Label();
             this.tokenTextBox = new System.Windows.Forms.TextBox();
             this.GeneralTab = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.threadNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.proxyGroupBox = new System.Windows.Forms.GroupBox();
             this.checkPictureBox = new System.Windows.Forms.PictureBox();
             this.credentialsGroupBox = new System.Windows.Forms.GroupBox();
@@ -64,6 +66,7 @@
             this.settingsTabControl.SuspendLayout();
             this.OAuthTab.SuspendLayout();
             this.GeneralTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.threadNumericUpDown)).BeginInit();
             this.proxyGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkPictureBox)).BeginInit();
             this.credentialsGroupBox.SuspendLayout();
@@ -152,6 +155,8 @@
             // 
             // GeneralTab
             // 
+            this.GeneralTab.Controls.Add(this.label6);
+            this.GeneralTab.Controls.Add(this.threadNumericUpDown);
             this.GeneralTab.Controls.Add(this.proxyGroupBox);
             this.GeneralTab.Controls.Add(this.proxyCheckBox);
             this.GeneralTab.Controls.Add(this.autoUpdateCheckBox);
@@ -162,6 +167,38 @@
             this.GeneralTab.TabIndex = 1;
             this.GeneralTab.Text = "General";
             this.GeneralTab.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(20, 293);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(131, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Simultaneous connections";
+            // 
+            // threadNumericUpDown
+            // 
+            this.threadNumericUpDown.Location = new System.Drawing.Point(158, 291);
+            this.threadNumericUpDown.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.threadNumericUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.threadNumericUpDown.Name = "threadNumericUpDown";
+            this.threadNumericUpDown.ReadOnly = true;
+            this.threadNumericUpDown.Size = new System.Drawing.Size(49, 20);
+            this.threadNumericUpDown.TabIndex = 3;
+            this.threadNumericUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // proxyGroupBox
             // 
@@ -380,6 +417,7 @@
             this.OAuthTab.PerformLayout();
             this.GeneralTab.ResumeLayout(false);
             this.GeneralTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.threadNumericUpDown)).EndInit();
             this.proxyGroupBox.ResumeLayout(false);
             this.proxyGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkPictureBox)).EndInit();
@@ -420,5 +458,7 @@
         private System.Windows.Forms.CheckBox credentialsCheckBox;
         private System.Windows.Forms.GroupBox credentialsGroupBox;
         private System.Windows.Forms.PictureBox checkPictureBox;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.NumericUpDown threadNumericUpDown;
     }
 }

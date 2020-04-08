@@ -328,10 +328,12 @@
             // tokenValueLabel
             // 
             this.tokenValueLabel.AutoSize = true;
-            this.tokenValueLabel.Location = new System.Drawing.Point(109, 18);
+            this.tokenValueLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.tokenValueLabel.Location = new System.Drawing.Point(92, 18);
             this.tokenValueLabel.Name = "tokenValueLabel";
             this.tokenValueLabel.Size = new System.Drawing.Size(0, 13);
             this.tokenValueLabel.TabIndex = 2;
+            this.tokenValueLabel.Click += new System.EventHandler(this.tokenValueLabel_Click);
             // 
             // runProgressBar
             // 
@@ -502,7 +504,6 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EODLoader";
-            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

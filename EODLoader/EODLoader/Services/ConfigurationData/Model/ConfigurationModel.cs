@@ -10,7 +10,7 @@ namespace EODLoader.Services.ConfigurationData.Model
     [Serializable]
     public class ConfigurationModel
     {
-        public string Token { get; set; } = string.Empty;
+        public string Token { get; set; } = "OeAFFmMliFG5orCUuwAKQ8l4WWFQ67YX";
 
         public string ProxyWebAddress { get; set; } = string.Empty;
 
@@ -29,6 +29,8 @@ namespace EODLoader.Services.ConfigurationData.Model
         public string LastDownloadDirectoryPath { get; set; } = string.Empty;
 
         public bool AutoUpdateIsUsed { get; set; } = true;
+
+        public int NumberOfThread { get; set; } = 5;
 
         public string AutoUpdateUrl { get; set; } = "https://eodhistoricaldata.com/EODLoaderUpdate.xml";
 
