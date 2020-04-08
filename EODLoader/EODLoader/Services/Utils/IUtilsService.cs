@@ -8,6 +8,6 @@ namespace EODLoader.Services.Utils
 {
     public interface IUtilsService
     {
-        void CreateCVSFile<T>(IEnumerable<T> items, string path);
+        Task CreateCVSFile<T>(IEnumerable<T> items, string path);
     }
 }

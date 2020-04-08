@@ -39,6 +39,11 @@ namespace EODLoader.Forms
         private Timer _settingsTokenTimer = null;
         private int _startValue = 1;
 
+        private volatile int totalProcessed = 0;
+        private volatile int errors = 0;
+        private volatile int processOk = 0;
+        private int totalSymbolCount = 0;
+
         public MainForm()
         {
             InitializeComponent();
@@ -55,7 +60,7 @@ namespace EODLoader.Forms
             openFileDialog1.FileName = string.Empty;
 
             _symbolFileService = new SymbolFileService();
-            _eodHistoricalDataService = new EodHistoricalDataService();
+
             _webProxyService = new WebProxyService();
 
             _settingsTokenTimer = new Timer();
@@ -265,7 +270,7 @@ namespace EODLoader.Forms
             _settingsTokenTimer.Stop();
         }
 
-        private void dToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        private async void dToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
             if (ValidateStartInfo())
             {
@@ -273,34 +278,118 @@ namespace EODLoader.Forms
                 _tm.Start();
                 ChangeButtonEnabled();
 
+                _eodHistoricalDataService = new EodHistoricalDataService();
+
                 List<string> symbolList = symbolsListBox.Items.Cast<String>().ToList();
 
-                while (symbolList.Count != 0)
+                totalSymbolCount = symbolList.Count;
+
+                runProgressBar.Maximum = totalSymbolCount;
+
+                totalSymbolsValueLabel.Text = totalSymbolCount.ToString();
+
+                string testPeriod = periodComboBox.Text.ToString();
+
+                bool avalibleDate = availableCheckBox.Checked;
+
+
+
+                //System.Threading.Tasks.Parallel.ForEach(symbolList,
+                //    new System.Threading.Tasks.ParallelOptions { MaxDegreeOfParallelism = _configuration.NumberOfThread },
+                //    async symbol =>
+                //    {
+                //        await StartGetInfo(symbol, testPeriod, avalibleDate);
+                //    });
+
+                //Task.Run()
+
+
+                //var queue = new Queue<string>(symbolList);
+                //List<Task> taskList = new List<Task>();
+
+                //while (queue.Any())
+                //{
+
+                //for (int i = 0; i < _configuration.NumberOfThread; i++)
+                //{
+                //    if (!queue.Any())
+                //    {
+                //        break;
+                //    }
+
+                //    string symbol = queue.Dequeue();
+
+
+
+                //   //var task = Task.Run(async () =>
+                //   // {
+                //   //     await StartGetInfo(symbol, testPeriod, avalibleDate);
+                //   // });
+
+
+                //    //taskList.Add(task);
+
+                //   // System.Threading.Thread test = new System.Threading.Thread(System.Threading.ParameterizedThreadStart);
+
+                //    //taskList.Add(task);
+                //    //taskList.Add(StartGetInfo(symbol, testPeriod, avalibleDate));
+                //}
+
+
+
+                //Task.WaitAny(taskList.ToArray());
+
+                //foreach (var task in taskList)
+                //{
+                //    task.();
+                //}
+
+
+
+                //Task.WaitAny(taskList.ToArray(), source.Token);
+                //var factory = Task.Factory.StartNew(() => taskList.ToArray());
+                //Task.Factory.ContinueWhenAny(factory, () => { });
+                //Task.(taskList.ToArray(), source.Token);
+
+                //if (!queue.Any())
+                //{
+                //    ChangeButtonEnabled();
+                //    _tm.Stop();
+                //}
+                //Task.WaitAny(taskList.ToArray());
+                //allTasksList.AddRange(taskList);
+                //taskList = new List<Task>();
+
+
+                var factory = Task.Factory.StartNew(() =>
                 {
+                    var queue = new Queue<string>(symbolList);
                     List<Task> taskList = new List<Task>();
-
-                    for (int i = 0; i < _configuration.NumberOfThread; i++)
+                    while (!source.Token.IsCancellationRequested || queue.Any())
                     {
-                        string symbol = symbolList.FirstOrDefault();
-
-                        if (symbol == null)
+                        for (int i = 0; i < _configuration.NumberOfThread; i++)
                         {
-                            break;
-                        }
+                            if (!queue.Any())
+                            {
+                                break;
+                            }
 
-                        taskList.Add(StartGetInfo(symbol));
+                            string symbol = queue.Dequeue();
+
+                           var task = Task.Run(() => StartGetInfo(symbol, testPeriod, avalibleDate), source.Token);
+
+                        }
                     }
 
-                    Task.WaitAny(taskList.ToArray(), source.Token);
-                }
+                }, source.Token);
+                // }
 
-                ChangeButtonEnabled();
-                _tm.Stop();
             }
         }
 
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            source.Cancel();
             _tm.Stop();
             ChangeButtonEnabled();
         }
@@ -317,6 +406,12 @@ namespace EODLoader.Forms
         {
             durationValueLabel.Text = Int2StringTime(_startValue);
             _startValue++;
+            if (totalSymbolCount == totalProcessed)
+            {
+                source.Cancel();
+                _tm.Stop();
+                ChangeButtonEnabled();
+            }
         }
 
         private void settingsTimeTick(object sender, EventArgs e)
@@ -364,6 +459,9 @@ namespace EODLoader.Forms
             durationValueLabel.Text = "00:00:00";
             runProgressBar.Value = 0;
             RunLogGridView.Rows.Clear();
+            totalProcessed = 0;
+            errors = 0;
+            processOk = 0;
         }
 
         private bool ValidateStartInfo()
@@ -395,27 +493,12 @@ namespace EODLoader.Forms
             return true;
         }
 
-        private async Task StartGetInfo(string symbol)
+        private async Task StartGetInfo(string symbol, string testPeriod, bool avalibleDate)
         {
             try
             {
-                int symbolCount = symbolsListBox.Items.Count;
-
-                int totalProcessed = 0;
-
-                Invoke(runProgressBar, () => runProgressBar.Maximum = symbolCount);
-
-                Invoke(totalSymbolsValueLabel, () => totalSymbolsValueLabel.Text = symbolCount.ToString());
-
-                string testPeriod = string.Empty;
-
-                Invoke(periodComboBox, () => testPeriod = periodComboBox.Text.ToString());
-
-                int errors = 0;
-                int processOk = 0;
-
                 HistoricalResult result;
-                if (availableCheckBox.Checked)
+                if (avalibleDate)
                 {
                     result = await _eodHistoricalDataService.GetHistoricalPrices(symbol, null, null, testPeriod);
                 }

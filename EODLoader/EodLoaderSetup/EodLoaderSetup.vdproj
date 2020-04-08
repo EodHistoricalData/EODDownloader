@@ -15,6 +15,12 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_04D45F0257064E95B70AC00EE281FA92"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1A49C828BE9E1955F8BE4936B77D8503"
         "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
         "MsmSig" = "8:_UNDEFINED"
@@ -156,6 +162,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04D45F0257064E95B70AC00EE281FA92"
+            {
+            "SourcePath" = "8:C:\\Users\\ipanagushin\\Downloads\\EODLoader.ico"
+            "TargetName" = "8:EODLoader.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1A49C828BE9E1955F8BE4936B77D8503"
             {
             "AssemblyRegister" = "3:1"
@@ -279,7 +305,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder]\\EodLoader"
+            "DefaultLocation" = "8:[ProgramFilesFolder]\\EODLoader"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -305,25 +331,25 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EODLoader"
-        "ProductCode" = "8:{522EAC9C-E357-4DEA-A23D-01F3192FCD82}"
-        "PackageCode" = "8:{1972A32D-DEF6-41DE-BDE5-8845FF36458D}"
+        "ProductCode" = "8:{729BB1FB-0D04-4537-B6C1-24A0301479A6}"
+        "PackageCode" = "8:{A84AA998-C946-414C-9BE6-8F9B932DC85D}"
         "UpgradeCode" = "8:{4D0AE607-CECD-4755-A7E0-2B73339412D5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
-        "Manufacturer" = "8:Default Company Name"
+        "ProductVersion" = "8:1.0.2"
+        "Manufacturer" = "8:EODHistoricalData"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:EODLoader"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:EODHistoricalData"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
-        "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPURLINFOABOUT" = "8:https://eodhistoricaldata.com/"
+        "ARPPRODUCTICON" = "8:_04D45F0257064E95B70AC00EE281FA92"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -435,7 +461,7 @@
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
             "Target" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
-            "Folder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
+            "Folder" = "8:_84782E7E4D4B4F8F8712B788FE8C7B6D"
             "WorkingFolder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
             "Icon" = "8:"
             "Feature" = "8:"
@@ -862,7 +888,7 @@
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
-            "ReadOnly" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
             "Hidden" = "11:FALSE"
             "System" = "11:FALSE"
             "Permanent" = "11:TRUE"
@@ -879,7 +905,6 @@
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
-                "ExcludeFilter" = "8:ExcludeConfig"
                 }
             }
         }

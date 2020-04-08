@@ -76,7 +76,7 @@ namespace EODLoader.Services.EodHistoricalData
                     IUtilsService utils = new UtilsService();
                     string path = $@"{_configuration.LastDownloadDirectoryPath}\{symbol}.csv";
 
-                    utils.CreateCVSFile(historicalPricesExt, path);
+                    await utils.CreateCVSFile(historicalPricesExt, path);
 
                     return new HistoricalResult
                     {
