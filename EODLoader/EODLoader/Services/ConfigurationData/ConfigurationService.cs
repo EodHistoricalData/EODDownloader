@@ -1,4 +1,5 @@
-﻿using EODLoader.Services.ConfigurationData.Model;
+﻿using EODLoader.Logs;
+using EODLoader.Services.ConfigurationData.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,22 +28,33 @@ namespace EODLoader.Services.ConfigurationData
 
             XmlSerializer serializer = new XmlSerializer(typeof(ConfigurationModel));
 
-            StreamReader reader = new StreamReader(_filePath);
-            _configurationModel = (ConfigurationModel)serializer.Deserialize(reader);
-            reader.Close();
+            using (StreamReader reader = new StreamReader(_filePath))
+            {
+                _configurationModel = (ConfigurationModel)serializer.Deserialize(reader);
+                reader.Close();
+            }
 
             return _configurationModel;
         }
 
         public void Save(ConfigurationModel configurationModel)
         {
-            XmlSerializer writer =
-            new XmlSerializer(typeof(ConfigurationModel));
+            try
+            {
+                XmlSerializer writer =
+                    new XmlSerializer(typeof(ConfigurationModel));
 
-            FileStream file = File.Create(_filePath);
+                using (FileStream file = File.Create(_filePath))
+                {
+                    writer.Serialize(file, configurationModel);
+                    file.Close();
+                }
 
-            writer.Serialize(file, configurationModel);
-            file.Close();
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.StackTrace);
+            }
         }
 
         private void CheckConfigurationFile()
@@ -51,31 +63,58 @@ namespace EODLoader.Services.ConfigurationData
             {
                 CreateEmptyConfigurationFile();
             }
+            else
+            {
+                try
+                {
+                    ConfigurationModel _configurationModel = null;
+
+                    XmlSerializer serializer = new XmlSerializer(typeof(ConfigurationModel));
+
+                    using (StreamReader reader = new StreamReader(_filePath))
+                    {
+                        _configurationModel = (ConfigurationModel)serializer.Deserialize(reader);
+                        reader.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Logger.LogError(ex, ex.StackTrace);
+                }
+            }
         }
 
         private void CreateEmptyConfigurationFile()
         {
-            ConfigurationModel configurationModel = new ConfigurationModel();
-
-            configurationModel.LogFilePath = _fileDirectory + @"\Logs";
-
-            XmlSerializer writer =
-            new XmlSerializer(typeof(ConfigurationModel));
-
-            if (!Directory.Exists(_fileDirectory))
+            try
             {
-                Directory.CreateDirectory(_fileDirectory);
-            }
+                ConfigurationModel configurationModel = new ConfigurationModel();
 
-            if (!Directory.Exists(configurationModel.LogFilePath))
+                configurationModel.LogFilePath = _fileDirectory + @"\Logs";
+
+                XmlSerializer writer =
+                new XmlSerializer(typeof(ConfigurationModel));
+
+                if (!Directory.Exists(_fileDirectory))
+                {
+                    Directory.CreateDirectory(_fileDirectory);
+                }
+
+                if (!Directory.Exists(configurationModel.LogFilePath))
+                {
+                    Directory.CreateDirectory(configurationModel.LogFilePath);
+                }
+
+                using (FileStream file = File.Create(_filePath))
+                {
+                    writer.Serialize(file, configurationModel);
+                    file.Close();
+                };
+            }
+            catch (Exception ex)
             {
-                Directory.CreateDirectory(configurationModel.LogFilePath);
+                Logger.LogError(ex, ex.StackTrace);
             }
-
-            FileStream file = File.Create(_filePath);
-
-            writer.Serialize(file, configurationModel);
-            file.Close();
         }
     }
 }

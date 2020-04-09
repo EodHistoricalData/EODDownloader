@@ -41,16 +41,29 @@ namespace EODLoader.Forms
         private volatile int errors = 0;
         private volatile int processOk = 0;
         private int totalSymbolCount = 0;
+        UpdateForm updateForm = new UpdateForm();
 
         public MainForm()
         {
+            _configurationService = new ConfigurationService();
+
+            _configuration = _configurationService.GetConfiguration();
+
             InitializeComponent();
+
+            if (_configuration.AutoUpdateIsUsed)
+            {
+                updateForm.ShowDialog();
+
+                _configuration = _configurationService.GetConfiguration();
+
+            }
 
             this.Text = $"{this.Text} {Assembly.GetExecutingAssembly().GetName().Version}";
 
             _autoUpdateService = new AutoUpdateService();
 
-            _configurationService = new ConfigurationService();
+            
 
             _eodHistoricalDataService = new EodHistoricalDataService();
 
@@ -87,21 +100,15 @@ namespace EODLoader.Forms
             System.Diagnostics.Process.Start("https://google.com/");
         }
 
-        private void AutoUpdater_ApplicationExitEvent()
-        {
-            System.Threading.Thread.Sleep(1000);
-            Application.Exit();
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
-            _configuration = _configurationService.GetConfiguration();
+            
+
+            CheckTokenStatus();
 
             toDateTimePicker.Value = DateTime.Now;
 
             periodComboBox.SelectedIndex = 0;
-
-            CheckTokenStatus();
 
             string symbolPath = _configuration.LastSymbolFilePath;
 
@@ -124,14 +131,6 @@ namespace EODLoader.Forms
             else
             {
                 _configuration.LastDownloadDirectoryPath = string.Empty;
-            }
-
-            if (_configuration.AutoUpdateIsUsed)
-            {
-                if (_autoUpdateService.Start())
-                {
-                    AutoUpdater_ApplicationExitEvent();
-                }
             }
         }
 

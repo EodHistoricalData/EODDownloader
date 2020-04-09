@@ -23,7 +23,7 @@ namespace EODLoader.Services.EodHistoricalData
 
         public EodHistoricalDataService()
         {
-         
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             _configurationService = new ConfigurationService();
             _configuration = _configurationService.GetConfiguration();
         }

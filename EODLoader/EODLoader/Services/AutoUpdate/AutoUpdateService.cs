@@ -1,4 +1,5 @@
-﻿using EODLoader.Logs;
+﻿using EODLoader.Forms;
+using EODLoader.Logs;
 using EODLoader.Services.AutoUpdate.Models;
 using EODLoader.Services.ConfigurationData;
 using EODLoader.Services.ConfigurationData.Model;
@@ -13,6 +14,7 @@ using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -27,6 +29,8 @@ namespace EODLoader.Services.AutoUpdate
         private IConfigurationService _configurationService { get; set; }
         private ConfigurationModel _configuration { get; set; }
 
+        private string setupPath = $@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\EODLoader\updateSetup.msi";
+
         public AutoUpdateService()
         {
             _configurationService = new ConfigurationService();
@@ -36,13 +40,16 @@ namespace EODLoader.Services.AutoUpdate
             _webProxy = _webProxyService.GetWebProxy();
         }
 
-        public bool Start()
+        
+        public async Task<bool> Start()
         {
+
             string downloadUrl = CheckForUpdate();
 
             if (downloadUrl != null)
             {
                 Update(downloadUrl);
+
                 return true;
             }
             return false;
@@ -70,28 +77,37 @@ namespace EODLoader.Services.AutoUpdate
 
         private string CheckForUpdate()
         {
-            string xml = GetXMLString();
-
-            if (xml == null)
+            try
             {
+                string xml = GetXMLString();
+
+                if (xml == null)
+                {
+                    return null;
+                }
+
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(UpdateModel));
+                XmlTextReader xmlTextReader = new XmlTextReader(new StringReader(xml)) { XmlResolver = null };
+
+                var result = (UpdateModel)xmlSerializer.Deserialize(xmlTextReader);
+
+                Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+
+                Version resultVersion = Version.Parse(result.CurrentVersion);
+
+                if (resultVersion > currentVersion)
+                {
+                    return result.DownloadURL;
+                }
+
                 return null;
             }
-
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(UpdateModel));
-            XmlTextReader xmlTextReader = new XmlTextReader(new StringReader(xml)) { XmlResolver = null };
-
-            var result = (UpdateModel)xmlSerializer.Deserialize(xmlTextReader);
-
-            Version currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-
-            Version resultVersion = Version.Parse(result.CurrentVersion);
-
-            if (resultVersion > currentVersion)
+            catch (Exception ex)
             {
-                return result.DownloadURL;
-            }
+                Logger.LogError(ex, ex.StackTrace);
 
-            return null;
+                return null;
+            }
         }
 
         private void Update(string downloadUrl)
@@ -99,9 +115,21 @@ namespace EODLoader.Services.AutoUpdate
             WebClient client = new WebClient();
             client.Proxy = _webProxy;
 
-            client.DownloadFile(downloadUrl, "updateSetup.msi");
+            byte[] sutupBytes = client.DownloadData(downloadUrl);
 
-            Process.Start("updateSetup.msi");
+            try
+            {
+                using (var fs = new FileStream(setupPath, FileMode.Create, FileAccess.Write))
+                {
+                    fs.Write(sutupBytes, 0, sutupBytes.Length);
+                }
+
+                Process.Start(setupPath);
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.StackTrace);
+            }
         }
 
     }

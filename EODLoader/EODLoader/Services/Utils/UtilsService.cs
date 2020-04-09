@@ -12,6 +12,7 @@ namespace EODLoader.Services.Utils
     {
         public async Task CreateCVSFile<T>(IEnumerable<T> items, string path)
         {
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Type itemType = typeof(T);
             var props = itemType.GetProperties(BindingFlags.Public | BindingFlags.Instance);                                
 
