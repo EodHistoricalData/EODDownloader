@@ -76,25 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E0794703C204483DA88E7146865B2D0A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_AE21A5EE826704CE31D69E953F90DA79"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_780B41D8A9509CC92A04AD15FD61D393"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E47A50A4389361D1795D750FC356EB28"
+        "OwnerKey" = "8:_1A49C828BE9E1955F8BE4936B77D8503"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -106,7 +88,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1A49C828BE9E1955F8BE4936B77D8503"
+        "OwnerKey" = "8:_E47A50A4389361D1795D750FC356EB28"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_780B41D8A9509CC92A04AD15FD61D393"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_AE21A5EE826704CE31D69E953F90DA79"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E0794703C204483DA88E7146865B2D0A"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -231,11 +231,6 @@
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_1A49C828BE9E1955F8BE4936B77D8503"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
@@ -262,11 +257,6 @@
             "AssemblyAsmDisplayName" = "8:Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_780B41D8A9509CC92A04AD15FD61D393"
-                    {
-                    "Name" = "8:Serilog.Sinks.File.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Serilog.Sinks.File.dll"
             "TargetName" = "8:"
@@ -293,11 +283,6 @@
             "AssemblyAsmDisplayName" = "8:System.IO.Compression, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
                 "ScatterAssemblies"
                 {
-                    "_AE21A5EE826704CE31D69E953F90DA79"
-                    {
-                    "Name" = "8:System.IO.Compression.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.IO.Compression.dll"
             "TargetName" = "8:"
@@ -324,11 +309,6 @@
             "AssemblyAsmDisplayName" = "8:RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_BA9204ABBB0033535F30C22BB0161352"
-                    {
-                    "Name" = "8:RestSharp.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:RestSharp.dll"
             "TargetName" = "8:"
@@ -355,11 +335,6 @@
             "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_E0794703C204483DA88E7146865B2D0A"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
@@ -386,11 +361,6 @@
             "AssemblyAsmDisplayName" = "8:Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E47A50A4389361D1795D750FC356EB28"
-                    {
-                    "Name" = "8:Serilog.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Serilog.dll"
             "TargetName" = "8:"
@@ -477,15 +447,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EODLoader"
-        "ProductCode" = "8:{E46A0A84-1DCD-4D52-961C-01774D23CFEA}"
-        "PackageCode" = "8:{9CDCC0C4-0187-41FC-890A-8C4D512307CE}"
+        "ProductCode" = "8:{AF56D54C-2348-41E9-B1C4-F717016A04B5}"
+        "PackageCode" = "8:{A833D823-205E-4D35-9283-69A1C6370094}"
         "UpgradeCode" = "8:{4D0AE607-CECD-4755-A7E0-2B73339412D5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.3"
+        "ProductVersion" = "8:1.0.4"
         "Manufacturer" = "8:EODHistoricalData"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -645,7 +615,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_32EA5E3E097C4B64AB92F73274CB089C"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:Готово"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -689,7 +659,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_F970C257D0E54F57B8ADAF3BC954A057"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:Ход выполнения"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -733,7 +703,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_1712D7AFD8F04ACEBE703EE7163272AB"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:Подтверждение установки"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -755,7 +725,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_1B9A7BC079AD4DDC85DDE26AF7DA9629"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:Папка установки"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -777,7 +747,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_9A63439F7F5C466BB417EF4DF24A4B27"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:Добро пожаловать!"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -840,7 +810,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_9C3B7DDB11034B3C81F67F06CD0D846C"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:Готово"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
@@ -871,7 +841,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_18AE9BA3B50046C48B2F2FF39C5901DE"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:Ход выполнения"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -915,7 +885,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_26A4072CF0CD450DA3C400BBDEFEBC02"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:Папка установки"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -950,7 +920,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_4CC46CB676AD447496493669E207739E"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:Добро пожаловать!"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -998,7 +968,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_6CFA3B3C5C3C4F23828DB310173457E5"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:Подтверждение установки"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
