@@ -97,7 +97,7 @@ namespace EODLoader.Forms
 
         private void helpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://google.com/");
+            System.Diagnostics.Process.Start("https://eodhistoricaldata.com/knowledgebase/");
         }
 
         private void MainForm_Load(object sender, EventArgs e)
