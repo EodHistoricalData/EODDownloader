@@ -1,2 +1,2 @@
 # EODDownloader
-Windows Application for working with https://eodhistoricaldata.com/
+Windows Application for downloading End Of Day Data from https://eodhistoricaldata.com/
