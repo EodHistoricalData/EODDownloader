@@ -288,27 +288,31 @@ namespace EODLoader.Forms
 
                     source = new System.Threading.CancellationTokenSource();
 
-                    var factory = Task.Factory.StartNew(() =>
+                    var maxWorkerThreads = _configuration.NumberOfThread;
+
+                    var factory = Task.Factory;
+                    factory.StartNew(() =>
                     {
                         var queue = new Queue<string>(symbolList);
-                        List<Task> taskList = new List<Task>();
+
                         while (!source.Token.IsCancellationRequested || queue.Any())
                         {
-                            for (int i = 0; i < _configuration.NumberOfThread; i++)
+                            var taskList = new List<Task>();
+                            for (int i = 0; i < maxWorkerThreads; i++)
                             {
                                 if (!queue.Any())
                                 {
                                     break;
                                 }
-
                                 string symbol = queue.Dequeue();
-
                                 var task = Task.Run(() => StartGetInfo(symbol, testPeriod, avalibleDate), source.Token);
-
+                                taskList.Add(task);
                             }
+                            
+                            Task.WaitAll(taskList.ToArray());
                         }
-
                     }, source.Token);
+
                 }
             }
             catch (Exception ex)

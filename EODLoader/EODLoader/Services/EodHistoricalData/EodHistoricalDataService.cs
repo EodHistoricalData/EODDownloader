@@ -85,7 +85,7 @@ namespace EODLoader.Services.EodHistoricalData
                 }
 
                 var request = new RestRequest(Method.GET);
-                IRestResponse response = client.Execute(request);
+                IRestResponse response = await client.ExecuteAsync(request);
                 if (response.StatusCode == 0)
                 {
                     Logger.LogError("Unable to connect to remote server");
