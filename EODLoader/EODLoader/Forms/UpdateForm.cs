@@ -19,25 +19,44 @@ namespace EODLoader.Forms
         public UpdateForm()
         {
             InitializeComponent();
-            _autoUpdateService = new AutoUpdateService();
-            _tm.Start();
-            _tm.Tick += new EventHandler(timeTickAsync);
-            _tm.Interval = 100;
         }
 
         public async void timeTickAsync(object sender, EventArgs e)
         {
             _tm.Stop();
 
-            if (await _autoUpdateService.Start())
+            string downloadUrl = _autoUpdateService.CheckForUpdate();
+            if (downloadUrl != null)
             {
-                Application.Exit();
+                var result = MessageBox.Show(
+                "There is an update, would you like to download it?",
+                "Message",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Information,
+                MessageBoxDefaultButton.Button1,
+                MessageBoxOptions.DefaultDesktopOnly);
+
+                if (result == DialogResult.Yes)
+                {
+                    await _autoUpdateService.Start(downloadUrl);
+                }
+                else
+                {
+                    this.Close();
+                }
             }
             else
             {
                 this.Close();
             }
-            
+        }
+
+        private void UpdateForm_Load(object sender, EventArgs e)
+        {
+            _autoUpdateService = new AutoUpdateService();
+            _tm.Start();
+            _tm.Tick += new EventHandler(timeTickAsync);
+            _tm.Interval = 100;
         }
     }
 }

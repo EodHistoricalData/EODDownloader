@@ -40,19 +40,12 @@ namespace EODLoader.Services.AutoUpdate
             _webProxy = _webProxyService.GetWebProxy();
         }
 
-        
-        public async Task<bool> Start()
+
+        public async Task Start(string downloadUrl)
         {
 
-            string downloadUrl = CheckForUpdate();
+            Update(downloadUrl);
 
-            if (downloadUrl != null)
-            {
-                Update(downloadUrl);
-
-                return true;
-            }
-            return false;
         }
 
         private string GetXMLString()
@@ -75,7 +68,7 @@ namespace EODLoader.Services.AutoUpdate
             }
         }
 
-        private string CheckForUpdate()
+        public string CheckForUpdate()
         {
             try
             {
@@ -125,6 +118,7 @@ namespace EODLoader.Services.AutoUpdate
                 }
 
                 Process.Start(setupPath);
+                Application.Exit();
             }
             catch (Exception ex)
             {

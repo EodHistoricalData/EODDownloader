@@ -79,6 +79,7 @@
             this.Name = "UpdateForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Checking for updates";
+            this.Load += new System.EventHandler(this.UpdateForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

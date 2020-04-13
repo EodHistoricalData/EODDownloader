@@ -8,6 +8,7 @@ namespace EODLoader.Services.AutoUpdate
 {
     public interface IAutoUpdateService
     {
-        Task<bool> Start();
+        string CheckForUpdate();
+        Task Start(string downloadUrl);
     }
 }

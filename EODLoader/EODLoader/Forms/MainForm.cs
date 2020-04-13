@@ -63,8 +63,6 @@ namespace EODLoader.Forms
 
             _autoUpdateService = new AutoUpdateService();
 
-            
-
             _eodHistoricalDataService = new EodHistoricalDataService();
 
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|CSV files(*.csv)|*.csv|All files(*.*)|*.*";
@@ -102,9 +100,7 @@ namespace EODLoader.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            
-
-            CheckTokenStatus();
+            CheckTokenStatus(true);
 
             toDateTimePicker.Value = DateTime.Now;
 
@@ -226,7 +222,7 @@ namespace EODLoader.Forms
             }
         }
 
-        private void CheckTokenStatus()
+        private void CheckTokenStatus(bool isFirstLoad)
         {
             if (_configuration.Token == string.Empty)
             {
@@ -236,8 +232,12 @@ namespace EODLoader.Forms
             }
             else
             {
+                bool tokenIsValid = true;
 
-                bool tokenIsValid = _eodHistoricalDataService.ValidateToken(_configuration.Token); //ValidationFunction
+                if (!isFirstLoad)
+                {
+                    tokenIsValid = _eodHistoricalDataService.ValidateToken(_configuration.Token); //ValidationFunction
+                }
 
                 if (tokenIsValid)
                 {
@@ -308,7 +308,7 @@ namespace EODLoader.Forms
                                 var task = Task.Run(() => StartGetInfo(symbol, testPeriod, avalibleDate), source.Token);
                                 taskList.Add(task);
                             }
-                            
+
                             Task.WaitAll(taskList.ToArray());
                         }
                     }, source.Token);
@@ -341,6 +341,8 @@ namespace EODLoader.Forms
         {
             durationValueLabel.Text = Int2StringTime(_startValue);
             _startValue++;
+
+            ValidateFormValues();
             if (totalSymbolCount == totalProcessed || source.IsCancellationRequested)
             {
                 source.Cancel();
@@ -354,7 +356,7 @@ namespace EODLoader.Forms
             if (settingsForm == null || settingsForm.IsDisposed)
             {
                 _configuration = _configurationService.GetConfiguration();
-                CheckTokenStatus();
+                CheckTokenStatus(false);
             }
         }
 
@@ -428,6 +430,16 @@ namespace EODLoader.Forms
             return true;
         }
 
+
+
+        private void ValidateFormValues()
+        {
+            totalProcessedValueLabel.Text = totalProcessed.ToString();
+            processedOkValueLabel.Text = processOk.ToString();
+            errorsValueLabel.Text = errors.ToString();
+            runProgressBar.Value = totalProcessed;
+        }
+
         private async Task StartGetInfo(string symbol, string testPeriod, bool avalibleDate)
         {
             try
@@ -442,26 +454,26 @@ namespace EODLoader.Forms
                     result = await _eodHistoricalDataService.GetHistoricalPrices(symbol, fromDateTimePicker.Value, toDateTimePicker.Value, testPeriod);
                 }
 
-                totalProcessed++;
+               // Invoke(totalProcessedValueLabel, () => totalProcessedValueLabel.Text = totalProcessed.ToString());
 
-                Invoke(totalProcessedValueLabel, () => totalProcessedValueLabel.Text = totalProcessed.ToString());
-
-                Invoke(runProgressBar, () => runProgressBar.Value = totalProcessed);
+                //Invoke(runProgressBar, () => runProgressBar.Value = totalProcessed);
 
                 switch (result.Status)
                 {
                     case StatusEnum.Ok:
                         {
                             Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusOK, result.Symbol, result.Description));
+                            totalProcessed++;
                             processOk++;
-                            Invoke(processedOkValueLabel, () => processedOkValueLabel.Text = processOk.ToString());
+                            //Invoke(processedOkValueLabel, () => processedOkValueLabel.Text = processOk.ToString());
                         }
                         break;
                     case StatusEnum.Error:
                         {
                             Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusError, result.Symbol, result.Description));
+                            totalProcessed++;
                             errors++;
-                            Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
+                            //Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
                             if (result.Description == "Unable to connect to remote server")
                             {
                                 source.Cancel();
@@ -471,8 +483,9 @@ namespace EODLoader.Forms
                     case StatusEnum.ErrorProxy:
                         {
                             Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusError, result.Symbol, result.Description));
+                            totalProcessed++;
                             errors++;
-                            Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
+                            //Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
                             source.Cancel();
                         }
                         break;
