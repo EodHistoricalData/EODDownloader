@@ -2,11 +2,6 @@
 using EODLoader.Services.ConfigurationData.Model;
 using Serilog;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace EODLoader.Logs
 {
@@ -24,7 +19,7 @@ namespace EODLoader.Logs
             _configuration = _configurationService.GetConfiguration();
 
             _errorLogger = new LoggerConfiguration()
-                .WriteTo.File(_configuration.LogFilePath +@"\log-.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.File(_configuration.LogFilePath + @"\log-.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
         }
 

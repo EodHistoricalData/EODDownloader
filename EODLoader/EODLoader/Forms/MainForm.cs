@@ -454,7 +454,7 @@ namespace EODLoader.Forms
                     result = await _eodHistoricalDataService.GetHistoricalPrices(symbol, fromDateTimePicker.Value, toDateTimePicker.Value, testPeriod);
                 }
 
-               // Invoke(totalProcessedValueLabel, () => totalProcessedValueLabel.Text = totalProcessed.ToString());
+                // Invoke(totalProcessedValueLabel, () => totalProcessedValueLabel.Text = totalProcessed.ToString());
 
                 //Invoke(runProgressBar, () => runProgressBar.Value = totalProcessed);
 

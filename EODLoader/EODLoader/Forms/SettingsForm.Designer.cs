@@ -63,6 +63,15 @@
             this.label6 = new System.Windows.Forms.Label();
             this.threadNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.label10 = new System.Windows.Forms.Label();
             this.groupBox.SuspendLayout();
             this.settingsTabControl.SuspendLayout();
             this.OAuthTab.SuspendLayout();
@@ -119,6 +128,15 @@
             // 
             // OAuthTab
             // 
+            this.OAuthTab.Controls.Add(this.linkLabel4);
+            this.OAuthTab.Controls.Add(this.label10);
+            this.OAuthTab.Controls.Add(this.linkLabel3);
+            this.OAuthTab.Controls.Add(this.linkLabel2);
+            this.OAuthTab.Controls.Add(this.linkLabel1);
+            this.OAuthTab.Controls.Add(this.textBox1);
+            this.OAuthTab.Controls.Add(this.label9);
+            this.OAuthTab.Controls.Add(this.label8);
+            this.OAuthTab.Controls.Add(this.richTextBox1);
             this.OAuthTab.Controls.Add(this.tokenLinkLabel);
             this.OAuthTab.Controls.Add(this.tokenLabel);
             this.OAuthTab.Controls.Add(this.tokenTextBox);
@@ -442,6 +460,100 @@
             this.label7.Text = "Path to log:";
             this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Location = new System.Drawing.Point(22, 123);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(860, 230);
+            this.richTextBox1.TabIndex = 3;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 432);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(222, 32);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Documentation: ";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(16, 494);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(185, 32);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Pricing Page:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(431, 641);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(462, 31);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.Text = "Contact us if you have any questions";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(466, 686);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(431, 32);
+            this.linkLabel1.TabIndex = 7;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "support@eoshidstoricaldata.com";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(244, 432);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(501, 32);
+            this.linkLabel2.TabIndex = 8;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "eodhistoricaldata.com/knowledgebase";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Location = new System.Drawing.Point(244, 494);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(387, 32);
+            this.linkLabel3.TabIndex = 9;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "eodhistoricaldata.com/pricing";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Location = new System.Drawing.Point(244, 369);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(431, 32);
+            this.linkLabel4.TabIndex = 11;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "support@eoshidstoricaldata.com";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 369);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(148, 32);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "App Page:";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -507,5 +619,14 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown threadNumericUpDown;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.Label label10;
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EODLoader.Services.Utils
@@ -14,7 +13,7 @@ namespace EODLoader.Services.Utils
         {
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
             Type itemType = typeof(T);
-            var props = itemType.GetProperties(BindingFlags.Public | BindingFlags.Instance);                                
+            var props = itemType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
             using (var writer = new StreamWriter(path))
             {
