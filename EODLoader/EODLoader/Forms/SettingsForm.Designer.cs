@@ -40,8 +40,6 @@
             this.tokenLabel = new System.Windows.Forms.Label();
             this.tokenTextBox = new System.Windows.Forms.TextBox();
             this.GeneralTab = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
-            this.threadNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.proxyGroupBox = new System.Windows.Forms.GroupBox();
             this.checkPictureBox = new System.Windows.Forms.PictureBox();
             this.credentialsGroupBox = new System.Windows.Forms.GroupBox();
@@ -62,20 +60,24 @@
             this.logFileButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label6 = new System.Windows.Forms.Label();
+            this.threadNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox.SuspendLayout();
             this.settingsTabControl.SuspendLayout();
             this.OAuthTab.SuspendLayout();
             this.GeneralTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.threadNumericUpDown)).BeginInit();
             this.proxyGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkPictureBox)).BeginInit();
             this.credentialsGroupBox.SuspendLayout();
             this.LoggingTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.threadNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // settingsTreeView
             // 
-            this.settingsTreeView.Location = new System.Drawing.Point(12, 12);
+            this.settingsTreeView.Location = new System.Drawing.Point(32, 29);
+            this.settingsTreeView.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.settingsTreeView.Name = "settingsTreeView";
             treeNode1.Name = "OAuthNode";
             treeNode1.Text = "OAuth";
@@ -87,16 +89,18 @@
             treeNode1,
             treeNode2,
             treeNode3});
-            this.settingsTreeView.Size = new System.Drawing.Size(156, 373);
+            this.settingsTreeView.Size = new System.Drawing.Size(409, 884);
             this.settingsTreeView.TabIndex = 1;
             this.settingsTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.settingsTreeView_NodeMouseClick);
             // 
             // groupBox
             // 
             this.groupBox.Controls.Add(this.settingsTabControl);
-            this.groupBox.Location = new System.Drawing.Point(176, 5);
+            this.groupBox.Location = new System.Drawing.Point(469, 12);
+            this.groupBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(360, 380);
+            this.groupBox.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.groupBox.Size = new System.Drawing.Size(960, 906);
             this.groupBox.TabIndex = 2;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "OAuth";
@@ -106,10 +110,11 @@
             this.settingsTabControl.Controls.Add(this.OAuthTab);
             this.settingsTabControl.Controls.Add(this.GeneralTab);
             this.settingsTabControl.Controls.Add(this.LoggingTab);
-            this.settingsTabControl.Location = new System.Drawing.Point(6, 19);
+            this.settingsTabControl.Location = new System.Drawing.Point(16, 45);
+            this.settingsTabControl.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.settingsTabControl.Name = "settingsTabControl";
             this.settingsTabControl.SelectedIndex = 0;
-            this.settingsTabControl.Size = new System.Drawing.Size(348, 355);
+            this.settingsTabControl.Size = new System.Drawing.Size(928, 847);
             this.settingsTabControl.TabIndex = 4;
             // 
             // OAuthTab
@@ -117,10 +122,11 @@
             this.OAuthTab.Controls.Add(this.tokenLinkLabel);
             this.OAuthTab.Controls.Add(this.tokenLabel);
             this.OAuthTab.Controls.Add(this.tokenTextBox);
-            this.OAuthTab.Location = new System.Drawing.Point(4, 22);
+            this.OAuthTab.Location = new System.Drawing.Point(10, 48);
+            this.OAuthTab.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.OAuthTab.Name = "OAuthTab";
-            this.OAuthTab.Padding = new System.Windows.Forms.Padding(3);
-            this.OAuthTab.Size = new System.Drawing.Size(340, 329);
+            this.OAuthTab.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.OAuthTab.Size = new System.Drawing.Size(908, 789);
             this.OAuthTab.TabIndex = 0;
             this.OAuthTab.Text = "OAuth";
             this.OAuthTab.UseVisualStyleBackColor = true;
@@ -129,9 +135,10 @@
             // 
             this.tokenLinkLabel.AutoSize = true;
             this.tokenLinkLabel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tokenLinkLabel.Location = new System.Drawing.Point(279, 21);
+            this.tokenLinkLabel.Location = new System.Drawing.Point(744, 50);
+            this.tokenLinkLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.tokenLinkLabel.Name = "tokenLinkLabel";
-            this.tokenLinkLabel.Size = new System.Drawing.Size(54, 13);
+            this.tokenLinkLabel.Size = new System.Drawing.Size(138, 32);
             this.tokenLinkLabel.TabIndex = 2;
             this.tokenLinkLabel.TabStop = true;
             this.tokenLinkLabel.Text = "Get token";
@@ -140,17 +147,19 @@
             // tokenLabel
             // 
             this.tokenLabel.AutoSize = true;
-            this.tokenLabel.Location = new System.Drawing.Point(6, 21);
+            this.tokenLabel.Location = new System.Drawing.Point(16, 50);
+            this.tokenLabel.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.tokenLabel.Name = "tokenLabel";
-            this.tokenLabel.Size = new System.Drawing.Size(41, 13);
+            this.tokenLabel.Size = new System.Drawing.Size(102, 32);
             this.tokenLabel.TabIndex = 1;
             this.tokenLabel.Text = "Token:";
             // 
             // tokenTextBox
             // 
-            this.tokenTextBox.Location = new System.Drawing.Point(53, 18);
+            this.tokenTextBox.Location = new System.Drawing.Point(141, 43);
+            this.tokenTextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.tokenTextBox.Name = "tokenTextBox";
-            this.tokenTextBox.Size = new System.Drawing.Size(220, 20);
+            this.tokenTextBox.Size = new System.Drawing.Size(580, 38);
             this.tokenTextBox.TabIndex = 0;
             // 
             // GeneralTab
@@ -160,45 +169,14 @@
             this.GeneralTab.Controls.Add(this.proxyGroupBox);
             this.GeneralTab.Controls.Add(this.proxyCheckBox);
             this.GeneralTab.Controls.Add(this.autoUpdateCheckBox);
-            this.GeneralTab.Location = new System.Drawing.Point(4, 22);
+            this.GeneralTab.Location = new System.Drawing.Point(10, 48);
+            this.GeneralTab.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.GeneralTab.Name = "GeneralTab";
-            this.GeneralTab.Padding = new System.Windows.Forms.Padding(3);
-            this.GeneralTab.Size = new System.Drawing.Size(340, 329);
+            this.GeneralTab.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.GeneralTab.Size = new System.Drawing.Size(908, 789);
             this.GeneralTab.TabIndex = 1;
             this.GeneralTab.Text = "General";
             this.GeneralTab.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 293);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(131, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Simultaneous connections";
-            // 
-            // threadNumericUpDown
-            // 
-            this.threadNumericUpDown.Location = new System.Drawing.Point(158, 291);
-            this.threadNumericUpDown.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.threadNumericUpDown.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.threadNumericUpDown.Name = "threadNumericUpDown";
-            this.threadNumericUpDown.ReadOnly = true;
-            this.threadNumericUpDown.Size = new System.Drawing.Size(49, 20);
-            this.threadNumericUpDown.TabIndex = 3;
-            this.threadNumericUpDown.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
             // 
             // proxyGroupBox
             // 
@@ -211,9 +189,11 @@
             this.proxyGroupBox.Controls.Add(this.label1);
             this.proxyGroupBox.Controls.Add(this.proxyAddresstextBox);
             this.proxyGroupBox.Enabled = false;
-            this.proxyGroupBox.Location = new System.Drawing.Point(6, 66);
+            this.proxyGroupBox.Location = new System.Drawing.Point(16, 238);
+            this.proxyGroupBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.proxyGroupBox.Name = "proxyGroupBox";
-            this.proxyGroupBox.Size = new System.Drawing.Size(320, 208);
+            this.proxyGroupBox.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.proxyGroupBox.Size = new System.Drawing.Size(853, 496);
             this.proxyGroupBox.TabIndex = 2;
             this.proxyGroupBox.TabStop = false;
             this.proxyGroupBox.Text = "Proxy server";
@@ -222,7 +202,8 @@
             // 
             this.checkPictureBox.ErrorImage = global::EODLoader.Properties.Resources.StatusError;
             this.checkPictureBox.Image = global::EODLoader.Properties.Resources.StatusOK;
-            this.checkPictureBox.Location = new System.Drawing.Point(234, 176);
+            this.checkPictureBox.Location = new System.Drawing.Point(624, 420);
+            this.checkPictureBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.checkPictureBox.Name = "checkPictureBox";
             this.checkPictureBox.Size = new System.Drawing.Size(16, 16);
             this.checkPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -237,51 +218,58 @@
             this.credentialsGroupBox.Controls.Add(this.label2);
             this.credentialsGroupBox.Controls.Add(this.label3);
             this.credentialsGroupBox.Enabled = false;
-            this.credentialsGroupBox.Location = new System.Drawing.Point(6, 94);
+            this.credentialsGroupBox.Location = new System.Drawing.Point(16, 224);
+            this.credentialsGroupBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.credentialsGroupBox.Name = "credentialsGroupBox";
-            this.credentialsGroupBox.Size = new System.Drawing.Size(308, 73);
+            this.credentialsGroupBox.Padding = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.credentialsGroupBox.Size = new System.Drawing.Size(821, 174);
             this.credentialsGroupBox.TabIndex = 6;
             this.credentialsGroupBox.TabStop = false;
             this.credentialsGroupBox.Text = "Credentials";
             // 
             // proxyUserNameTextBox
             // 
-            this.proxyUserNameTextBox.Location = new System.Drawing.Point(126, 21);
+            this.proxyUserNameTextBox.Location = new System.Drawing.Point(336, 50);
+            this.proxyUserNameTextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.proxyUserNameTextBox.Name = "proxyUserNameTextBox";
-            this.proxyUserNameTextBox.Size = new System.Drawing.Size(168, 20);
+            this.proxyUserNameTextBox.Size = new System.Drawing.Size(441, 38);
             this.proxyUserNameTextBox.TabIndex = 0;
             // 
             // proxyUserPasswordTextBox
             // 
-            this.proxyUserPasswordTextBox.Location = new System.Drawing.Point(126, 47);
+            this.proxyUserPasswordTextBox.Location = new System.Drawing.Point(336, 112);
+            this.proxyUserPasswordTextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.proxyUserPasswordTextBox.Name = "proxyUserPasswordTextBox";
-            this.proxyUserPasswordTextBox.Size = new System.Drawing.Size(168, 20);
+            this.proxyUserPasswordTextBox.Size = new System.Drawing.Size(441, 38);
             this.proxyUserPasswordTextBox.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 23);
+            this.label2.Location = new System.Drawing.Point(61, 55);
+            this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.Size = new System.Drawing.Size(152, 32);
             this.label2.TabIndex = 1;
             this.label2.Text = "User name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 49);
+            this.label3.Location = new System.Drawing.Point(61, 117);
+            this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 13);
+            this.label3.Size = new System.Drawing.Size(139, 32);
             this.label3.TabIndex = 1;
             this.label3.Text = "Password";
             // 
             // credentialsCheckBox
             // 
             this.credentialsCheckBox.AutoSize = true;
-            this.credentialsCheckBox.Location = new System.Drawing.Point(25, 71);
+            this.credentialsCheckBox.Location = new System.Drawing.Point(67, 169);
+            this.credentialsCheckBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.credentialsCheckBox.Name = "credentialsCheckBox";
-            this.credentialsCheckBox.Size = new System.Drawing.Size(102, 17);
+            this.credentialsCheckBox.Size = new System.Drawing.Size(256, 36);
             this.credentialsCheckBox.TabIndex = 5;
             this.credentialsCheckBox.Text = "With credentials";
             this.credentialsCheckBox.UseVisualStyleBackColor = true;
@@ -290,17 +278,19 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(149, 56);
+            this.label5.Location = new System.Drawing.Point(397, 134);
+            this.label5.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 13);
+            this.label5.Size = new System.Drawing.Size(327, 32);
             this.label5.TabIndex = 4;
             this.label5.Text = "Example: localhost:2290";
             // 
             // proxyCheckButton
             // 
-            this.proxyCheckButton.Location = new System.Drawing.Point(87, 173);
+            this.proxyCheckButton.Location = new System.Drawing.Point(232, 413);
+            this.proxyCheckButton.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.proxyCheckButton.Name = "proxyCheckButton";
-            this.proxyCheckButton.Size = new System.Drawing.Size(141, 23);
+            this.proxyCheckButton.Size = new System.Drawing.Size(376, 55);
             this.proxyCheckButton.TabIndex = 3;
             this.proxyCheckButton.Text = "Check proxy connection";
             this.proxyCheckButton.UseVisualStyleBackColor = true;
@@ -309,34 +299,38 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(22, 38);
+            this.label4.Location = new System.Drawing.Point(59, 91);
+            this.label4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.Size = new System.Drawing.Size(222, 32);
             this.label4.TabIndex = 2;
             this.label4.Text = "and port number";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 25);
+            this.label1.Location = new System.Drawing.Point(59, 60);
+            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 13);
+            this.label1.Size = new System.Drawing.Size(228, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "IP address/name";
             // 
             // proxyAddresstextBox
             // 
-            this.proxyAddresstextBox.Location = new System.Drawing.Point(126, 29);
+            this.proxyAddresstextBox.Location = new System.Drawing.Point(336, 69);
+            this.proxyAddresstextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.proxyAddresstextBox.Name = "proxyAddresstextBox";
-            this.proxyAddresstextBox.Size = new System.Drawing.Size(167, 20);
+            this.proxyAddresstextBox.Size = new System.Drawing.Size(439, 38);
             this.proxyAddresstextBox.TabIndex = 0;
             // 
             // proxyCheckBox
             // 
             this.proxyCheckBox.AutoSize = true;
-            this.proxyCheckBox.Location = new System.Drawing.Point(6, 33);
+            this.proxyCheckBox.Location = new System.Drawing.Point(16, 160);
+            this.proxyCheckBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.proxyCheckBox.Name = "proxyCheckBox";
-            this.proxyCheckBox.Size = new System.Drawing.Size(105, 17);
+            this.proxyCheckBox.Size = new System.Drawing.Size(264, 36);
             this.proxyCheckBox.TabIndex = 1;
             this.proxyCheckBox.Text = "Use proxy server";
             this.proxyCheckBox.UseVisualStyleBackColor = true;
@@ -345,20 +339,23 @@
             // autoUpdateCheckBox
             // 
             this.autoUpdateCheckBox.AutoSize = true;
-            this.autoUpdateCheckBox.Location = new System.Drawing.Point(6, 10);
+            this.autoUpdateCheckBox.Location = new System.Drawing.Point(16, 110);
+            this.autoUpdateCheckBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.autoUpdateCheckBox.Name = "autoUpdateCheckBox";
-            this.autoUpdateCheckBox.Size = new System.Drawing.Size(160, 17);
+            this.autoUpdateCheckBox.Size = new System.Drawing.Size(407, 36);
             this.autoUpdateCheckBox.TabIndex = 1;
             this.autoUpdateCheckBox.Text = "Check for updates at startup";
             this.autoUpdateCheckBox.UseVisualStyleBackColor = true;
             // 
             // LoggingTab
             // 
+            this.LoggingTab.Controls.Add(this.label7);
             this.LoggingTab.Controls.Add(this.logFileTextBox);
             this.LoggingTab.Controls.Add(this.logFileButton);
-            this.LoggingTab.Location = new System.Drawing.Point(4, 22);
+            this.LoggingTab.Location = new System.Drawing.Point(10, 48);
+            this.LoggingTab.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.LoggingTab.Name = "LoggingTab";
-            this.LoggingTab.Size = new System.Drawing.Size(340, 329);
+            this.LoggingTab.Size = new System.Drawing.Size(908, 789);
             this.LoggingTab.TabIndex = 2;
             this.LoggingTab.Text = "Logging";
             this.LoggingTab.UseVisualStyleBackColor = true;
@@ -366,17 +363,19 @@
             // logFileTextBox
             // 
             this.logFileTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.logFileTextBox.Location = new System.Drawing.Point(3, 21);
+            this.logFileTextBox.Location = new System.Drawing.Point(16, 81);
+            this.logFileTextBox.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.logFileTextBox.Name = "logFileTextBox";
             this.logFileTextBox.ReadOnly = true;
-            this.logFileTextBox.Size = new System.Drawing.Size(334, 20);
+            this.logFileTextBox.Size = new System.Drawing.Size(884, 38);
             this.logFileTextBox.TabIndex = 1;
             // 
             // logFileButton
             // 
-            this.logFileButton.Location = new System.Drawing.Point(0, 49);
+            this.logFileButton.Location = new System.Drawing.Point(16, 157);
+            this.logFileButton.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.logFileButton.Name = "logFileButton";
-            this.logFileButton.Size = new System.Drawing.Size(92, 23);
+            this.logFileButton.Size = new System.Drawing.Size(245, 55);
             this.logFileButton.TabIndex = 0;
             this.logFileButton.Text = "Log file";
             this.logFileButton.UseVisualStyleBackColor = true;
@@ -385,9 +384,10 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(209, 391);
+            this.SaveButton.Location = new System.Drawing.Point(1173, 932);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(96, 23);
+            this.SaveButton.Size = new System.Drawing.Size(256, 55);
             this.SaveButton.TabIndex = 3;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -397,16 +397,62 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 28);
+            this.label6.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(357, 32);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Simultaneous connections:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // threadNumericUpDown
+            // 
+            this.threadNumericUpDown.Location = new System.Drawing.Point(383, 26);
+            this.threadNumericUpDown.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.threadNumericUpDown.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.threadNumericUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.threadNumericUpDown.Name = "threadNumericUpDown";
+            this.threadNumericUpDown.ReadOnly = true;
+            this.threadNumericUpDown.Size = new System.Drawing.Size(131, 38);
+            this.threadNumericUpDown.TabIndex = 5;
+            this.threadNumericUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(159, 32);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Path to log:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
             // SettingsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 422);
+            this.ClientSize = new System.Drawing.Size(1461, 1006);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.settingsTreeView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "SettingsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EODLoader Settings";
@@ -417,7 +463,6 @@
             this.OAuthTab.PerformLayout();
             this.GeneralTab.ResumeLayout(false);
             this.GeneralTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.threadNumericUpDown)).EndInit();
             this.proxyGroupBox.ResumeLayout(false);
             this.proxyGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkPictureBox)).EndInit();
@@ -425,6 +470,7 @@
             this.credentialsGroupBox.PerformLayout();
             this.LoggingTab.ResumeLayout(false);
             this.LoggingTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.threadNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -460,5 +506,6 @@
         private System.Windows.Forms.PictureBox checkPictureBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.NumericUpDown threadNumericUpDown;
+        private System.Windows.Forms.Label label7;
     }
 }
