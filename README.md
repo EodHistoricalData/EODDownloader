@@ -9,7 +9,7 @@ Windows Application for downloading End Of Day Data from https://eodhistoricalda
 
 ## Useful Links
 * Application Page: [EODDownloader](https://eodhistoricaldata.com/knowledgebase/windows-downloader-end-of-day-data/).
-* Documentation: [Knoledgebase](https://eodhistoricaldata.com/knowledgebase/).
+* Documentation: [Knowledgebase](https://eodhistoricaldata.com/knowledgebase/).
 * Pricing: [Pricing Page](https://eodhistoricaldata.com/pricing).
 
 ## Support
