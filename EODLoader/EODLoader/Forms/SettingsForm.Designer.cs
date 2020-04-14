@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("OAuth");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("API Key");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("General Preferences");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Logging");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
@@ -36,10 +36,21 @@
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.settingsTabControl = new System.Windows.Forms.TabControl();
             this.OAuthTab = new System.Windows.Forms.TabPage();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tokenLinkLabel = new System.Windows.Forms.LinkLabel();
             this.tokenLabel = new System.Windows.Forms.Label();
             this.tokenTextBox = new System.Windows.Forms.TextBox();
             this.GeneralTab = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.threadNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.proxyGroupBox = new System.Windows.Forms.GroupBox();
             this.checkPictureBox = new System.Windows.Forms.PictureBox();
             this.credentialsGroupBox = new System.Windows.Forms.GroupBox();
@@ -56,31 +67,20 @@
             this.proxyCheckBox = new System.Windows.Forms.CheckBox();
             this.autoUpdateCheckBox = new System.Windows.Forms.CheckBox();
             this.LoggingTab = new System.Windows.Forms.TabPage();
+            this.label7 = new System.Windows.Forms.Label();
             this.logFileTextBox = new System.Windows.Forms.TextBox();
             this.logFileButton = new System.Windows.Forms.Button();
             this.SaveButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label6 = new System.Windows.Forms.Label();
-            this.threadNumericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
-            this.label10 = new System.Windows.Forms.Label();
             this.groupBox.SuspendLayout();
             this.settingsTabControl.SuspendLayout();
             this.OAuthTab.SuspendLayout();
             this.GeneralTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.threadNumericUpDown)).BeginInit();
             this.proxyGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkPictureBox)).BeginInit();
             this.credentialsGroupBox.SuspendLayout();
             this.LoggingTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.threadNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // settingsTreeView
@@ -89,7 +89,7 @@
             this.settingsTreeView.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.settingsTreeView.Name = "settingsTreeView";
             treeNode1.Name = "OAuthNode";
-            treeNode1.Text = "OAuth";
+            treeNode1.Text = "API Key";
             treeNode2.Name = "GeneralNode";
             treeNode2.Text = "General Preferences";
             treeNode3.Name = "LoggingNode";
@@ -112,7 +112,7 @@
             this.groupBox.Size = new System.Drawing.Size(960, 906);
             this.groupBox.TabIndex = 2;
             this.groupBox.TabStop = false;
-            this.groupBox.Text = "OAuth";
+            this.groupBox.Text = "API Key";
             // 
             // settingsTabControl
             // 
@@ -148,6 +148,100 @@
             this.OAuthTab.TabIndex = 0;
             this.OAuthTab.Text = "OAuth";
             this.OAuthTab.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Location = new System.Drawing.Point(244, 369);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(431, 32);
+            this.linkLabel4.TabIndex = 11;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "support@eoshidstoricaldata.com";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 369);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(148, 32);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "App Page:";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Location = new System.Drawing.Point(244, 494);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(387, 32);
+            this.linkLabel3.TabIndex = 9;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "eodhistoricaldata.com/pricing";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(244, 432);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(501, 32);
+            this.linkLabel2.TabIndex = 8;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "eodhistoricaldata.com/knowledgebase";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(466, 686);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(431, 32);
+            this.linkLabel1.TabIndex = 7;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "support@eoshidstoricaldata.com";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Location = new System.Drawing.Point(431, 641);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(462, 31);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.Text = "Contact us if you have any questions";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(16, 494);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(185, 32);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Pricing Page:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(16, 432);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(222, 32);
+            this.label8.TabIndex = 4;
+            this.label8.Text = "Documentation: ";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Location = new System.Drawing.Point(22, 123);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.Size = new System.Drawing.Size(860, 230);
+            this.richTextBox1.TabIndex = 3;
+            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // tokenLinkLabel
             // 
@@ -195,6 +289,41 @@
             this.GeneralTab.TabIndex = 1;
             this.GeneralTab.Text = "General";
             this.GeneralTab.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(10, 28);
+            this.label6.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(357, 32);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Simultaneous connections:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // threadNumericUpDown
+            // 
+            this.threadNumericUpDown.Location = new System.Drawing.Point(383, 26);
+            this.threadNumericUpDown.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.threadNumericUpDown.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.threadNumericUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.threadNumericUpDown.Name = "threadNumericUpDown";
+            this.threadNumericUpDown.ReadOnly = true;
+            this.threadNumericUpDown.Size = new System.Drawing.Size(131, 38);
+            this.threadNumericUpDown.TabIndex = 5;
+            this.threadNumericUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
             // 
             // proxyGroupBox
             // 
@@ -378,6 +507,16 @@
             this.LoggingTab.Text = "Logging";
             this.LoggingTab.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(10, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(159, 32);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Path to log:";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
             // logFileTextBox
             // 
             this.logFileTextBox.BackColor = System.Drawing.SystemColors.Window;
@@ -415,145 +554,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(10, 28);
-            this.label6.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(357, 32);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Simultaneous connections:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // threadNumericUpDown
-            // 
-            this.threadNumericUpDown.Location = new System.Drawing.Point(383, 26);
-            this.threadNumericUpDown.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.threadNumericUpDown.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.threadNumericUpDown.Minimum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.threadNumericUpDown.Name = "threadNumericUpDown";
-            this.threadNumericUpDown.ReadOnly = true;
-            this.threadNumericUpDown.Size = new System.Drawing.Size(131, 38);
-            this.threadNumericUpDown.TabIndex = 5;
-            this.threadNumericUpDown.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(10, 25);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(159, 32);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Path to log:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(22, 123);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(860, 230);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
-            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 432);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(222, 32);
-            this.label8.TabIndex = 4;
-            this.label8.Text = "Documentation: ";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 494);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(185, 32);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Pricing Page:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(431, 641);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(462, 31);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "Contact us if you have any questions";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(466, 686);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(431, 32);
-            this.linkLabel1.TabIndex = 7;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "support@eoshidstoricaldata.com";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(244, 432);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(501, 32);
-            this.linkLabel2.TabIndex = 8;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "eodhistoricaldata.com/knowledgebase";
-            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
-            // 
-            // linkLabel3
-            // 
-            this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(244, 494);
-            this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(387, 32);
-            this.linkLabel3.TabIndex = 9;
-            this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "eodhistoricaldata.com/pricing";
-            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
-            // 
-            // linkLabel4
-            // 
-            this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(244, 369);
-            this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(431, 32);
-            this.linkLabel4.TabIndex = 11;
-            this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "support@eoshidstoricaldata.com";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 369);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(148, 32);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "App Page:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -575,6 +575,7 @@
             this.OAuthTab.PerformLayout();
             this.GeneralTab.ResumeLayout(false);
             this.GeneralTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.threadNumericUpDown)).EndInit();
             this.proxyGroupBox.ResumeLayout(false);
             this.proxyGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkPictureBox)).EndInit();
@@ -582,7 +583,6 @@
             this.credentialsGroupBox.PerformLayout();
             this.LoggingTab.ResumeLayout(false);
             this.LoggingTab.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.threadNumericUpDown)).EndInit();
             this.ResumeLayout(false);
 
         }
