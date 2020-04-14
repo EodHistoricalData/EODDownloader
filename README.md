@@ -1,6 +1,5 @@
 # EODDownloader
-Windows Application for downloading End Of Day Data from https://eodhistoricaldata.com/
-
+Windows Application for downloading End Of Day Data from https://eodhistoricaldata.com/. With our Windows Downloader (or EODLoader) application, it’s easy to download even the entire US stock market, with more than 47,000 active tickers we track, just with one click.
 
 ## BENEFITS
 * NO CODING. Easy installation and use.
