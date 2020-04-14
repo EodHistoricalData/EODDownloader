@@ -9,9 +9,9 @@ Windows Application for downloading End Of Day Data from https://eodhistoricalda
 * We support 120+ CRYPTO currencies and 150+ FOREX pairs.
 
 ## Useful Links
-* Application Page: [EODDownloader](https://eodhistoricaldata.com/knowledgebase/windows-downloader-end-of-day-data/)
-* Documentation: [Knoledgebase](https://eodhistoricaldata.com/knowledgebase/)
-* Pricing: [Pricing Page](https://eodhistoricaldata.com/pricing)
+* Application Page: [EODDownloader](https://eodhistoricaldata.com/knowledgebase/windows-downloader-end-of-day-data/).
+* Documentation: [Knoledgebase](https://eodhistoricaldata.com/knowledgebase/).
+* Pricing: [Pricing Page](https://eodhistoricaldata.com/pricing).
 
 ## Support
 If you have any questions, please write us to support@eodhistoricaldata.com or via webchat on [EODHistoricalData.com](https://eodhistoricaldata.com/)
