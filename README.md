@@ -8,6 +8,10 @@ Windows Application for downloading End Of Day Data from https://eodhistoricalda
 * Our market coverage is more than 60+ stock exchanges and more than 120 000+ symbols all over the world.
 * We support 120+ CRYPTO currencies and 150+ FOREX pairs.
 
+## Useful Links
+* Application Page: [EODDownloader](https://eodhistoricaldata.com/knowledgebase/windows-downloader-end-of-day-data/)
+* Documentation: [Knoledgebase](https://eodhistoricaldata.com/knowledgebase/)
+* Pricing: [Pricing Page](https://eodhistoricaldata.com/pricing)
 
-http://github.com - automatic!
-[GitHub](http://github.com)
+## Support
+If you have any questions, please write us to support@eodhistoricaldata.com or via webchat on [EODHistoricalData.com](https://eodhistoricaldata.com/)
