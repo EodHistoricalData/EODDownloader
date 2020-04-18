@@ -7,6 +7,5 @@ namespace EODLoader.Services.EodHistoricalData
     public interface IEodHistoricalDataService
     {
         Task<HistoricalResult> GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string period);
-        bool ValidateToken(string token);
     }
 }

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("API Key");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("General Preferences");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Logging");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("API Key");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("General Preferences");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Logging");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             this.settingsTreeView = new System.Windows.Forms.TreeView();
             this.groupBox = new System.Windows.Forms.GroupBox();
@@ -88,16 +88,16 @@
             this.settingsTreeView.Location = new System.Drawing.Point(32, 29);
             this.settingsTreeView.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.settingsTreeView.Name = "settingsTreeView";
-            treeNode1.Name = "OAuthNode";
-            treeNode1.Text = "API Key";
-            treeNode2.Name = "GeneralNode";
-            treeNode2.Text = "General Preferences";
-            treeNode3.Name = "LoggingNode";
-            treeNode3.Text = "Logging";
+            treeNode22.Name = "OAuthNode";
+            treeNode22.Text = "API Key";
+            treeNode23.Name = "GeneralNode";
+            treeNode23.Text = "General Preferences";
+            treeNode24.Name = "LoggingNode";
+            treeNode24.Text = "Logging";
             this.settingsTreeView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3});
+            treeNode22,
+            treeNode23,
+            treeNode24});
             this.settingsTreeView.Size = new System.Drawing.Size(409, 884);
             this.settingsTreeView.TabIndex = 1;
             this.settingsTreeView.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.settingsTreeView_NodeMouseClick);
@@ -558,11 +558,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1461, 1006);
+            this.ClientSize = new System.Drawing.Size(1470, 1016);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.settingsTreeView);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "SettingsForm";
