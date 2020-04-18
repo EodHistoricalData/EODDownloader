@@ -481,8 +481,13 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "ProductCode" = "8:{E95EC76B-D8CE-4518-83B4-92532F3AD2C0}"
         "PackageCode" = "8:{2DE1489C-672D-480A-BF3C-7E708DA79518}"
+=======
+        "ProductCode" = "8:{73ADC021-D646-4BE6-803F-A2FC6CF1B1EC}"
+        "PackageCode" = "8:{957816C4-9AD6-4193-A257-54848002543A}"
+>>>>>>> parent of b63493f... added source=eodloader
 =======
         "ProductCode" = "8:{73ADC021-D646-4BE6-803F-A2FC6CF1B1EC}"
         "PackageCode" = "8:{957816C4-9AD6-4193-A257-54848002543A}"
@@ -509,7 +514,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         "ProductVersion" = "8:1.0.5"
+=======
+        "ProductVersion" = "8:1.0.6"
+>>>>>>> parent of b63493f... added source=eodloader
 =======
         "ProductVersion" = "8:1.0.6"
 >>>>>>> parent of b63493f... added source=eodloader
