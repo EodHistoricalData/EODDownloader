@@ -305,8 +305,11 @@ namespace EODLoader.Forms
                                     break;
                                 }
                                 string symbol = queue.Dequeue();
-                                Task.Run(() => StartGetInfo(symbol, testPeriod, avalibleDate), source.Token);
+                                var task = Task.Run(() => StartGetInfo(symbol, testPeriod, avalibleDate), source.Token);
+                                taskList.Add(task);
                             }
+
+                            Task.WaitAll(taskList.ToArray());
                         }
                     }, source.Token);
 
