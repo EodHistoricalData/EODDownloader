@@ -4,14 +4,8 @@ using EODLoader.Services.ConfigurationData;
 using EODLoader.Services.ConfigurationData.Model;
 using EODLoader.Services.Proxy;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EODLoader.Forms
@@ -107,8 +101,7 @@ namespace EODLoader.Forms
 
         private void tokenLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            this.tokenLinkLabel.LinkVisited = true;
-
+            this.tokenLinkLabel.LinkVisited = false;
             System.Diagnostics.Process.Start("https://eodhistoricaldata.com/#pricing");
         }
 
@@ -183,6 +176,65 @@ namespace EODLoader.Forms
             }
 
             checkPictureBox.Visible = true;
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.tokenLinkLabel.LinkVisited = false;
+            System.Diagnostics.Process.Start("mailto:support@eodhistoricaldata.com");
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.tokenLinkLabel.LinkVisited = false;
+            System.Diagnostics.Process.Start("https://eodhistoricaldata.com/knowledgebase/");
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.tokenLinkLabel.LinkVisited = false;
+            System.Diagnostics.Process.Start("https://eodhistoricaldata.com/pricing/");
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.tokenLinkLabel.LinkVisited = false;
+            System.Diagnostics.Process.Start("https://eodhistoricaldata.com/knowledgebase/windows-downloader-end-of-day-data/");
         }
     }
 }

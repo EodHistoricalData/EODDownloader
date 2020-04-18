@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using EODLoader.Logs;
+﻿using EODLoader.Logs;
 using EODLoader.Services.ConfigurationData;
 using EODLoader.Services.ConfigurationData.Model;
 using EODLoader.Services.EodHistoricalData.Models;
@@ -12,6 +6,11 @@ using EODLoader.Services.Proxy;
 using EODLoader.Services.Utils;
 using Newtonsoft.Json;
 using RestSharp;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace EODLoader.Services.EodHistoricalData
 {
@@ -167,7 +166,7 @@ namespace EODLoader.Services.EodHistoricalData
 
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Logger.LogError(ex, ex.StackTrace);
                 throw;
