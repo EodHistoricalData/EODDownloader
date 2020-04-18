@@ -84,6 +84,10 @@ namespace EODLoader.Services.EodHistoricalData
                 }
 
                 var request = new RestRequest(Method.GET);
+
+                var bodyJson = JsonConvert.SerializeObject(new { source = "eodloader" }, Formatting.Indented);
+                request.AddParameter("application/json", bodyJson, ParameterType.RequestBody);
+
                 IRestResponse response = await client.ExecuteAsync(request);
                 if (response.StatusCode == 0)
                 {
