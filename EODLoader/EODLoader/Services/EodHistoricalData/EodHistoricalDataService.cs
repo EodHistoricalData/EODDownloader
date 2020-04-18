@@ -1,13 +1,4 @@
-<<<<<<< HEAD
 ﻿using EODLoader.Logs;
-=======
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
->>>>>>> parent of aebf7c5... added loger and change config
 using EODLoader.Services.ConfigurationData;
 using EODLoader.Services.ConfigurationData.Model;
 using EODLoader.Services.EodHistoricalData.Models;
@@ -28,14 +19,37 @@ namespace EODLoader.Services.EodHistoricalData
         const string HistoricalDataUrl = "https://eodhistoricaldata.com/api/eod/";
         private IConfigurationService _configurationService { get; set; }
         private ConfigurationModel _configuration { get; set; }
+
         public EodHistoricalDataService()
         {
-<<<<<<< HEAD
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("en-US");
-=======
->>>>>>> parent of aebf7c5... added loger and change config
             _configurationService = new ConfigurationService();
             _configuration = _configurationService.GetConfiguration();
+        }
+
+        public bool ValidateToken(string token)
+        {
+            string testUrl = $"https://eodhistoricaldata.com/api/eod/AAPL.US?api_token={token}&period=d";
+
+            IWebProxyService webProxyService = new WebProxyService();
+
+            bool proxyIsUsed = _configuration.ProxyIsUsed;
+            var client = new RestClient(testUrl);
+
+            if (proxyIsUsed)
+            {
+                client.Proxy = webProxyService.GetWebProxy();
+            }
+
+            var request = new RestRequest(Method.GET);
+            IRestResponse response = client.Execute(request);
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public async Task<HistoricalResult> GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per)
@@ -46,6 +60,7 @@ namespace EODLoader.Services.EodHistoricalData
                 {
                     Symbol = symbol
                 };
+
                 string period = string.Empty;
                 if (!string.IsNullOrEmpty(per))
                 {
@@ -53,7 +68,7 @@ namespace EODLoader.Services.EodHistoricalData
                     period = $"&period={per[0]}";
                 }
 
-                string dateParameters = await GetDateParametersAsString(startDate, endDate);
+                string dateParameters = GetDateParametersAsString(startDate, endDate);
                 var token = _configuration.Token;
 
                 var url = $"{HistoricalDataUrl}{symbol}?{dateParameters}&api_token={token}{period}&fmt=json";
@@ -76,6 +91,7 @@ namespace EODLoader.Services.EodHistoricalData
                 IRestResponse response = await client.ExecuteAsync(request);
                 if (response.StatusCode == 0)
                 {
+                    Logger.LogError("Unable to connect to remote server");
                     var error = new HistoricalResult
                     {
                         Symbol = symbol,
@@ -112,9 +128,9 @@ namespace EODLoader.Services.EodHistoricalData
                     };
                 }
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                //TODO: add log
+                Logger.LogError(ex, ex.StackTrace);
                 return new HistoricalResult
                 {
                     Symbol = symbol,
@@ -126,15 +142,31 @@ namespace EODLoader.Services.EodHistoricalData
 
         private async Task<List<HistoricalPriceExtended>> CalcHistoricalPrices(IEnumerable<HistoricalPrice> historicalPrices)
         {
-            var result = new List<HistoricalPriceExtended>();
-            foreach (var item in historicalPrices)
+            try
             {
-                double k = 0;
-                if (item.AdjustedClose != null && item.Close != null && item.Close != 0)
+                var result = new List<HistoricalPriceExtended>();
+                foreach (var item in historicalPrices)
                 {
-                    k = item.AdjustedClose.Value / item.Close.Value;
+                    double k = 0;
+                    if (item.AdjustedClose != null && item.Close != null && item.Close != 0)
+                    {
+                        k = item.AdjustedClose.Value / item.Close.Value;
+                    }
+                    var historicalPrice = new HistoricalPriceExtended
+                    {
+                        Date = item.Date.ToString("yyyy.MM.dd"),
+                        Volume = item.Volume,
+                        AdjustedHigh = item.High != null ? item.High * k : null,
+                        AdjustedLow = item.Low != null ? item.Low * k : null,
+                        AdjustedOpen = item.Open != null ? item.Open * k : null,
+                        AdjustedClose = item.Close != null ? item.Close * k : null,
+                        High = item.High,
+                        Low = item.Low,
+                        Open = item.Open,
+                        Close = item.Close
+                    };
+                    result.Add(historicalPrice);
                 }
-<<<<<<< HEAD
 
                 return result;
             }
@@ -142,28 +174,10 @@ namespace EODLoader.Services.EodHistoricalData
             {
                 Logger.LogError(ex, ex.StackTrace);
                 throw;
-=======
-                var historicalPrice = new HistoricalPriceExtended
-                {
-                    Date = item.Date.ToString("yyyy.MM.dd"),
-                    Volume = item.Volume,
-                    AdjustedHigh = item.High != null ? item.High * k : null,
-                    AdjustedLow = item.Low != null ? item.Low * k : null,
-                    AdjustedOpen = item.Open != null ? item.Open * k : null,
-                    AdjustedClose = item.Close != null ? item.Close * k : null,
-                    High = item.High,
-                    Low = item.Low,
-                    Open = item.Open,
-                    Close = item.Close
-                };
-                result.Add(historicalPrice);
->>>>>>> parent of aebf7c5... added loger and change config
             }
-
-            return result;
         }
 
-        private async Task<string> GetDateParametersAsString(DateTime? startDate, DateTime? endDate)
+        private string GetDateParametersAsString(DateTime? startDate, DateTime? endDate)
         {
             StringBuilder sb = new StringBuilder();
             if (startDate.HasValue)

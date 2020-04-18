@@ -1,4 +1,5 @@
-﻿using EODLoader.Services.AutoUpdate.Models;
+﻿using EODLoader.Logs;
+using EODLoader.Services.AutoUpdate.Models;
 using EODLoader.Services.ConfigurationData;
 using EODLoader.Services.ConfigurationData.Model;
 using EODLoader.Services.Proxy;
@@ -19,7 +20,7 @@ namespace EODLoader.Services.AutoUpdate
     {
         private readonly string _autoUpdateUrl;
         private IWebProxyService _webProxyService;
-        private IWebProxy _webProxy;
+        private WebProxy _webProxy;
         private IConfigurationService _configurationService { get; set; }
         private ConfigurationModel _configuration { get; set; }
 
@@ -44,15 +45,26 @@ namespace EODLoader.Services.AutoUpdate
 
         private string GetXMLString()
         {
-            WebClient client = new WebClient();
-            client.Proxy = _webProxy;
-
-            return client.DownloadString("https://eodhistoricaldata.com/EODLoaderUpdate.xml");
+            try
+            {
+                WebClient client = new WebClient();
+                client.Proxy = _webProxy;
+                return client.DownloadString("https://eodhistoricaldata.com/EODLoaderUpdate.xml");
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.StackTrace);
+                if (_configuration.ProxyIsUsed == true)
+                {
+                    _configuration.ProxyIsUsed = false;
+                    _configurationService.Save(_configuration);
+                }
+                return null;
+            }
         }
 
         public string CheckForUpdate()
         {
-<<<<<<< HEAD
             try
             {
                 string xml = GetXMLString();
@@ -61,12 +73,6 @@ namespace EODLoader.Services.AutoUpdate
                 {
                     return null;
                 }
-=======
-            string xml = GetXMLString();
-
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(UpdateModel));
-            XmlTextReader xmlTextReader = new XmlTextReader(new StringReader(xml)) { XmlResolver = null };
->>>>>>> parent of aebf7c5... added loger and change config
 
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(UpdateModel));
                 XmlTextReader xmlTextReader = new XmlTextReader(new StringReader(xml)) { XmlResolver = null };

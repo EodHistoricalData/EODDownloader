@@ -1,8 +1,12 @@
 ﻿using EODLoader.Common;
-using EODLoader.Forms;
+using EODLoader.Logs;
 using EODLoader.Properties;
+using EODLoader.Services.AutoUpdate;
+using EODLoader.Services.ConfigurationData;
+using EODLoader.Services.ConfigurationData.Model;
 using EODLoader.Services.EodHistoricalData;
 using EODLoader.Services.EodHistoricalData.Models;
+using EODLoader.Services.Proxy;
 using EODLoader.Services.SymbolFile;
 using System;
 using System.Collections.Generic;
@@ -12,15 +16,9 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Net;
-using EODLoader.Services.Proxy;
-using System.Reflection;
-using EODLoader.Services.AutoUpdate;
-using EODLoader.Services.ConfigurationData.Model;
-using EODLoader.Services.ConfigurationData;
 
 namespace EODLoader.Forms
 {
@@ -65,13 +63,7 @@ namespace EODLoader.Forms
 
             _autoUpdateService = new AutoUpdateService();
 
-<<<<<<< HEAD
             _eodHistoricalDataService = new EodHistoricalDataService();
-=======
-            _configurationService = new ConfigurationService();
-
-            _configuration = _configurationService.GetConfiguration();
->>>>>>> parent of aebf7c5... added loger and change config
 
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|CSV files(*.csv)|*.csv|All files(*.*)|*.*";
             openFileDialog1.FileName = string.Empty;
@@ -82,7 +74,7 @@ namespace EODLoader.Forms
 
             _settingsTokenTimer = new Timer();
             _settingsTokenTimer.Tick += new EventHandler(settingsTimeTick);
-            _settingsTokenTimer.Interval = 500;
+            _settingsTokenTimer.Interval = 50;
 
             _tm = new Timer();
             _tm.Tick += new EventHandler(timeTick);
@@ -108,18 +100,7 @@ namespace EODLoader.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             CheckTokenStatus(true);
-=======
-
-            if (_configuration.AutoUpdateIsUsed)
-            {
-                if (_autoUpdateService.Start())
-                {
-                    AutoUpdater_ApplicationExitEvent();
-                }
-            }
->>>>>>> parent of aebf7c5... added loger and change config
 
             toDateTimePicker.Value = DateTime.Now;
 
@@ -241,13 +222,7 @@ namespace EODLoader.Forms
             }
         }
 
-<<<<<<< HEAD
         private void CheckTokenStatus(bool isFirstLoad)
-=======
-
-        //TODO Add check token
-        private void CheckTokenStatus()
->>>>>>> parent of aebf7c5... added loger and change config
         {
             if (_configuration.Token == string.Empty)
             {
@@ -257,16 +232,12 @@ namespace EODLoader.Forms
             }
             else
             {
-<<<<<<< HEAD
                 bool tokenIsValid = true;
 
                 if (!isFirstLoad)
                 {
                     tokenIsValid = _eodHistoricalDataService.ValidateToken(_configuration.Token); //ValidationFunction
                 }
-=======
-                bool tokenIsValid = true; //ValidationFunction
->>>>>>> parent of aebf7c5... added loger and change config
 
                 if (tokenIsValid)
                 {
@@ -296,31 +267,27 @@ namespace EODLoader.Forms
             _settingsTokenTimer.Stop();
         }
 
-        private async void dToolStripMenuItem_ClickAsync(object sender, EventArgs e)
+        private void dToolStripMenuItem_ClickAsync(object sender, EventArgs e)
         {
-            if (ValidateStartInfo())
+            try
             {
-                StartZeroing();
-                _tm.Start();
-                ChangeButtonEnabled();
+                if (ValidateStartInfo())
+                {
+                    StartZeroing();
+                    _tm.Start();
+                    ChangeButtonEnabled();
 
-                _eodHistoricalDataService = new EodHistoricalDataService();
+                    _eodHistoricalDataService = new EodHistoricalDataService();
 
-                List<string> symbolList = symbolsListBox.Items.Cast<String>().ToList();
+                    List<string> symbolList = symbolsListBox.Items.Cast<String>().ToList();
+                    totalSymbolCount = symbolList.Count;
+                    runProgressBar.Maximum = totalSymbolCount;
+                    totalSymbolsValueLabel.Text = totalSymbolCount.ToString();
+                    string testPeriod = periodComboBox.Text.ToString();
+                    bool avalibleDate = availableCheckBox.Checked;
 
-                totalSymbolCount = symbolList.Count;
+                    source = new System.Threading.CancellationTokenSource();
 
-                runProgressBar.Maximum = totalSymbolCount;
-
-                totalSymbolsValueLabel.Text = totalSymbolCount.ToString();
-
-                string testPeriod = periodComboBox.Text.ToString();
-
-                bool avalibleDate = availableCheckBox.Checked;
-
-
-
-<<<<<<< HEAD
                     var maxWorkerThreads = _configuration.NumberOfThread;
 
                     var factory = Task.Factory;
@@ -349,98 +316,6 @@ namespace EODLoader.Forms
             {
                 Logger.LogError(ex, ex.StackTrace);
                 throw;
-=======
-                //System.Threading.Tasks.Parallel.ForEach(symbolList,
-                //    new System.Threading.Tasks.ParallelOptions { MaxDegreeOfParallelism = _configuration.NumberOfThread },
-                //    async symbol =>
-                //    {
-                //        await StartGetInfo(symbol, testPeriod, avalibleDate);
-                //    });
-
-                //Task.Run()
-
-
-                //var queue = new Queue<string>(symbolList);
-                //List<Task> taskList = new List<Task>();
-
-                //while (queue.Any())
-                //{
-
-                //for (int i = 0; i < _configuration.NumberOfThread; i++)
-                //{
-                //    if (!queue.Any())
-                //    {
-                //        break;
-                //    }
-
-                //    string symbol = queue.Dequeue();
-
-
-
-                //   //var task = Task.Run(async () =>
-                //   // {
-                //   //     await StartGetInfo(symbol, testPeriod, avalibleDate);
-                //   // });
-
-
-                //    //taskList.Add(task);
-
-                //   // System.Threading.Thread test = new System.Threading.Thread(System.Threading.ParameterizedThreadStart);
-
-                //    //taskList.Add(task);
-                //    //taskList.Add(StartGetInfo(symbol, testPeriod, avalibleDate));
-                //}
-
-
-
-                //Task.WaitAny(taskList.ToArray());
-
-                //foreach (var task in taskList)
-                //{
-                //    task.();
-                //}
-
-
-
-                //Task.WaitAny(taskList.ToArray(), source.Token);
-                //var factory = Task.Factory.StartNew(() => taskList.ToArray());
-                //Task.Factory.ContinueWhenAny(factory, () => { });
-                //Task.(taskList.ToArray(), source.Token);
-
-                //if (!queue.Any())
-                //{
-                //    ChangeButtonEnabled();
-                //    _tm.Stop();
-                //}
-                //Task.WaitAny(taskList.ToArray());
-                //allTasksList.AddRange(taskList);
-                //taskList = new List<Task>();
-
-
-                var factory = Task.Factory.StartNew(() =>
-                {
-                    var queue = new Queue<string>(symbolList);
-                    List<Task> taskList = new List<Task>();
-                    while (!source.Token.IsCancellationRequested || queue.Any())
-                    {
-                        for (int i = 0; i < _configuration.NumberOfThread; i++)
-                        {
-                            if (!queue.Any())
-                            {
-                                break;
-                            }
-
-                            string symbol = queue.Dequeue();
-
-                           var task = Task.Run(() => StartGetInfo(symbol, testPeriod, avalibleDate), source.Token);
-
-                        }
-                    }
-
-                }, source.Token);
-                // }
-
->>>>>>> parent of aebf7c5... added loger and change config
             }
         }
 
@@ -463,13 +338,9 @@ namespace EODLoader.Forms
         {
             durationValueLabel.Text = Int2StringTime(_startValue);
             _startValue++;
-<<<<<<< HEAD
 
             ValidateFormValues();
             if (totalSymbolCount == totalProcessed || source.IsCancellationRequested)
-=======
-            if (totalSymbolCount == totalProcessed)
->>>>>>> parent of aebf7c5... added loger and change config
             {
                 source.Cancel();
                 _tm.Stop();
@@ -588,12 +459,8 @@ namespace EODLoader.Forms
                 {
                     case StatusEnum.Ok:
                         {
-<<<<<<< HEAD
                             Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusOK, result.Symbol, result.Description));
                             totalProcessed++;
-=======
-                            Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusOK, result.Symbol, "Ok"));
->>>>>>> parent of aebf7c5... added loger and change config
                             processOk++;
                             //Invoke(processedOkValueLabel, () => processedOkValueLabel.Text = processOk.ToString());
                         }
@@ -603,26 +470,19 @@ namespace EODLoader.Forms
                             Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusError, result.Symbol, result.Description));
                             totalProcessed++;
                             errors++;
-<<<<<<< HEAD
                             //Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
                             if (result.Description == "Unable to connect to remote server")
                             {
                                 source.Cancel();
                             }
-=======
-                            Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
->>>>>>> parent of aebf7c5... added loger and change config
                         }
                         break;
                     case StatusEnum.ErrorProxy:
                         {
                             Invoke(RunLogGridView, () => RunLogGridView.Rows.Insert(0, Resources.StatusError, result.Symbol, result.Description));
-<<<<<<< HEAD
                             totalProcessed++;
                             errors++;
                             //Invoke(errorsValueLabel, () => errorsValueLabel.Text = errors.ToString());
-=======
->>>>>>> parent of aebf7c5... added loger and change config
                             source.Cancel();
                         }
                         break;
@@ -631,8 +491,8 @@ namespace EODLoader.Forms
             }
             catch (Exception ex)
             {
-                ChangeButtonEnabled();
-                _tm.Stop();
+                Logger.LogError(ex, ex.StackTrace);
+                source.Cancel();
             }
 
         }

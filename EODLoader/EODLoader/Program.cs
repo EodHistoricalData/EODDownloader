@@ -1,9 +1,4 @@
-﻿using EODLoader.Services.EodHistoricalData;
-using EODLoader.Services.Proxy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace EODLoader.Forms
@@ -16,19 +11,6 @@ namespace EODLoader.Forms
         [STAThread]
         static void Main()
         {
-            //try
-            //{
-            //    IEodHistoricalDataService eodServise = new EodHistoricalDataService();
-
-            //    var result = eodServise.GetHistoricalPrices("AI.PA", new DateTime(2020, 03, 01), new DateTime(2020, 04, 01), "d");
-            //}
-            //catch (Exception e)
-            //{
-
-            //    throw;
-            //}
-
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());
