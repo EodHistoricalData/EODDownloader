@@ -15,7 +15,7 @@ Windows Application for downloading End Of Day Data from https://eodhistoricalda
 ## Support
 If you have any questions, please write us to support@eodhistoricaldata.com or via webchat on [EODHistoricalData.com](https://eodhistoricaldata.com/)
 
-##License
+## License
 EODLoader is free open-source software distributed under the Terms and Conditions of the GNU General Public License (GPL) version 3 or (at your option) any later version.
 
 For using EODLoader, no restrictions apply. You can further redistribute and/or modify this software under the terms of the GPL.
