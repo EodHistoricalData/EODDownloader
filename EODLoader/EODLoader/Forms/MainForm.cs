@@ -285,6 +285,7 @@ namespace EODLoader.Forms
                     totalSymbolsValueLabel.Text = totalSymbolCount.ToString();
                     string testPeriod = periodComboBox.Text.ToString();
                     bool avalibleDate = availableCheckBox.Checked;
+                    bool isUpdate = updateCheckBox.Checked;
 
                     source = new System.Threading.CancellationTokenSource();
 
@@ -305,7 +306,7 @@ namespace EODLoader.Forms
                                     break;
                                 }
                                 string symbol = queue.Dequeue();
-                                Task.Run(() => StartGetInfo(symbol, testPeriod, avalibleDate), source.Token);
+                                Task.Run(() => StartGetInfo(symbol, testPeriod, avalibleDate, isUpdate), source.Token);
                             }
                         }
                     }, source.Token);
@@ -437,18 +438,18 @@ namespace EODLoader.Forms
             runProgressBar.Value = totalProcessed;
         }
 
-        private async Task StartGetInfo(string symbol, string testPeriod, bool avalibleDate)
+        private async Task StartGetInfo(string symbol, string testPeriod, bool avalibleDate, bool isUpdate)
         {
             try
             {
                 HistoricalResult result;
                 if (avalibleDate)
                 {
-                    result = await _eodHistoricalDataService.GetHistoricalPrices(symbol, null, null, testPeriod);
+                    result = await _eodHistoricalDataService.GetHistoricalPrices(symbol, null, null, testPeriod, isUpdate);
                 }
                 else
                 {
-                    result = await _eodHistoricalDataService.GetHistoricalPrices(symbol, fromDateTimePicker.Value, toDateTimePicker.Value, testPeriod);
+                    result = await _eodHistoricalDataService.GetHistoricalPrices(symbol, fromDateTimePicker.Value, toDateTimePicker.Value, testPeriod, isUpdate:false);
                 }
 
                 // Invoke(totalProcessedValueLabel, () => totalProcessedValueLabel.Text = totalProcessed.ToString());

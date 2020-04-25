@@ -52,10 +52,19 @@ namespace EODLoader.Services.EodHistoricalData
             return false;
         }
 
-        public async Task<HistoricalResult> GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per)
+        public async Task<HistoricalResult> GetHistoricalPrices(string symbol, DateTime? startDate, DateTime? endDate, string per, bool isUpdate)
         {
             try
             {
+                IUtilsService utils = new UtilsService();
+
+                string checkPath = $@"{_configuration.LastDownloadDirectoryPath}\{symbol}.csv";
+
+                if (isUpdate != false)
+                {
+                    isUpdate = utils.RewriteDateBeforeLoad(checkPath, ref startDate, ref endDate);
+                }
+
                 var result = new HistoricalResult
                 {
                     Symbol = symbol
@@ -106,10 +115,10 @@ namespace EODLoader.Services.EodHistoricalData
                     var historicalPrices = JsonConvert.DeserializeObject<List<HistoricalPrice>>(response.Content);
                     var historicalPricesExt = await CalcHistoricalPrices(historicalPrices);
 
-                    IUtilsService utils = new UtilsService();
+                    
                     string path = $@"{_configuration.LastDownloadDirectoryPath}\{symbol}.csv";
 
-                    await utils.CreateCVSFile(historicalPricesExt, path);
+                    await utils.CreateCVSFile(historicalPricesExt, path, isUpdate);
 
                     return new HistoricalResult
                     {

@@ -72,6 +72,7 @@
             this.symbolsListBox = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.filesPanel = new System.Windows.Forms.Panel();
+            this.updateCheckBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.timeRangeGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -181,10 +182,11 @@
             this.timeRangeGroupBox.Controls.Add(this.fromLabel);
             this.timeRangeGroupBox.Controls.Add(this.periodLabel);
             this.timeRangeGroupBox.Controls.Add(this.periodComboBox);
+            this.timeRangeGroupBox.Controls.Add(this.updateCheckBox);
             this.timeRangeGroupBox.Controls.Add(this.availableCheckBox);
             this.timeRangeGroupBox.Location = new System.Drawing.Point(118, 94);
             this.timeRangeGroupBox.Name = "timeRangeGroupBox";
-            this.timeRangeGroupBox.Size = new System.Drawing.Size(152, 136);
+            this.timeRangeGroupBox.Size = new System.Drawing.Size(163, 144);
             this.timeRangeGroupBox.TabIndex = 5;
             this.timeRangeGroupBox.TabStop = false;
             this.timeRangeGroupBox.Text = "Time Range";
@@ -192,7 +194,7 @@
             // toDateTimePicker
             // 
             this.toDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.toDateTimePicker.Location = new System.Drawing.Point(54, 104);
+            this.toDateTimePicker.Location = new System.Drawing.Point(57, 109);
             this.toDateTimePicker.Name = "toDateTimePicker";
             this.toDateTimePicker.Size = new System.Drawing.Size(92, 20);
             this.toDateTimePicker.TabIndex = 3;
@@ -201,7 +203,7 @@
             // toLabel
             // 
             this.toLabel.AutoSize = true;
-            this.toLabel.Location = new System.Drawing.Point(7, 107);
+            this.toLabel.Location = new System.Drawing.Point(10, 112);
             this.toLabel.Name = "toLabel";
             this.toLabel.Size = new System.Drawing.Size(23, 13);
             this.toLabel.TabIndex = 2;
@@ -210,7 +212,7 @@
             // fromDateTimePicker
             // 
             this.fromDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.fromDateTimePicker.Location = new System.Drawing.Point(54, 78);
+            this.fromDateTimePicker.Location = new System.Drawing.Point(57, 83);
             this.fromDateTimePicker.Name = "fromDateTimePicker";
             this.fromDateTimePicker.Size = new System.Drawing.Size(92, 20);
             this.fromDateTimePicker.TabIndex = 3;
@@ -219,7 +221,7 @@
             // fromLabel
             // 
             this.fromLabel.AutoSize = true;
-            this.fromLabel.Location = new System.Drawing.Point(7, 81);
+            this.fromLabel.Location = new System.Drawing.Point(10, 86);
             this.fromLabel.Name = "fromLabel";
             this.fromLabel.Size = new System.Drawing.Size(33, 13);
             this.fromLabel.TabIndex = 2;
@@ -250,7 +252,7 @@
             // availableCheckBox
             // 
             this.availableCheckBox.AutoSize = true;
-            this.availableCheckBox.Location = new System.Drawing.Point(39, 52);
+            this.availableCheckBox.Location = new System.Drawing.Point(9, 52);
             this.availableCheckBox.Name = "availableCheckBox";
             this.availableCheckBox.Size = new System.Drawing.Size(82, 17);
             this.availableCheckBox.TabIndex = 0;
@@ -486,6 +488,17 @@
             this.filesPanel.Size = new System.Drawing.Size(368, 60);
             this.filesPanel.TabIndex = 10001;
             // 
+            // updateCheckBox
+            // 
+            this.updateCheckBox.AutoSize = true;
+            this.updateCheckBox.Location = new System.Drawing.Point(100, 52);
+            this.updateCheckBox.Name = "updateCheckBox";
+            this.updateCheckBox.Size = new System.Drawing.Size(61, 17);
+            this.updateCheckBox.TabIndex = 0;
+            this.updateCheckBox.Text = "Update";
+            this.updateCheckBox.UseVisualStyleBackColor = true;
+            this.updateCheckBox.CheckedChanged += new System.EventHandler(this.availableCheckBox_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -563,6 +576,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SymbolColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StatusColumn;
         private System.Windows.Forms.Panel filesPanel;
+        private System.Windows.Forms.CheckBox updateCheckBox;
     }
 }
 
