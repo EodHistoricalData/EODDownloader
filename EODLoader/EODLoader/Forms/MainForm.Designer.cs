@@ -48,6 +48,7 @@
             this.fromLabel = new System.Windows.Forms.Label();
             this.periodLabel = new System.Windows.Forms.Label();
             this.periodComboBox = new System.Windows.Forms.ComboBox();
+            this.updateCheckBox = new System.Windows.Forms.CheckBox();
             this.availableCheckBox = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.durationValueLabel = new System.Windows.Forms.Label();
@@ -72,7 +73,6 @@
             this.symbolsListBox = new System.Windows.Forms.ListBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.filesPanel = new System.Windows.Forms.Panel();
-            this.updateCheckBox = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.timeRangeGroupBox.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -248,6 +248,17 @@
             this.periodComboBox.Name = "periodComboBox";
             this.periodComboBox.Size = new System.Drawing.Size(92, 21);
             this.periodComboBox.TabIndex = 1;
+            // 
+            // updateCheckBox
+            // 
+            this.updateCheckBox.AutoSize = true;
+            this.updateCheckBox.Location = new System.Drawing.Point(100, 52);
+            this.updateCheckBox.Name = "updateCheckBox";
+            this.updateCheckBox.Size = new System.Drawing.Size(61, 17);
+            this.updateCheckBox.TabIndex = 0;
+            this.updateCheckBox.Text = "Update";
+            this.updateCheckBox.UseVisualStyleBackColor = true;
+            this.updateCheckBox.CheckedChanged += new System.EventHandler(this.updateCheckBox_CheckedChanged);
             // 
             // availableCheckBox
             // 
@@ -487,17 +498,6 @@
             this.filesPanel.Name = "filesPanel";
             this.filesPanel.Size = new System.Drawing.Size(368, 60);
             this.filesPanel.TabIndex = 10001;
-            // 
-            // updateCheckBox
-            // 
-            this.updateCheckBox.AutoSize = true;
-            this.updateCheckBox.Location = new System.Drawing.Point(100, 52);
-            this.updateCheckBox.Name = "updateCheckBox";
-            this.updateCheckBox.Size = new System.Drawing.Size(61, 17);
-            this.updateCheckBox.TabIndex = 0;
-            this.updateCheckBox.Text = "Update";
-            this.updateCheckBox.UseVisualStyleBackColor = true;
-            this.updateCheckBox.CheckedChanged += new System.EventHandler(this.availableCheckBox_CheckedChanged);
             // 
             // MainForm
             // 

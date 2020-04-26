@@ -139,6 +139,7 @@ namespace EODLoader.Forms
             }
             else
             {
+                updateCheckBox.Checked = false;
                 fromDateTimePicker.Enabled = true;
                 toDateTimePicker.Enabled = true;
             }
@@ -518,6 +519,30 @@ namespace EODLoader.Forms
                 settingsForm = new SettingsForm();
                 settingsForm.Show();
                 _settingsTokenTimer.Start();
+            }
+        }
+
+        private void updateCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (updateCheckBox.Checked)
+            {
+                availableCheckBox.Checked = true;
+            }
+            else
+            {
+                availableCheckBox.Checked = false;
+            }
+
+
+            if (availableCheckBox.Checked)
+            {
+                fromDateTimePicker.Enabled = false;
+                toDateTimePicker.Enabled = false;
+            }
+            else
+            {
+                fromDateTimePicker.Enabled = true;
+                toDateTimePicker.Enabled = true;
             }
         }
     }

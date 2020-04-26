@@ -15,31 +15,37 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_01EB2E1255AE75D952385F08855BE49E"
-        "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_01EB2E1255AE75D952385F08855BE49E"
-        "OwnerKey" = "8:_77DCE76279812752F37C25EA304C13B2"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_04D45F0257064E95B70AC00EE281FA92"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_367A4EF7C1D658FD722513EA12320DA1"
+        "MsmKey" = "8:_38074304DDA68F931CD588D8A9408C37"
         "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_77DCE76279812752F37C25EA304C13B2"
+        "MsmKey" = "8:_38074304DDA68F931CD588D8A9408C37"
+        "OwnerKey" = "8:_9C39F1E9058920677E022C8F69BE4B8F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7768F82E17EF180030022C9E5EC87567"
+        "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8475E80AA74184256784230536CCC485"
+        "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9C39F1E9058920677E022C8F69BE4B8F"
         "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -57,12 +63,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DA7C4A20D0C4AC58FA1152281B6D9987"
-        "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E0794703C204483DA88E7146865B2D0A"
         "OwnerKey" = "8:_C73D0055EAED4A2FB2EF42FE77B46C7B"
         "MsmSig" = "8:_UNDEFINED"
@@ -76,25 +76,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_77DCE76279812752F37C25EA304C13B2"
+        "OwnerKey" = "8:_9C39F1E9058920677E022C8F69BE4B8F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_01EB2E1255AE75D952385F08855BE49E"
+        "OwnerKey" = "8:_38074304DDA68F931CD588D8A9408C37"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DA7C4A20D0C4AC58FA1152281B6D9987"
+        "OwnerKey" = "8:_7768F82E17EF180030022C9E5EC87567"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_367A4EF7C1D658FD722513EA12320DA1"
+        "OwnerKey" = "8:_8475E80AA74184256784230536CCC485"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -204,14 +204,34 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_01EB2E1255AE75D952385F08855BE49E"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04D45F0257064E95B70AC00EE281FA92"
+            {
+            "SourcePath" = "8:..\\Images\\EODLoader.ico"
+            "TargetName" = "8:EODLoader.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_38074304DDA68F931CD588D8A9408C37"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_01EB2E1255AE75D952385F08855BE49E"
+                    "_38074304DDA68F931CD588D8A9408C37"
                     {
                     "Name" = "8:Serilog.dll"
                     "Attributes" = "3:512"
@@ -235,10 +255,21 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04D45F0257064E95B70AC00EE281FA92"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_7768F82E17EF180030022C9E5EC87567"
             {
-            "SourcePath" = "8:..\\Images\\EODLoader.ico"
-            "TargetName" = "8:EODLoader.ico"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_7768F82E17EF180030022C9E5EC87567"
+                    {
+                    "Name" = "8:RestSharp.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:RestSharp.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
             "Condition" = "8:"
@@ -252,17 +283,17 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_367A4EF7C1D658FD722513EA12320DA1"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8475E80AA74184256784230536CCC485"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_367A4EF7C1D658FD722513EA12320DA1"
+                    "_8475E80AA74184256784230536CCC485"
                     {
                     "Name" = "8:Newtonsoft.Json.dll"
                     "Attributes" = "3:512"
@@ -286,14 +317,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_77DCE76279812752F37C25EA304C13B2"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9C39F1E9058920677E022C8F69BE4B8F"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:Serilog.Sinks.File, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_77DCE76279812752F37C25EA304C13B2"
+                    "_9C39F1E9058920677E022C8F69BE4B8F"
                     {
                     "Name" = "8:Serilog.Sinks.File.dll"
                     "Attributes" = "3:512"
@@ -331,37 +362,6 @@
                     }
                 }
             "SourcePath" = "8:System.IO.Compression.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DA7C4A20D0C4AC58FA1152281B6D9987"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RestSharp, Version=106.0.0.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_DA7C4A20D0C4AC58FA1152281B6D9987"
-                    {
-                    "Name" = "8:RestSharp.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:RestSharp.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_ED4EF6659B4D4D2A9BC158E03FAEBDF8"
@@ -477,15 +477,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:EODLoader"
-        "ProductCode" = "8:{98EDB2C6-CEC9-4AC6-8D26-B13DA46CB5E0}"
-        "PackageCode" = "8:{105A2E5B-4FF3-4A4C-A31E-34484D87E785}"
+        "ProductCode" = "8:{F99545AD-A52E-4D05-BF78-F14095B44343}"
+        "PackageCode" = "8:{8B6472B2-0284-4F3E-ADA1-8683ED8E6FFD}"
         "UpgradeCode" = "8:{4D0AE607-CECD-4755-A7E0-2B73339412D5}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.0"
+        "ProductVersion" = "8:1.1.1"
         "Manufacturer" = "8:EODHistoricalData"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
