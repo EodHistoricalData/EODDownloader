@@ -163,7 +163,7 @@ namespace EODLoader.Services.EodHistoricalData
                     }
                     var historicalPrice = new HistoricalPriceExtended
                     {
-                        Date = item.Date.ToString("yyyy.MM.dd"),
+                        Date = item.Date.ToString("yyyy-MM-dd"),
                         Volume = item.Volume,
                         AdjustedHigh = item.High != null ? item.High * k : null,
                         AdjustedLow = item.Low != null ? item.Low * k : null,
