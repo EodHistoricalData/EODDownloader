@@ -19,8 +19,6 @@ namespace EODLoader.Services.Utils
             {
                 using (var writer = new StreamWriter(File.Open(path, FileMode.Append)))
                 {
-                    writer.WriteLine("");
-
                     foreach (var item in items)
                     {
                         writer.WriteLine(string.Join(", ", props.Select(p => p.GetValue(item, null))));
