@@ -21,7 +21,7 @@ namespace EODLoader.Services.Utils
                 {
                     foreach (var item in items)
                     {
-                        writer.WriteLine(string.Join(", ", props.Select(p => p.GetValue(item, null))));
+                        writer.WriteLine(string.Join(",", props.Select(p => p.GetValue(item, null))));
                     }
                 }
             }
@@ -29,11 +29,11 @@ namespace EODLoader.Services.Utils
             {
                 using (var writer = new StreamWriter(path))
                 {
-                    writer.WriteLine(string.Join(", ", props.Select(p => p.Name)));
+                    writer.WriteLine(string.Join(",", props.Select(p => p.Name)));
 
                     foreach (var item in items)
                     {
-                        writer.WriteLine(string.Join(", ", props.Select(p => p.GetValue(item, null))));
+                        writer.WriteLine(string.Join(",", props.Select(p => p.GetValue(item, null))));
                     }
                 }
             }
