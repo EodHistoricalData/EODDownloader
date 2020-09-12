@@ -25,5 +25,11 @@ namespace EODLoader.Services.EodHistoricalData.Models
 
         [JsonProperty("volume")]
         public long? Volume { get; set; }
+
+        [JsonProperty("price")]
+        public double? Price { get; set; }
+
+        [JsonProperty("yield")]
+        public double? Yield { get; set; }
     }
 }

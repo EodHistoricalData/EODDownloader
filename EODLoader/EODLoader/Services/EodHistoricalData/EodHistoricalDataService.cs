@@ -169,10 +169,12 @@ namespace EODLoader.Services.EodHistoricalData
                         AdjustedLow = item.Low != null ? item.Low * k : null,
                         AdjustedOpen = item.Open != null ? item.Open * k : null,
                         AdjustedClose = item.Close != null ? item.Close * k : null,
-                        High = item.High,
-                        Low = item.Low,
-                        Open = item.Open,
-                        Close = item.Close
+                        High = item.High != null ? item.High : null,
+                        Low = item.Low != null ? item.Low : null,
+                        Open = item.Open != null ? item.Open : null,
+                        Close = item.Close !=null ? item.Close : null,
+                        Price = item.Price !=null ? item.Price : null,
+                        Yield = item.Yield != null ? item.Yield : null
                     };
                     result.Add(historicalPrice);
                 }
