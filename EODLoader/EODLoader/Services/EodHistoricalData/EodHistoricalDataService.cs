@@ -112,13 +112,24 @@ namespace EODLoader.Services.EodHistoricalData
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
-                    var historicalPrices = JsonConvert.DeserializeObject<List<HistoricalPrice>>(response.Content);
-                    var historicalPricesExt = await CalcHistoricalPrices(historicalPrices);
+                    if (symbol.EndsWith(".BOND"))
+                    {
+                        var historicalBondPrices = JsonConvert.DeserializeObject<List<HistoricalBondPrice>>(response.Content);
+                        var historicalBondPricesExt = await CalcHistoricalBondPrices(historicalBondPrices);
 
-                    
-                    string path = $@"{_configuration.LastDownloadDirectoryPath}\{symbol}.csv";
+                        string path = $@"{_configuration.LastDownloadDirectoryPath}\{symbol}.csv";
 
-                    await utils.CreateCVSFile(historicalPricesExt, path, isUpdate);
+                        await utils.CreateCVSFile(historicalBondPricesExt, path, isUpdate);
+                    }
+                    else
+                    {
+                        var historicalPrices = JsonConvert.DeserializeObject<List<HistoricalPrice>>(response.Content);
+                        var historicalPricesExt = await CalcHistoricalPrices(historicalPrices);
+
+                        string path = $@"{_configuration.LastDownloadDirectoryPath}\{symbol}.csv";
+
+                        await utils.CreateCVSFile(historicalPricesExt, path, isUpdate);
+                    }
 
                     return new HistoricalResult
                     {
@@ -172,8 +183,32 @@ namespace EODLoader.Services.EodHistoricalData
                         High = item.High != null ? item.High : null,
                         Low = item.Low != null ? item.Low : null,
                         Open = item.Open != null ? item.Open : null,
-                        Close = item.Close !=null ? item.Close : null,
-                        Price = item.Price !=null ? item.Price : null,
+                        Close = item.Close !=null ? item.Close : null
+                    };
+                    result.Add(historicalPrice);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, ex.StackTrace);
+                throw;
+            }
+        }
+
+        private async Task<List<HistoricalBondPriceExtended>> CalcHistoricalBondPrices(IEnumerable<HistoricalBondPrice> items)
+        {
+            try
+            {
+                var result = new List<HistoricalBondPriceExtended>();
+                foreach (var item in items)
+                {
+                    var historicalPrice = new HistoricalBondPriceExtended
+                    {
+                        Date = item.Date.ToString("yyyy-MM-dd"),
+                        Volume = item.Volume,
+                        Price = item.Price != null ? item.Price : null,
                         Yield = item.Yield != null ? item.Yield : null
                     };
                     result.Add(historicalPrice);

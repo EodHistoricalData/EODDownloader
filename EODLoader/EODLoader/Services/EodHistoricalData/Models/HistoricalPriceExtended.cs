@@ -12,7 +12,5 @@
         public double? AdjustedHigh { get; set; }
         public double? AdjustedLow { get; set; }
         public double? AdjustedClose { get; set; }
-        public double? Price { get; set; }
-        public double? Yield { get; set; }
     }
 }

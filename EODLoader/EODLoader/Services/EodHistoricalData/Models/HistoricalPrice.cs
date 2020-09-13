@@ -3,11 +3,8 @@ using System;
 
 namespace EODLoader.Services.EodHistoricalData.Models
 {
-    public class HistoricalPrice
+    public class HistoricalPrice : HistoricalBasePrice
     {
-        [JsonProperty("date")]
-        public DateTime Date { get; set; }
-
         [JsonProperty("open")]
         public double? Open { get; set; }
 
@@ -22,14 +19,5 @@ namespace EODLoader.Services.EodHistoricalData.Models
 
         [JsonProperty("adjusted_close")]
         public double? AdjustedClose { get; set; }
-
-        [JsonProperty("volume")]
-        public long? Volume { get; set; }
-
-        [JsonProperty("price")]
-        public double? Price { get; set; }
-
-        [JsonProperty("yield")]
-        public double? Yield { get; set; }
     }
 }
